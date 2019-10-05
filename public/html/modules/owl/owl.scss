@@ -2,7 +2,7 @@
 
 .owl-carousel {
   .carousel-item {
-    height: 600px;
+    height: 500px;
     width: 100%;
     display: block;
     background-repeat: no-repeat;
@@ -10,16 +10,19 @@
 
     .banner-content {
       color: $color-empty;
-      padding: 170px 0 0 100px;
+      padding: 120px 0 0 100px;
+
       h2 {
         font-size: 34px;
         margin: 0 0 20px;
       }
+
       p {
         font-size: 16px;
         font-weight: 400;
         width: 420px;
       }
+
       a {
         width: 120px;
         height: 40px;
@@ -42,21 +45,28 @@
     display: none;
   }
 
-  .owl-controls {
+  .owl-dots {
     position: absolute;
     width: 100%;
     bottom: 0;
+    text-align: center;
 
-    .owl-page {
+    button {
+      display: inline-block;
+
       span {
         border-radius: 0;
         width: 30px;
         height: 3px;
         margin: 5px;
+        display: block;
+        background-color: $color-empty;
+        opacity: 0.5;
       }
 
       &.active span {
         background-color: $color-empty;
+        opacity: 1;
       }
     }
   }

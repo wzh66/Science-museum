@@ -13,6 +13,11 @@
   bottom: 235px;
   text-decoration: none;
   color: $color-full;
+  display: none;
+
+  &.show {
+    display: block;
+  }
 
   img {
     display: block;
