@@ -1,3 +1,4 @@
+@import "variables";
 body {
   min-width: 1200px;
   font-size: 12px;
@@ -28,6 +29,11 @@ ul, li {
   box-sizing: border-box;
 }
 
+em {
+  font-style: normal;
+  color: $color-primary;
+}
+
 .pure-form input[type=password], .pure-form input[type=email], .pure-form input[type=url], .pure-form input[type=date], .pure-form input[type=month], .pure-form input[type=time], .pure-form input[type=datetime], .pure-form input[type=datetime-local], .pure-form input[type=week], .pure-form input[type=tel], .pure-form input[type=color], .pure-form input[type=number], .pure-form input[type=search], .pure-form input[type=text], .pure-form select, .pure-form textarea {
   padding: 13px 18px 13px 18px;
   display: inline-block;
@@ -51,6 +57,7 @@ ul, li {
 
 .pure-form-aligned .pure-control-group {
   margin-bottom: 30px;
+
   label {
     text-align: right;
     display: inline-block;

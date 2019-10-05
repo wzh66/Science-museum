@@ -65,6 +65,8 @@ nav {
 
         &.selected {
           color: $color-primary;
+          border-bottom: 3px solid $color-primary;
+          padding-bottom: 12px;
         }
 
         & + .sub-menu {

@@ -75,7 +75,7 @@
   "menu": [
     {
       "text": "首页",
-      "link": "/",
+      "link": "#/index",
       "hover": false,
       "disable": false,
       "selected": true

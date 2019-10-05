@@ -18,7 +18,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     revenue_2016: '',
     revenue_2017: '',
     revenue_2018: '',
-    comprehend: true
+    comprehend: ''
   };
   $scope.submit = function () {
     $scope.isSubmit = true;
