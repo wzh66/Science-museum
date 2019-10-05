@@ -1,0 +1,133 @@
+{
+  "app": {
+    "name": "中科华海",
+    "description": "中科华海",
+    "appQrCode": "/images/qrCode.jpg",
+    "wxQrCode": "/images/qrCode.jpg"
+  },
+  "user": {
+    "name": "Admin",
+    "avatar": "./assets/tmp/img/avatar.jpg",
+    "email": "3559996@qq.com"
+  },
+  "cities": [
+    {
+      "label": "全国",
+      "code": "100000"
+    },
+    {
+      "label": "北京",
+      "code": "100001"
+    },
+    {
+      "label": "上海",
+      "code": "100002"
+    },
+    {
+      "label": "广州",
+      "code": "100003"
+    },
+    {
+      "label": "深圳",
+      "code": "100003"
+    },
+    {
+      "label": "海口",
+      "code": "100003"
+    },
+    {
+      "label": "佛山",
+      "code": "100003"
+    },
+    {
+      "label": "成都",
+      "code": "100003"
+    },
+    {
+      "label": "中山",
+      "code": "100003"
+    },
+    {
+      "label": "南京",
+      "code": "100003"
+    },
+    {
+      "label": "佛山",
+      "code": "100003"
+    },
+    {
+      "label": "杭州",
+      "code": "100003"
+    },
+    {
+      "label": "青岛",
+      "code": "100003"
+    },
+    {
+      "label": "无锡",
+      "code": "100003"
+    },
+    {
+      "label": "南通",
+      "code": "100003"
+    }
+  ],
+  "menu": [
+    {
+      "text": "首页",
+      "link": "/",
+      "hover": false,
+      "disable": false,
+      "selected": true
+    },
+    {
+      "text": "知产通",
+      "link": "#/product/item/1",
+      "hover": false,
+      "disable": false,
+      "selected": false,
+      "children": []
+    },
+    {
+      "text": "知产云",
+      "link": "#/product/item/2",
+      "hover": false,
+      "disable": false,
+      "selected": false,
+      "children": []
+    },
+    {
+      "text": "科技宝",
+      "link": "#/product/item/3",
+      "hover": false,
+      "disable": false,
+      "selected": false,
+      "children": []
+    },
+    {
+      "text": "运营宝",
+      "link": "#/product/item/4",
+      "hover": false,
+      "disable": false,
+      "selected": false,
+      "children": []
+    },
+    {
+      "text": "创意宝",
+      "link": "#/product/item/5",
+      "hover": false,
+      "disable": false,
+      "selected": false,
+      "children": []
+    },
+    {
+      "text": "联系我们",
+      "link": "#/contact",
+      "hover": false,
+      "disable": false,
+      "selected": false,
+      "children": []
+    }
+  ]
+}
+

@@ -1,0 +1,60 @@
+<div class="ng-header product-{{id}}"></div>
+<div class="product-banner" ng-style="{'background-image' : 'url(/images/product/product-' + id + '-banner-bg.png)'}">
+  <div class="banner-content row">
+    <h2><em ng-style="{'color':product.color}">{{product.name}}</em><span ng-bind-html="product.title"></span></h2>
+    <p ng-bind-html="product.desc"></p>
+    <a ng-style="{'background-color':product.color,'border-color':product.color}" href="javascript:;">了解更多</a>
+  </div>
+</div>
+<div class="section section-product row">
+  <div class="section-title">
+    <img src="/images/index/section-title-icon-1.png">
+    <h2>产品介绍</h2>
+    <p>SERVICE PRODUCTS</p>
+  </div>
+  <div class="section-content">
+    <div class="pure-g" style="margin: 0 -16px">
+      <div ng-repeat="attr in product.attrs" class="pure-u-1-2" style="position: relative">
+        <div class="section-content-item">
+          <img ng-src="{{'/images/product/' + id + '-' + $index + '.png'}}">
+          <div class="section-content-item-txt">
+            <img ng-src="{{'/images/product/product-interview-' + $index + '.png'}}">
+            <h2>{{attr.label}}</h2>
+            <ul class="{{id === '1' && $index === 1 ? 'zct' : ''}}">
+              <li ng-repeat="item in attr.data" ng-bind-html="item"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-contact row">
+  <div class="section-content">
+    <h2>让我们帮助您发展</h2>
+    <p class="desc">请输入贵司的联系信息，提交后将会有专业知产顾问与您联系</p>
+    <a href="javascript:;">联系我们</a>
+  </div>
+</div>
+
+<div class="section section-other row">
+  <div class="section-title">
+    <img src="/images/index/section-title-icon-1.png">
+    <h2>其它商品</h2>
+    <p>OTHER PRODUCTS</p>
+  </div>
+  <div class="section-content">
+    <div class="pure-g" style="margin: 0 -16px">
+      <div ng-repeat="item in products" class="pure-u-1-2">
+        <div ng-click="go(item.id)" class="section-content-item product-{{item.id}}">
+          <h2>{{item.name}}</h2>
+          <p class="desc" ng-bind-html="item.shortDesc"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ng-footer"></div>
+<div class="ng-top"></div>

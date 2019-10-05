@@ -1,0 +1,97 @@
+<nav ng-if="appData" class="{{class}}">
+  <div class="row">
+    <h1 class="logo">
+      <a class="nav-link" href="javascript:;">
+        <img src="/images/logo.png">
+      </a>
+    </h1>
+    <div class="menu">
+      <ul>
+        <li ng-repeat="item in appData.menu" ng-if="!item.disable" ng-mouseenter="enter($event)" ng-mouseleave="leave($event)">
+          <a href="{{item.link}}"
+             class="nav-link {{item.link === '#' + path ? 'selected' : ''}}">{{item.text}}</a>
+          <div ng-if="item.children && item.children.length > 0" class="sub-menu" style="transform: translate3d(-50%, 0, 0);">
+            <ul>
+              <li ng-repeat="children in item.children">
+                <a href="{{children.link}}" class="nav-link">{{children.text}}</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <!--<span class="line" [ngStyle]="{'left':lineLeft + 'px','width':lineWidth + 'px'}"></span>-->
+    </div>
+    <div class="toolbar" style="display: none">
+      <ul>
+        <li ng-mouseenter="enter($event)" ng-mouseleave="leave($event)">
+          <a class="nav-link" href="javascript:;"><i class="icons icons-location_fill"></i> 全国[切换城市站]</a>
+          <div class="sub-menu cities-area">
+            <div class="sub-menu_title">请选择进入城市</div>
+            <div class="sub-menu_list">
+              <ul>
+                <li ng-repeat="city in appData.cities"><a href="javascript:;" class="nav-link">{{city.label}}</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li ng-mouseenter="enter($event)" ng-mouseleave="leave($event)">
+          <a class="nav-link" href="javascript:;">华海云APP</a>
+          <div class="sub-menu qr-area">
+            <div class="sub-menu_list">
+              <ul>
+                <li style="padding-bottom: 5px">
+                  <div class="code">
+                    <img ng-src="{{appData.app.appQrCode}}">
+                  </div>
+                  <div class="txt">
+                    <div class="title">APP</div>
+                    <div class="desc">扫码下载</div>
+                  </div>
+                </li>
+                <li style="padding-top: 5px">
+                  <div class="code">
+                    <img ng-src="{{appData.app.wxQrCode}}">
+                  </div>
+                  <div class="txt">
+                    <div class="title">公众号</div>
+                    <div class="desc">扫码关注</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li ng-mouseenter="enter($event)" ng-mouseleave="leave($event)">
+          <a class="nav-link" href="javascript:;">Mr.Right</a>
+          <div class="sub-menu user-area">
+            <div class="sub-menu_list">
+              <ul>
+                <li>
+                  <a href="javascript:;" class="nav-link">我的订单</a>
+                </li>
+                <li>
+                  <a href="javascript:;" class="nav-link">消息中心</a>
+                </li>
+                <li>
+                  <a href="javascript:;" class="nav-link">案件进度</a>
+                </li>
+                <li>
+                  <a href="javascript:;" class="nav-link">会员中心</a>
+                </li>
+                <li>
+                  <a href="javascript:;" class="nav-link">公司主体</a>
+                </li>
+                <li>
+                  <a href="javascript:;" class="nav-link">账号设置</a>
+                </li>
+                <li>
+                  <a href="javascript:;" class="nav-link logout">退出登录</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

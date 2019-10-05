@@ -1,0 +1,67 @@
+@import "../../../sass/variables";
+
+.contact-banner {
+  height: 300px;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+}
+
+
+.section-contact {
+  h4 {
+    font-size: 24px;
+    margin: 80px 0 50px 0;
+  }
+
+  h5 {
+    font-size: 20px;
+    margin: 70px 0 40px 0;
+  }
+
+  .section-title {
+    line-height: 1;
+    font-weight: 500;
+    text-align: left !important;
+    margin-left: 50px;
+
+    h2 {
+      font-size: 38px;
+      margin: 20px 0 0 0;
+    }
+
+    h3 {
+      font-size: 24px;
+      font-weight: 400;
+      margin: 100px 0 0 0;
+    }
+  }
+
+  .section-content-form {
+    margin-top: 50px;
+    margin-left: 50px;
+
+    input[type=text], select {
+      width: 477px;
+      &.error {
+        border: 1px solid $color-primary;
+      }
+    }
+    button {
+      width:168px;
+      height:48px;
+      background:linear-gradient(180deg,rgba(171,34,54,1) 0%,rgba(115,15,25,1) 100%);
+      &.disabled {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .pure-form .pure-help-inline, .pure-form-message-inline {
+    display: none;
+    &.show {
+      display: inline-block;
+      color: $color-primary;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@import "../../../sass/variables";
+
+.fix-to-top {
+  position: fixed;
+  left: 50%;
+  margin-left: 650px;
+  width: 96px;
+  height: 96px;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 5px 12px 0px rgba(0, 0, 0, 0.09);
+  border-radius: 4px;
+  border: 1px solid rgba(204, 204, 204, 1);
+  bottom: 235px;
+  text-decoration: none;
+  color: $color-full;
+
+  img {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 24px auto 5px auto;
+  }
+
+  span {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+  }
+}

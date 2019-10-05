@@ -1,0 +1,81 @@
+<div class="ng-header"></div>
+<div class="contact-banner" style="background-image:url('/images/contact/contact-banner-bg.png')">
+  <div class="banner-content row"></div>
+</div>
+<div class="section section-contact row">
+  <div class="section-title">
+    <h3>Contact Us</h3>
+    <h2>联系我们</h2>
+    <h4>请留下贵司的联系信息，我们将安排专业的知识产权顾问为您服务（“*” 为必填项）</h4>
+  </div>
+  <div class="section-content-form">
+    <form name="contactForm" class="pure-form pure-form-aligned" ng-submit="submit()" novalidate>
+      <fieldset>
+        <div class="pure-control-group">
+          <label>公司名称：</label>
+          <input ng-model="contact.company" name="company" type="text" placeholder="请填写贵公司的全称">
+        </div>
+
+        <div class="pure-control-group">
+          <label>*联系人：</label>
+          <input ng-class="{'error':contactForm.name.$invalid && isSubmit}" ng-model="contact.name" name="name" type="text" placeholder="请填写联系人姓名，可简称 “赵先生/赵小姐”" required>
+          <span ng-class="{'show':contactForm.name.$invalid && isSubmit}" class="pure-form-message-inline">这是必填项.</span>
+        </div>
+
+        <div class="pure-control-group">
+          <label>*联系电话：</label>
+          <input ng-class="{'error':contactForm.mobile.$invalid && isSubmit}" ng-model="contact.mobile" name="mobile" type="text" placeholder="请填写联系电话" required>
+          <span ng-class="{'show':contactForm.mobile.$invalid && isSubmit}" class="pure-form-message-inline">这是必填项.</span>
+        </div>
+        <h4>以下信息能让我们更懂您的现况和需求</h4>
+        <div class="pure-control-group">
+          <label>公司人数：</label>
+          <select ng-model="contact.employees" name="employees">
+            <option value='' disabled selected style='display:none;'>请选择贵司的在职人数</option>
+            <option>1-10人</option>
+            <option>10-50人</option>
+            <option>50人以上</option>
+          </select>
+        </div>
+        <h5>公司最近3年收入范围</h5>
+        <div class="pure-control-group">
+          <label>2016年：</label>
+          <select ng-model="contact.revenue_2016" name="revenue_2016">
+            <option value='' disabled selected style='display:none;'>请选择贵司的年收入范围</option>
+            <option>小于50万</option>
+            <option>50-500万</option>
+            <option>500万以上</option>
+          </select>
+        </div>
+        <div class="pure-control-group">
+          <label>2017年：</label>
+          <select ng-model="contact.revenue_2017" name="revenue_2017">
+            <option value='' disabled selected style='display:none;'>请选择贵司的年收入范围</option>
+            <option>小于50万</option>
+            <option>50-500万</option>
+            <option>500万以上</option>
+          </select>
+        </div>
+        <div class="pure-control-group">
+          <label>2018年：</label>
+          <select ng-model="contact.revenue_2018" name="revenue_2018">
+            <option value='' disabled selected style='display:none;'>请选择贵司的年收入范围</option>
+            <option>小于50万</option>
+            <option>50-500万</option>
+            <option>500万以上</option>
+          </select>
+        </div>
+        <div class="pure-controls">
+          <label class="pure-checkbox">
+            <input ng-model="contact.comprehend" name="comprehend" type="checkbox"> 是否了解知识产权？
+          </label>
+
+          <button ng-class="{'disabled':contactForm.$invalid}" style="margin-top: 60px" type="submit"
+                  class="pure-button pure-button-primary">确认提交
+          </button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<div class="ng-footer"></div>

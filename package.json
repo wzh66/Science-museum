@@ -1,0 +1,40 @@
+{
+  "name": "angular-seed",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A starter project for AngularJS",
+  "repository": "https://github.com/angular/angular-seed",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "",
+    "gulp-autoprefixer": "",
+    "gulp-concat": "",
+    "gulp-for-compass": "",
+    "gulp-htmlmin": "",
+    "gulp-imagemin": "",
+    "gulp-load-plugins": "",
+    "gulp-minify-css": "",
+    "gulp-minify-html": "",
+    "gulp-ng-html2js": "",
+    "gulp-rename": "",
+    "gulp-sass": "",
+    "gulp-uglify": "",
+    "node-sass": "^4.12.0",
+    "resize-img": "",
+    "run-sequence": "",
+    "http-server": ""
+  },
+  "scripts": {
+    "prestart": "npm install",
+    "start": "sudo http-server -a localhost -p 80 -c-1 ./public",
+    "pretest": "npm install",
+    "test": "karma start karma.conf.js",
+    "test-single-run": "karma start karma.conf.js --single-run",
+    "preupdate-webdriver": "npm install",
+    "update-webdriver": "webdriver-manager update",
+    "preprotractor": "npm run update-webdriver",
+    "protractor": "protractor e2e-tests/protractor.conf.js",
+    "update-index-async": "node -e \"var fs=require('fs'),indexFile='public/index-async.html',loaderFile='public/bower_components/angular-loader/angular-loader.min.js',loaderText=fs.readFileSync(loaderFile,'utf-8').split(/sourceMappingURL=angular-loader.min.js.map/).join('sourceMappingURL=bower_components/angular-loader/angular-loader.min.js.map'),indexText=fs.readFileSync(indexFile,'utf-8').split(/\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/).join('//@@NG_LOADER_START@@\\n'+loaderText+'    //@@NG_LOADER_END@@');fs.writeFileSync(indexFile,indexText);\""
+  },
+  "dependencies": {}
+}
