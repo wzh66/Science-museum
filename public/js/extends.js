@@ -23,4 +23,26 @@ function toTop() {
     }, 500, 'swing');
 }
 
+function formData(body) {
+    var form = new FormData();
+    for (var kn in body) {
+        if (body) {
+            form.set(kn, body[kn] === undefined ? '' : body[kn]);
+        }
+    }
+    return form;
+}
+
+function formDataToUrl(body, ifFist) {
+    var str = '';
+    for (var keyName in body) {
+        if (!str && ifFist) {
+            str = '?' + keyName + '=' + (body[keyName] === undefined ? '' : encodeURI(body[keyName]));
+        } else {
+            str = str + '&' + keyName + '=' + (body[keyName] === undefined ? '' : encodeURI(body[keyName]));
+        }
+    }
+    return str;
+}
+
 var ua = navigator.userAgent;

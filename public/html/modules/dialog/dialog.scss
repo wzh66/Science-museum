@@ -1,0 +1,80 @@
+.modal-box-blurb {
+  position: fixed;
+  float: left;
+  left: 50%;
+  top: 75px;
+  background: url(/images/bg-modal-box.png) repeat;
+  width: 500px;
+  margin-left: -250px;
+  padding: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  z-index: 10000;
+
+  .modal-box-wrapper {
+    background: #fff;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+
+    .modal-box-header {
+      background: #f7f7f7 url(/images/bg-modal-box-header.gif) repeat-x left bottom;
+      -webkit-border-radius: 6px 6px 0 0;
+      -moz-border-radius: 6px 6px 0 0;
+      padding: 8px 10px;
+      _height: 1%;
+      position: relative;
+
+      h5 {
+        color: #565656;
+        font-size: 14px;
+        font-weight: bold;
+        padding-bottom: 3px;
+      }
+
+      .modal-close {
+        position: absolute;
+        right: 10px;
+
+        .modal-close-icon {
+          background: url(/images/all-icon-sprite_v36.png) no-repeat -16px -104px;
+          display: inline-block;
+          height: 13px;
+          width: 13px;
+          vertical-align: middle;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .modal-box-content {
+      padding: 10px 12px;
+      color: #454545;
+    }
+
+    .modal-box-footer {
+      margin-top: 30px;
+      padding: 10px 12px;
+      color: #454545;
+      text-align: right;
+
+      .submit-button {
+        background: #3e80b6 url("/images/bg-submit-button.gif") repeat-x scroll left bottom;
+        border-color: #6ba8f5 #074e87 #074e87 #6ba8f5;
+        border-style: solid;
+        border-width: 1px;
+        color: #fff;
+        cursor: pointer;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        margin-right: 3px;
+        overflow: visible;
+        padding: 5px 8px;
+        &.disabled {
+          background: #ccc;
+          border-color: #eee #bbb #bbb #eee;
+        }
+      }
+    }
+  }
+}

@@ -15,6 +15,7 @@ app.config(['$routeProvider', '$locationProvider',
 
 }]).run(['$rootScope', function ($rootScope) {
   $rootScope.$on('$locationChangeStart', function () {//初始化全局控件的状态
+    $rootScope.dialog.open(false)
     toTop();
   });
 }]);

@@ -1,0 +1,19 @@
+<div ng-if="dialog.show">
+    <div class="overlay" style="display: block; opacity: 0.6;"></div>
+    <div class="modal-box-blurb">
+        <div class="modal-box-wrapper" style="min-height: 140px;">
+            <div ng-if="dialog.title" class="modal-box-header">
+                <div ng-click="close()" class="modal-close"><a ng-click="dialog.show = false;" class="modal-close-icon"></a></div>
+                <h5>{{dialog.title}}</h5>
+            </div>
+            <div class="modal-box-content">
+                <div>{{dialog.body}}</div>
+            </div>
+            <div class="modal-box-footer">
+                <input ng-if="dialog.btnTxt[0]" type="button" class="submit-button" name="save"
+                       ng-click="dialog.show = false;" value="{{dialog.btnTxt[0]}}">
+                <a ng-if="dialog.btnTxt[1]" class="close_modal_box" ng-click="dialog.show = false;">{{dialog.btnTxt[1]}}</a>
+            </div>
+        </div>
+    </div>
+</div>

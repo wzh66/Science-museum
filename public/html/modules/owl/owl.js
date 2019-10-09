@@ -12,7 +12,9 @@ app.directive('ngOwl', ['$location', 'appSvc', function ($location, appSvc) {
                 loop: true,
                 paginationSpeed: 400,
                 singleItem: true,
-                autoPlay: 3000,
+                autoplay:true,
+                autoplayTimeout:3000,
+                autoplayHoverPause:true,
                 items: 1
             });
         }
