@@ -9,7 +9,7 @@
     <h4>请留下贵司的联系信息，我们将安排专业的知识产权顾问为您服务（“*” 为必填项）</h4>
   </div>
   <div class="section-content-form">
-    <form name="contactForm" class="pure-form pure-form-aligned" ng-submit="submit()" novalidate>
+    <form name="form" class="pure-form pure-form-aligned" ng-submit="submit(form)" novalidate>
       <fieldset>
         <div class="pure-control-group">
           <label>公司名称：</label>
@@ -18,14 +18,14 @@
 
         <div class="pure-control-group">
           <label><em>*</em>联系人：</label>
-          <input ng-class="{'error':contactForm.name.$invalid && isSubmit}" ng-model="contact.name" name="name" type="text" placeholder="请填写联系人姓名，可简称 “赵先生/赵小姐”" required>
-          <span ng-class="{'show':contactForm.name.$invalid && isSubmit}" class="pure-form-message-inline">这是必填项.</span>
+          <input ng-class="{'error':form.name.$invalid && isSubmit}" ng-model="contact.name" name="name" type="text" placeholder="请填写联系人姓名，可简称 “赵先生/赵小姐”" required>
+          <span ng-class="{'show':form.name.$invalid && isSubmit}" class="pure-form-message-inline">请填写联系人</span>
         </div>
 
         <div class="pure-control-group">
           <label><em>*</em>联系电话：</label>
-          <input ng-class="{'error':contactForm.mobile.$invalid && isSubmit}" ng-model="contact.mobile" name="mobile" type="text" placeholder="请填写联系电话" required>
-          <span ng-class="{'show':contactForm.mobile.$invalid && isSubmit}" class="pure-form-message-inline">这是必填项.</span>
+          <input ng-class="{'error':form.mobile.$invalid && isSubmit}" ng-model="contact.mobile" name="mobile" type="text" placeholder="请填写联系电话" required>
+          <span ng-class="{'show':form.mobile.$invalid && isSubmit}" class="pure-form-message-inline">请填写联系电话</span>
         </div>
         <h4>以下信息能让我们更懂您的现况和需求</h4>
         <div class="pure-control-group">
@@ -96,7 +96,7 @@
           </select>
         </div>
         <div class="pure-controls">
-          <button ng-class="{'disabled':contactForm.$invalid}" style="margin-top: 60px" type="submit"
+          <button ng-class="{'disabled':form.$invalid}" style="margin-top: 60px" type="submit"
                   class="pure-button pure-button-primary">确认提交
           </button>
         </div>

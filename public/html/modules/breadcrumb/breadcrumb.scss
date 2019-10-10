@@ -1,0 +1,30 @@
+.breadcrumb {
+  padding: 15px 15px 10px;
+  box-sizing: border-box;
+  font-variant: tabular-nums;
+  line-height: 32px;
+  list-style: none;
+  -webkit-font-feature-settings: 'tnum';
+  font-feature-settings: 'tnum';
+  color: rgba(0, 0, 0, .45);
+  font-size: 14px;
+
+  .breadcrumb-separator {
+    margin: 0 8px;
+    color: rgba(0, 0, 0, .45);
+  }
+
+  a {
+    color: rgba(0, 0, 0, .45);
+    transition: color .3s;
+    text-decoration: none;
+  }
+
+  .breadcrumb-item {
+    &:last-child {
+      .breadcrumb-separator {
+        display: none;
+      }
+    }
+  }
+}

@@ -20,11 +20,21 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         revenue2018: '',
         comprehend: ''
     };
-    $scope.submit = function () {
+    $scope.submit = function (form) {
         $scope.isSubmit = true;
+        if (form.$invalid) {
+            toTop();
+            return false;
+        }
         contactSvc.post($scope.contact).then(function success(res) {
             console.log(res);
-            $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了', '']);
+            var msg = '';
+            if (res.code === '0000') {
+                msg = '您已成功提交！';
+            } else {
+                msg = res.msg;
+            }
+            $scope.$root.dialog.open(true, '系统提示', msg, ['我知道了', '']);
         });
     };
 }]);
