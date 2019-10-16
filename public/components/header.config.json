@@ -97,7 +97,7 @@
       "children": []
     },
     {
-      "text": "科技宝",
+      "text": "科创宝",
       "link": "#/product/item/3",
       "hover": false,
       "disable": false,
@@ -105,7 +105,7 @@
       "children": []
     },
     {
-      "text": "运营宝",
+      "text": "文创宝",
       "link": "#/product/item/4",
       "hover": false,
       "disable": false,
@@ -113,7 +113,7 @@
       "children": []
     },
     {
-      "text": "创意宝",
+      "text": "创新宝",
       "link": "#/product/item/5",
       "hover": false,
       "disable": false,

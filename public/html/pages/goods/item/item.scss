@@ -29,17 +29,22 @@
       font-size: 14px;
 
       ul {
+        margin-bottom: 10px;
         li {
           display: inline-block;
           font-size: 14px;
           line-height: 1;
-          padding: 13px 24px;
+          padding: 12px 24px;
           border-radius: 2px;
           border: 1px solid rgba(0, 0, 0, 0.2);
-          margin: 0 20px 30px 0;
+          margin: 0 20px 20px 0;
           color: rgba(0, 0, 0, 0.65);
           font-weight: 400;
           cursor: pointer;
+
+          &:hover {
+            border: 1px solid $color-primary;
+          }
 
           &.curr {
             color: $color-primary;
@@ -66,6 +71,8 @@
 
       &.sku-name {
         font-size: 24px;
+        margin-bottom: 20px;
+        line-height: 32px;
       }
 
       &.sku-price {
@@ -106,14 +113,17 @@
             border-style: solid;
             border-color: rgba(0, 0, 0, 0.2);
             display: inline-block;
+            vertical-align: middle;
 
             &.reduce {
               border-width: 1px 0 1px 1px;
               border-radius: 2px 0 0 2px;
-              padding: 13px;
+              padding: 10px;
               width: 40px;
               text-align: center;
               cursor: pointer;
+              font-size: 18px;
+              line-height: 18px;
 
               &.disabled {
                 opacity: 0.5;
@@ -129,7 +139,7 @@
                 padding: 0;
                 border: 0;
                 background: none;
-                line-height: 40px;
+                line-height: 38px;
                 font-size: 14px;
                 width: 64px;
                 text-align: center;
@@ -139,10 +149,12 @@
             &.plus {
               border-width: 1px 1px 1px 0;
               border-radius: 0 2px 2px 0;
-              padding: 13px;
+              padding: 10px;
               width: 40px;
               text-align: center;
               cursor: pointer;
+              font-size: 18px;
+              line-height: 18px;
             }
           }
         }
@@ -151,7 +163,7 @@
   }
 
   .choose-btns {
-    margin: 30px 0 0 168px;
+    margin: 40px 0 0 168px;
     font-size: 0;
 
     .btn {
@@ -276,6 +288,7 @@
       }
     }
   }
+
   .main {
     .content {
       padding-right: 20px;
