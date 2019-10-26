@@ -1,0 +1,54 @@
+<div class="page-goods-list">
+    <div class="ng-header header-goods"></div>
+    <div class="ng-breadcrumb"></div>
+    <div class="row">
+        <div class="search-bar">
+            <div class="pure-g">
+                <div class="pure-u-3-4">
+                    <ul class="tags">
+                        <li class="tag label">专利分类：</li>
+                        <li class="tag">不限</li>
+                        <li class="tag">专利新申请服务</li>
+                        <li class="tag">专利申请流程服务</li>
+                        <li class="tag">专利申请审查服务</li>
+                        <li class="tag">专利维权服务</li>
+                        <li class="tag">其他服务</li>
+                        <li class="tag">涉外服务</li>
+                    </ul>
+                </div>
+                <div class="pure-u-1-4">
+                    <div class="search-form">
+                        <div class="search-form-control">
+                            <input name="key" placeholder="请输入关键词">
+                        </div>
+                        <div class="search-form-button"><i class="icons icons-search"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="search-result">
+            <div class="search-result-statistics">查询结果共 <em>7765</em> 个项目</div>
+            <div class="search-result-data">
+                <ul class="result-list pure-g">
+                    <li ng-repeat="item in items" class="result-item pure-u-1-4">
+                        <div class="result-item-box">
+                            <div class="result-item-img">
+                                <img src="/images/goods/item.png">
+                            </div>
+                            <div class="result-item-txt">
+                                <div class="result-item-label">专利新申请服务</div>
+                                <div class="result-item-detail pure-g">
+                                    <div class="result-item-detail-price pure-u-1-2"><em>￥999</em></div>
+                                    <div class="result-item-detail-count pure-u-1-2">2838人付款</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="ng-page" page="page.page" total="page.total"></div>
+        </div>
+    </div>
+    <div class="ng-footer"></div>
+    <div class="ng-top"></div>
+</div>

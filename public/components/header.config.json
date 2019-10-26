@@ -81,6 +81,22 @@
       "selected": true
     },
     {
+      "text": "华海云",
+      "link": "#/goods/list",
+      "hover": false,
+      "disable": false,
+      "selected": false,
+      "children": [
+        {
+          "text": "华海云",
+          "link": "#/goods/list",
+          "hover": false,
+          "disable": false,
+          "selected": false
+        }
+      ]
+    },
+    {
       "text": "知产通",
       "link": "#/product/item/1",
       "hover": false,

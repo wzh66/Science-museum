@@ -1,0 +1,7 @@
+<div class="ng-pages">
+    <a class="prev" ng-class="{true:'disabled',false:''}[selPage == 1]" ng-click="previous()" href="javascript:;"><i
+            class="icons icons-back"></i></a>
+    <span ng-repeat="p in pages" ng-click="turning(p)" class="{{p === page ? 'curr':''}}">{{p}}</span>
+    <a class="next" ng-class="{true:'disabled',false:''}[selPage == pages]" ng-click="next()" href="javascript:;"><i
+            class="icons icons-right"></i></a>
+</div>
