@@ -89,7 +89,7 @@
       "children": [
         {
           "text": "华海云",
-          "link": "#/goods/list",
+          "link": "#/goods/type/index",
           "hover": false,
           "disable": false,
           "selected": false

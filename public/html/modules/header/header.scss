@@ -93,6 +93,7 @@ nav {
     position: absolute;
     background-color: $color-empty;
     left: 50%;
+    z-index: 999;
 
     li {
       line-height: 30px;
