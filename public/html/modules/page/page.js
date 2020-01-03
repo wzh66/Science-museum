@@ -45,6 +45,16 @@ app.directive('ngPage', ['$location', 'appSvc', function ($location, appSvc) {
                     }
                 }
             };
+            scope.$watch('total', function (n, o) {
+                if (n !== o || o !== undefined) {
+                    scope.pages = scope.getPages();
+                }
+            });
+            scope.$watch('page', function (n, o) {
+                if (n !== o || o !== undefined) {
+                    scope.pages = scope.getPages();
+                }
+            });
         }
     };
 }]);

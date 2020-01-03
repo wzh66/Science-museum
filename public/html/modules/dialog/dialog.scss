@@ -57,7 +57,7 @@
       color: #454545;
       text-align: right;
 
-      .submit-button {
+      .confirm-button {
         background: #3e80b6 url("/images/bg-submit-button.gif") repeat-x scroll left bottom;
         border-color: #6ba8f5 #074e87 #074e87 #6ba8f5;
         border-style: solid;
@@ -70,10 +70,32 @@
         margin-right: 3px;
         overflow: visible;
         padding: 5px 8px;
+
         &.disabled {
           background: #ccc;
           border-color: #eee #bbb #bbb #eee;
         }
+      }
+
+      .cancel-button {
+        padding: 5px 8px;
+        background: #ededed;
+        background: linear-gradient(to bottom, #ededed 0, #d5d5d5 56%, #d5d5d5 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#d5d5d5', GradientType=0);
+        color: #059;
+        display: inline-block;
+        text-decoration: none;
+        border-top: 1px solid #f3f3f3;
+        border-right: 1px solid #c4c4c4;
+        border-bottom: 1px solid #b9b9b9;
+        border-left: 1px solid #e9e9e9;
+        border-radius: 2px;
+        font-size: 12px;
+        text-shadow: 1px 1px 1px #f6f6f6;
+        font-weight: bold;
+        cursor: pointer;
+        overflow: visible;
+        font-family: inherit;
       }
     }
   }

@@ -1,0 +1,29 @@
+@import "../sass/variables";
+
+.panel {
+  background: $color-empty;
+
+  .panel-hd {
+    padding: 20px 30px 10px;
+position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 30px;
+      right: 30px;
+      width: auto;
+      top: auto;
+      height: 1px;
+      border-bottom: 1px solid $color-rare;
+    }
+    .panel-title {
+      font-size: 16px;
+      line-height: 36px;
+    }
+  }
+
+  .panel-bd {
+    padding: 30px;
+  }
+}

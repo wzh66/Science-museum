@@ -57,7 +57,7 @@ gulp.task('public', function () {
 gulp.task('watch', function () {
     gulp.watch(['public/js/**/*.js', 'public/html/**/*.js'], gulp.series('public'));
     gulp.watch(['public/html/**/*.html'], gulp.series('html2js'));
-    gulp.watch(['public/html/**/*.scss', 'sass/**/*.scss'], gulp.series('sass'));
+    gulp.watch(['public/html/**/*.scss', 'public/sass/**/*.scss'], gulp.series('sass'));
 });
 
 gulp.task('default', async () => {

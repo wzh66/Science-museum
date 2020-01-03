@@ -1,0 +1,167 @@
+<div class="ng-header header-shadow"></div>
+<div class="page-checkout">
+    <div class="row">
+        <h2 class="title">确认订单</h2>
+        <div class="checkout-subject">
+            <div class="panel">
+                <div class="panel-hd">
+                    <h3 class="panel-title">主体信息</h3>
+                </div>
+                <div class="panel-bd">
+                    <form name="form" class="pure-form pure-form-stacked" ng-submit="submit(form)" novalidate>
+                        <fieldset>
+                            <div class="pure-g">
+                                <div class="pure-u-1-2">
+                                    <div class="pure-control-group pure-u-23-24">
+                                        <label><em>*</em>请选择下单主体</label>
+                                        <div ng-selector data="items" value="selected" disabled="disabled"
+                                             class="ng-selector"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div ng-repeat="subject in personalSubjects" class="pure-control-group">
+                                <label><i class="icons icons-round-check-fill"
+                                          style="font-size: 20px;display:inline-block;vertical-align: middle"></i> <span style="display: inline-block;vertical-align: middle">个人名称：</span></label>
+                                <span class="pure-form-message-inline">{{subject.mobile}}（个人电话）</span>
+                            </div>
+
+                            <div class="pure-control-group">
+                                <label><i class="icons icons-round-check-fill"
+                                          style="font-size: 20px;display:inline-block;vertical-align: middle"></i> <span style="display: inline-block;vertical-align: middle">企业名称：</span></label>
+                                <div ng-selector data="statusList" value="status" class="ng-selector"></div>
+                            </div>-->
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="checkout-table">
+            <div class="panel">
+                <div class="panel-hd">
+                    <h3 class="panel-title">确认订单信息</h3>
+                </div>
+                <div class="panel-bd">
+                    <table ng-if="!oid" class="pure-table pure-table-bordered" style="width: 100%">
+                        <thead>
+                        <tr>
+                            <th>商品名称</th>
+                            <th ng-repeat="th in tempOrder.specs">{{th.fieldName}}</th>
+                            <th>单价</th>
+                            <th>数量</th>
+                            <th>小计</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <td>{{tempOrder.name}}</td>
+                            <td ng-repeat="td in tempOrder.specs">{{td.fieldValueName}}</td>
+                            <td><em>原价 ¥{{tempOrder.price}}</em></td>
+                            <td>{{tempOrder.quantity}}</td>
+                            <td><em>¥{{tempOrder.price * tempOrder.quantity}}</em></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table ng-if="oid" class="pure-table pure-table-bordered" style="width: 100%">
+                        <thead>
+                        <tr>
+                            <th>商品名称</th>
+                            <th>单价</th>
+                            <th>数量</th>
+                            <th>小计</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr ng-repeat="product in order.goodsList">
+                            <td>{{product.goodsName}}</td>
+                            <td><em>原价 ¥{{product.price}}</em></td>
+                            <td>{{product.count}}</td>
+                            <td><em>¥{{product.price * product.count}}</em></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="pre-order">
+                        <div class="pre-order-total"><em>合计：¥ {{oid ? order.totalAmount : tempOrder.price *
+                            tempOrder.quantity}}</em></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel pay-selector">
+                <div class="panel-hd">
+                    <h3 class="panel-title">余额支付</h3>
+                </div>
+                <div class="panel-bd">
+                    <div ng-if="typeId !== '48' && typeId !== 48" class="pure-g">
+                        <div class="pure-u-1-3">
+                            <div ng-click="setAdditionalPay('zct',0,account.zct === 0 || payType === 'OFFLINE_PAY')"
+                                 class="{{additionalPayTypes[0] === 'zct' ? 'curr' : ''}} pay-box {{account.zct === 0 || payType === 'OFFLINE_PAY' ? 'disabled' : ''}}">
+                                <img src="/images/paymode/zct.png">
+                                <span>知产通</span>
+                                <ion-text color="danger">（余额：￥{{account.zct}}）</ion-text>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pure-g">
+                        <div class="pure-u-1-3">
+                            <div ng-click="setAdditionalPay('qb',1,account.qb === 0 || payType === 'OFFLINE_PAY')"
+                                 class="{{additionalPayTypes[1] === 'qb' ? 'curr' : ''}} pay-box {{account.qb === 0 || payType === 'OFFLINE_PAY' ? 'disabled' : ''}}">
+                                <img src="/images/paymode/qb.png">
+                                <span>钱包</span>
+                                <ion-text color="danger">（余额：￥{{account.qb}}）</ion-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel pay-selector">
+                <div class="panel-hd">
+                    <h3 class="panel-title">其它支付</h3>
+                </div>
+                <div class="panel-bd">
+                    <div class="pure-g">
+                        <div class="pure-u-1-4">
+                            <div ng-click="setPay('wxpay',account.amount >= order.amount)"
+                                 class="{{payType === 'wxpay' ? 'curr' : ''}} pay-box {{account.amount >= order.amount ? 'disabled' : ''}}">
+                                <img src="/images/paymode/wx.png">
+                                <span>微信支付</span>
+                            </div>
+                        </div>
+                        <div class="pure-u-1-4">
+                            <div ng-click="setPay('alipay',true)"
+                                 class="{{payType === 'alipay' ? 'curr' : ''}} pay-box disabled {{account.amount >= order.amount ? 'disabled' : ''}}">
+                                <img src="/images/paymode/alipay.png">
+                                <span>支付宝支付</span>
+                            </div>
+                        </div>
+                        <div class="pure-u-1-4">
+                            <div ng-click="setPay('OFFLINE_PAY',account.amount >= order.amount)"
+                                 class="{{payType === 'OFFLINE_PAY' ? 'curr' : ''}} pay-box {{account.amount >= order.amount ? 'disabled' : ''}}">
+                                <img src="/images/paymode/underline.png">
+                                <span>线下支付</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-submit">
+                        <a href="javascript:;" ng-click="submit()" class="checkout-submit-button">立即支付</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ng-footer"></div>
+<div ng-if="codeShow">
+    <div class="overlay" style="display: block; opacity: 0.6;"></div>
+    <div class="modal-box-blurb">
+        <div class="modal-box-wrapper" style="min-height: 140px;">
+            <div class="modal-box-header">
+                <h5>请扫码支付</h5>
+            </div>
+            <div class="modal-box-content" style="text-align: center">
+                <qrcode ng-if="codeUrl" data="{{codeUrl}}" href="{{codeUrl}}" size="300"
+                        style="display: inline-block;margin: 20px"></qrcode>
+            </div>
+        </div>
+    </div>
+</div>

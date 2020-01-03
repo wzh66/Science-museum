@@ -1,5 +1,9 @@
 @import "../../../sass/variables";
 
+.header-shadow {
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+}
+
 nav {
   text-align: center;
   background-color: $color-empty;
@@ -72,6 +76,11 @@ nav {
         & + .sub-menu {
           display: none;
         }
+
+        .icons-right {
+          transition: all 200ms ease-in-out;
+          position: absolute;
+        }
       }
 
       &.hover, &.selected {
@@ -82,6 +91,10 @@ nav {
           //background-color: rgba(52, 67, 96, 1);
           & + .sub-menu {
             display: block;
+          }
+
+          .icons-right {
+            transform: rotate(90deg);
           }
         }
       }
@@ -94,6 +107,7 @@ nav {
     background-color: $color-empty;
     left: 50%;
     z-index: 999;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
 
     li {
       line-height: 30px;
@@ -102,6 +116,21 @@ nav {
 
       .nav-link {
         padding: 6px 30px;
+      }
+
+      &:last-child {
+        position: relative;
+
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: auto;
+          height: 1px;
+          border-top: 1px solid $color-border;
+        }
       }
     }
   }

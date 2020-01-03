@@ -1,0 +1,40 @@
+<div class="page-member">
+    <div class="ng-header header-shadow"></div>
+    <div class="member-wrap row">
+        <div class="pure-g">
+            <div class="pure-u-1-5">
+                <div key="key" class="ng-sidebar"></div>
+            </div>
+            <div class="pure-u-4-5">
+                <div class="setting-content main-container">
+                    <div class="title pure-g">
+                        <div class="pure-u-1-2"><h2 class="title">账号设置</h2></div>
+                        <div class="pure-u-1-2">
+                        </div>
+                    </div>
+                    <form name="form" class="pure-form pure-form-stacked" novalidate>
+                        <fieldset>
+                            <legend>修改名称</legend>
+
+                            <div class="pure-g">
+                                <div class="pure-u-1-2">
+                                    <label><em>*</em>用户名</label>
+                                    <input id="name" name="name" ng-model="params.name"
+                                           type="text" placeholder="请填写用户名" class="pure-u-23-24" required>
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        <div class="submit">
+                            <a href="javascript:;" ng-click="submit(form)"
+                               ng-class="{true:'disabled',false:''}[form.$invalid || loading]" class="submit-button">确认修改</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ng-footer"></div>
+</div>
+<div id="popup-captcha"></div>

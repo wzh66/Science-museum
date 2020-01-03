@@ -1,0 +1,66 @@
+@import "../../../sass/variables";
+
+.ng-selector {
+  .selector {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    z-index: 3;
+    width: 100%;
+  }
+
+  .selector .text {
+    font-size: 14px;
+    padding: 10px 15px;
+    line-height: 20px !important;
+    width: 100%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 2px;
+  }
+
+  .selector .text i {
+    display: block;
+    position: absolute;
+    right: 5px;
+    top: 12px;
+    transition: all 200ms ease-in-out;
+  }
+
+  .selector .content {
+    display: none;
+    border: 1px solid #ccc;
+    border-top: 0;
+    box-shadow: 0 1px 3px #ddd;
+    padding: 10px 0;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    background-color: $color-empty;
+
+    ul {
+      li {
+        line-height: 20px;
+        padding: 10px 15px;
+
+        &:hover {
+          background: #f7f7f7;
+        }
+
+        &.selected {
+          background: $color-link;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .selector.hover .text i {
+    transform: rotate(90deg);
+  }
+
+  .selector.hover .content {
+    display: block;
+  }
+}

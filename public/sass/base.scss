@@ -1,4 +1,5 @@
 @import "variables";
+
 body {
   min-width: 1200px;
   font-size: 12px;
@@ -6,12 +7,22 @@ body {
   padding: 0;
   margin: 0;
 }
+
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
   margin: 0;
   padding: 0;
 }
+
 ul, li {
   list-style: none;
+}
+
+input {
+  outline: none;
+}
+
+.link {
+  color: $color-link;
 }
 
 .row {
@@ -83,4 +94,8 @@ em {
 
 .pure-button {
   font-size: 16px;
+}
+
+.pure-form input[readonly], .pure-form select[readonly], .pure-form textarea[readonly] {
+  background-color: unset;
 }

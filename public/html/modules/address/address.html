@@ -1,0 +1,33 @@
+<div class="selector" ng-if="show">
+    <div class="content">
+        <div class="m stock">
+            <div class="mt">
+                <ul class="tab">
+                    <li class="" ng-class="{true:'curr',false:''}[tabName === 'province']">
+                        <a class="" href="javascript:;" ng-click="getProvinces()">
+                            <em ng-if="!province">请选择</em>
+                            <em ng-if="province" ng-bind="province"></em>
+                            <i></i>
+                        </a>
+                    </li>
+                    <li class="" ng-if="address.province" ng-class="{true:'curr',false:''}[tabName === 'city']">
+                        <a class="" href="javascript:;" ng-click="getCities(province)">
+                            <em ng-if="!address.city">请选择</em>
+                            <em ng-if="address.city" ng-bind="city"></em>
+                            <i></i>
+                        </a>
+                    </li>
+                    <li class="" ng-if="address.city" ng-class="{true:'curr',false:''}[tabName === 'district']">
+                        <a class="" href="javascript:;" ng-click="getDistricts(province,city)">
+                            <em ng-if="!address.district">请选择</em>
+                            <em ng-if="address.district" ng-bind="district"></em>
+                            <i></i>
+                        </a>
+                    </li>
+                </ul>
+                <div class="stock-line"></div>
+            </div>
+            <div address-selector class="mc" input-data="selectorData" selected="areaSelected(e,data)"></div>
+        </div>
+    </div>
+</div>

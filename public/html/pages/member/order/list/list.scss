@@ -1,0 +1,132 @@
+@import "../../../../../sass/variables";
+
+.tabbar {
+  border-bottom: 1px solid $color-border;
+
+  .tabbar-nav-list {
+    font-size: 0;
+
+    .tabbar-nav-item {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 20px;
+      line-height: 1;
+      position: relative;
+      cursor: pointer;
+      &.selected {
+        color: $color-primary;
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          left: 20px;
+          right: 20px;
+          height: 4px;
+          background-color: $color-primary;
+          border-top-right-radius: 4px;
+          border-top-left-radius: 4px;
+        }
+      }
+    }
+  }
+}
+
+.main-container {
+  &.order-content {
+    .search-form {
+      font-size: 0;
+      height: 30px;
+      background-color: #f0f0f0;
+      border-radius: 15px;
+      position: relative;
+      width: 275px;
+      margin: 10px 0 0 auto;
+
+      .search-form-control {
+        padding: 0 40px 0 15px;
+        display: block;
+        height: 30px;
+
+        input {
+          display: block;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          border: none;
+          background: none;
+          font-size: 14px;
+          height: 30px;
+        }
+      }
+
+      .search-form-button {
+        position: absolute;
+        right: 0;
+        width: 40px;
+        height: 30px;
+        top: 0;
+        text-align: center;
+
+        i {
+          display: inline-block;
+          line-height: 30px;
+        }
+      }
+    }
+    th,td{
+      &.td-img {
+        width: 100px;
+        img {
+          display: block;
+          width: 60px;
+          margin: 0 auto;
+        }
+      }
+      &.td-price {
+        width: 80px;
+      }
+      &.td-num {
+        width: 80px;
+      }
+      &.td-total {
+        width: 80px;
+      }
+      &.td-subject {
+        width: 120px;
+      }
+      &.td-type {
+        width: 80px;
+      }
+      &.td-name {
+        width: 80px;
+      }
+      &.td-action {
+        width: 120px;
+        a {
+          display: block;
+          color: $color-link;
+          text-decoration: none;
+          line-height: 20px;
+        }
+      }
+    }
+    td {
+      padding: 30px 20px !important;
+      vertical-align: top;
+      line-height: 1.5 !important;
+      p {
+        &.spec {
+          margin: 5px 0;
+          color: #999;
+        }
+      }
+    }
+    .pure-table-bd {
+      margin: 20px 0;
+    }
+  }
+  .ng-page {
+    margin-top: 50px;
+  }
+}

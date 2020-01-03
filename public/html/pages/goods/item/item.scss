@@ -1,14 +1,9 @@
 @import "../../../../sass/variables";
 
-.header-goods {
-  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
-}
-
 .goods-intro {
   .preview-img {
     width: 388px;
     height: 388px;
-
     img {
       display: block;
       width: 100%;
@@ -21,7 +16,12 @@
       padding-left: 15px;
       color: #999;
       font-size: 14px;
-      line-height: 40px;
+      max-width: 90px;
+      line-height: 20px;
+      margin-top: 10px;
+      &.dt-long {
+        margin-top: 0;
+      }
     }
 
     .dd {
@@ -46,9 +46,13 @@
             border: 1px solid $color-primary;
           }
 
-          &.curr {
+          &.selected {
             color: $color-primary;
             border: 1px solid $color-primary;
+          }
+
+          &.disabled {
+            opacity: 0.5;
           }
         }
       }
@@ -180,11 +184,17 @@
       &.btn-default {
         background: rgba(150, 21, 34, 0.1);
         color: $color-primary;
+        &.disabled {
+          opacity: 0.5;
+        }
       }
 
       &.btn-primary {
         background: $color-primary;
         color: $color-empty;
+        &.disabled {
+          opacity: 0.5;
+        }
       }
     }
   }

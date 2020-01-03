@@ -1,0 +1,100 @@
+@import "../../../../sass/variables";
+.page-auth {
+  height: 600px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("/images/auth/auth-bg.png");
+  margin-bottom: -100px;
+  .row {
+    position: relative;
+  }
+  .login-panel {
+    width: 388px;
+    position: absolute;
+    top: 90px;
+    right: 15px;
+    background: $color-empty;
+    box-shadow:0px 10px 20px 0px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    padding: 40px 30px;
+    h1 {
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 500;
+      text-align: center;
+    }
+    .login-form {
+      margin-top: 50px;
+      .form-control {
+        margin: 30px 0;
+        .form-control-label {
+          font-size: 16px;
+          font-weight: 400;
+          margin-bottom: 12px;
+          line-height: 1;
+        }
+        .form-control-input {
+          border: 1px solid $color-medium;
+          border-radius: 2px;
+          padding: 0 15px;
+          input {
+            display: block;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: none;
+            border: none;
+            height: 38px;
+            line-height: 38px;
+          }
+        }
+        .form-control-button {
+          height: 48px;
+          line-height: 48px;
+          background:linear-gradient(270deg,rgba(195,37,28,1) 0%,rgba(230,138,138,1) 100%);
+          border-radius: 2px;
+          &.false {
+            opacity: 0.5;
+          }
+          button {
+            display: block;
+            border: none;
+            margin: 0;
+            padding: 0;
+            background: none;
+            color: $color-empty;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+            width: 100%;
+          }
+        }
+        &.form-control-addon {
+          position: relative;
+          padding-right: 120px;
+          .form-control-input {
+            border-right: none;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+          .form-control-code {
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            background:rgba(209,78,73,1);
+            color: $color-empty;
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            text-align: center;
+            cursor: pointer;
+            &.false {
+              opacity: 0.5;
+            }
+          }
+        }
+      }
+    }
+  }
+}

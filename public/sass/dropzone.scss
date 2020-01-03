@@ -1,0 +1,75 @@
+.dropzone {
+  min-height: auto;
+  position: relative;
+  width: 100%;
+  height: 120px;
+  border: 1px solid #D9D9D9;
+  display: block;
+  padding: 0;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 100% 100% !important;
+  &:before {
+    content: " ";
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #D9D9D9;
+    width: 2px;
+    height: 35px;
+  }
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #D9D9D9;
+    width: 35px;
+    height: 2px;
+  }
+  .dz-details, .dz-default {
+    display: none;
+    &.dz-message {
+      display: block;
+      margin: 70px 0 0;
+    }
+  }
+  .dz-preview {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    min-height: auto;
+    .dz-image {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      border-radius: 0;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .dz-remove {
+      font-size: 12px;
+      text-align: center;
+      display: block;
+      cursor: pointer;
+      border: none;
+      position: absolute;
+      z-index: 501;
+      width: 100%;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+    }
+  }
+}

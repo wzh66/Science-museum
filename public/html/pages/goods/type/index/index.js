@@ -9,5 +9,9 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             controller: "goodsTypeIndexController"
         });
 }]).controller('goodsTypeIndexController', ['$scope', '$routeParams', '$location', 'productSvc', function ($scope, $routeParams, $location, productSvc) {
-
+    $scope.searchKey = '';
+    $scope.search = function () {
+        console.log('aa');
+        window.location.href = '/goods/list?searchKey=' + $scope.searchKey;
+    }
 }]);

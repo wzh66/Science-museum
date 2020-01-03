@@ -1,0 +1,6 @@
+<ul class="selector-list">
+    <li ng-click="selected({e: $event,data:item})" class="selector-item"
+        ng-class="{true:'long',false:''}[item.name.length > 5]" ng-repeat="item in inputData">
+        <span ng-bind="item.name"></span>
+    </li>
+</ul>

@@ -10,9 +10,9 @@
                 <div>{{dialog.body}}</div>
             </div>
             <div class="modal-box-footer">
-                <input ng-if="dialog.btnTxt[0]" type="button" class="submit-button" name="save"
-                       ng-click="dialog.show = false;" value="{{dialog.btnTxt[0]}}">
-                <a ng-if="dialog.btnTxt[1]" class="close_modal_box" ng-click="dialog.show = false;">{{dialog.btnTxt[1]}}</a>
+                <input ng-if="dialog.btnTxt[0]" type="button" class="confirm-button" name="save"
+                       ng-click="dialog.confirm()" value="{{dialog.btnTxt[0]}}">
+                <input type="button" ng-if="dialog.btnTxt[1]" class="cancel-button" ng-click="dialog.cancel()" value="{{dialog.btnTxt[1]}}">
             </div>
         </div>
     </div>

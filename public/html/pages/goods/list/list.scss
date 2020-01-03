@@ -1,5 +1,6 @@
+@import "../../../../sass/variables";
 .page-goods-list {
-  background-color: #f8f8f8;
+  background-color: $color-raw;
 
   .search-bar {
     background: #fff;
@@ -15,6 +16,10 @@
         font-size: 14px;
         color: #666;
         line-height: 20px;
+        cursor: pointer;
+        &.curr {
+          color: $color-primary;
+        }
       }
     }
 
@@ -69,6 +74,9 @@
       .result-item {
         .result-item-box {
           margin: 15px;
+          display: block;
+          text-decoration: none;
+          color: $color-full;
           .result-item-img {
             height: 200px;
 

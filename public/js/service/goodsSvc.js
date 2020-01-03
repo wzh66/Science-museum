@@ -2,9 +2,19 @@ appServices.factory('goodsSvc', ['$q', '$http', function ($q, $http) {
 
   var service = {};
 
-  service.get = function () {//获取用户信息 promise对象
+  service.item = function (id) {//获取用户信息 promise对象
     var d = $q.defer();
-    $http.get('/mockData/goods.json').success(function (data) {
+    $http.get(PREFIX_URL + 'goodsInfo' + '&gpId=' + id).success(function (data) {
+      return d.resolve(data);
+    }).error(function (error) {
+      d.reject(error);
+    });
+    return d.promise;
+  };
+
+  service.types = function () {//获取用户信息 promise对象
+    var d = $q.defer();
+    $http.get(PREFIX_URL + 'getProductTypes').success(function (data) {
       return d.resolve(data);
     }).error(function (error) {
       d.reject(error);
@@ -14,7 +24,17 @@ appServices.factory('goodsSvc', ['$q', '$http', function ($q, $http) {
 
   service.find = function (body) {//获取用户信息 promise对象
     var d = $q.defer();
-    $http.post('/api/wisp/intf/call?action=searchGoods' + formDataToUrl(body)).success(function (data) {
+    $http.post(PREFIX_URL + 'searchGoods',body).success(function (data) {
+      return d.resolve(data);
+    }).error(function (error) {
+      d.reject(error);
+    });
+    return d.promise;
+  };
+
+  service.price = function (body) {//获取用户信息 promise对象
+    var d = $q.defer();
+    $http.post(PREFIX_URL + 'getGoodsPrice' + formDataToUrl(body)).success(function (data) {
       return d.resolve(data);
     }).error(function (error) {
       d.reject(error);

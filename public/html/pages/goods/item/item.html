@@ -1,54 +1,47 @@
-<div class="ng-header header-goods"></div>
+<div class="ng-header header-shadow"></div>
 <div class="ng-breadcrumb"></div>
 
 <div class="row">
     <div class="goods-intro pure-g">
         <div class="preview-wrap pure-u-1-3">
             <div class="preview-img">
-                <img src="/images/goods/goods.png">
+                <img ng-if="poster" ng-src="{{poster}}">
             </div>
         </div>
         <div class="info-wrap pure-u-2-3">
             <form name="form" class="sku-info">
-                <div class="sku-name sku-attr">商标撤三答辩/申请</div>
+                <div class="sku-name sku-attr">{{info.name}}</div>
                 <div class="sku-price sku-attr">
                     <div class="dt">价格</div>
-                    <div class="dd" ng-bind-html="2299 | price"></div>
+                    <div class="dd" ng-bind-html="tempOrder.price * tempOrder.quantity | price"></div>
                 </div>
-                <div class="sku-choose sku-attr sku-choose">
-                    <div class="dt">服务价格</div>
+                <div ng-repeat="spec in specs" class="sku-choose sku-attr sku-choose">
+                    <div class="dt" ng-class="{'dt-long' : spec.fieldName.length > 5}">{{spec.fieldName}}</div>
                     <div class="dd">
                         <ul>
-                            <li ng-click="selected.vip='1'" ng-class="{'curr':selected.vip === '1'}">VIP价格￥599</li>
-                            <li ng-click="selected.vip='2'" ng-class="{'curr':selected.vip === '2'}">普通会员价格￥899</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="sku-choose sku-attr">
-                    <div class="dt">服务类型</div>
-                    <div class="dd">
-                        <ul>
-                            <li ng-click="selected.type='1'" ng-class="{'curr':selected.type === '1'}">撤销连续三年不使用注册商标申请</li>
-                            <li ng-click="selected.type='2'" ng-class="{'curr':selected.type === '2'}">撤销连续三年不使用注册商标答辩</li>
-                            <li ng-click="selected.type='3'" ng-class="{'curr':selected.type === '3'}">商标撤三答辩</li>
-                            <li ng-click="selected.type='4'" ng-class="{'curr':selected.type === '4'}">商标撤三申请</li>
+                            <li attr_id="{{field.fieldId + ':' + field.fieldValue}}"
+                                ng-repeat="field in spec.specsFields" ng-click="selected(spec,field,$event)" class="sku"
+                                ng-class="{'selected':field.selected}">{{field.fieldValueName}}
+                            </li>
                         </ul>
                     </div>
                 </div>
                 <div class="sku-quantity sku-attr">
                     <div class="dt">数量</div>
                     <div class="dd">
-                        <span ng-click="reduce()" class="reduce" ng-class="{'disabled' : selected.quantity <= 1}">-</span>
+                        <span ng-click="reduce()" class="reduce"
+                              ng-class="{'disabled' : tempOrder.quantity <= 1}">-</span>
                         <span class="quantity">
-                          <input name="quantity" ng-model="selected.quantity" type="text">
+                          <input name="quantity" ng-model="tempOrder.quantity" type="text">
                         </span>
                         <span ng-click="plus()" class="plus">+</span>
                     </div>
                 </div>
             </form>
             <div class="choose-btns">
-                <a class="btn btn-default" href="javascript:;">立即购买</a>
-                <a class="btn btn-primary" href="javascript:;">加入购物车</a>
+                <a ng-click="buy(disabled)" class="btn btn-default" ng-class="{'disabled' : disabled}"
+                   href="javascript:;">立即购买</a>
+                <!--<a ng-click="addCart(disabled)" class="btn btn-primary" ng-class="{'disabled' : disabled}" href="javascript:;">加入购物车</a>-->
             </div>
         </div>
     </div>
@@ -64,11 +57,7 @@
                     <span class="bb"></span>
                     <span class="bl"></span>
                 </div>
-                <div class="content-bd">
-                    <div class="img-box">
-                        <img src="/images/goods/details.jpg">
-                    </div>
-                </div>
+                <div ng-if="info.detail" class="content-bd" ng-bind-html="info.detail | detail"></div>
             </div>
         </div>
         <div class="side pure-u-1-5">
@@ -79,39 +68,39 @@
                 <div class="content-bd">
                     <ul>
                         <li>
-                            <div class="img-box">
+                            <a href="/goods/item/103" class="img-box">
                                 <img src="/images/goods/1.png">
-                            </div>
+                            </a>
                             <div class="txt-box">
-                                <div class="name">商标异议申请答辩</div>
-                                <div class="price">¥ 2500</div>
+                                <div class="name"><a href="/goods/item/103">知产云</a></div>
+                                <div class="price">¥ 288000</div>
                             </div>
                         </li>
                         <li>
-                            <div class="img-box">
+                            <a href="/goods/item/120" class="img-box">
                                 <img src="/images/goods/2.png">
-                            </div>
+                            </a>
                             <div class="txt-box">
-                                <div class="name">商标异议申请答辩</div>
-                                <div class="price">¥ 2500</div>
+                                <div class="name"><a href="/goods/item/120">创新宝</a></div>
+                                <div class="price">¥ 500000</div>
                             </div>
                         </li>
                         <li>
-                            <div class="img-box">
+                            <a href="/goods/item/44" class="img-box">
                                 <img src="/images/goods/3.png">
-                            </div>
+                            </a>
                             <div class="txt-box">
-                                <div class="name">商标异议申请答辩</div>
-                                <div class="price">¥ 2500</div>
+                                <div class="name"><a href="/goods/item/44">知产通</a></div>
+                                <div class="price">¥ 5800</div>
                             </div>
                         </li>
                         <li>
-                            <div class="img-box">
+                            <a href="/goods/item/47" class="img-box">
                                 <img src="/images/goods/4.png">
-                            </div>
+                            </a>
                             <div class="txt-box">
-                                <div class="name">商标异议申请答辩</div>
-                                <div class="price">¥ 2500</div>
+                                <div class="name"><a href="/goods/item/47">科创宝</a></div>
+                                <div class="price">¥ 58000</div>
                             </div>
                         </li>
                     </ul>

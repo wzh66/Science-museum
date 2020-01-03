@@ -21,9 +21,9 @@
       </ul>
       <!--<span class="line" [ngStyle]="{'left':lineLeft + 'px','width':lineWidth + 'px'}"></span>-->
     </div>
-    <div class="toolbar" style="display: none">
+    <div class="toolbar">
       <ul>
-        <li ng-mouseenter="enter($event)" ng-mouseleave="leave($event)">
+        <!--<li ng-mouseenter="enter($event)" ng-mouseleave="leave($event)">
           <a class="nav-link" href="javascript:;"><i class="icons icons-location_fill"></i> 全国[切换城市站]</a>
           <div class="sub-menu cities-area">
             <div class="sub-menu_title">请选择进入城市</div>
@@ -60,32 +60,33 @@
               </ul>
             </div>
           </div>
-        </li>
+        </li>-->
         <li ng-mouseenter="enter($event)" ng-mouseleave="leave($event)">
-          <a class="nav-link" href="javascript:;">Mr.Right</a>
-          <div class="sub-menu user-area">
+          <a ng-if="name" class="nav-link user-link" href="/member/order/list">{{name}} <i class="icons icons-right"></i></a>
+          <a ng-if="!name" ng-click="login()" class="nav-link user-link" href="javascript:;">登录/注册 <i class="icons icons-right"></i></a>
+          <div ng-if="name" class="sub-menu user-area">
             <div class="sub-menu_list">
               <ul>
                 <li>
-                  <a href="javascript:;" class="nav-link">我的订单</a>
+                  <a href="/member/order/list" class="nav-link">我的订单</a>
                 </li>
                 <li>
-                  <a href="javascript:;" class="nav-link">消息中心</a>
+                  <a href="/member/message" class="nav-link">消息中心</a>
                 </li>
-                <li>
+                <!--<li>
                   <a href="javascript:;" class="nav-link">案件进度</a>
+                </li>-->
+                <li>
+                  <a href="/member/order/list" class="nav-link">会员中心</a>
                 </li>
                 <li>
-                  <a href="javascript:;" class="nav-link">会员中心</a>
+                  <a href="/member/subject" class="nav-link">公司主体</a>
                 </li>
                 <li>
-                  <a href="javascript:;" class="nav-link">公司主体</a>
+                  <a href="/member/setting" class="nav-link">账号设置</a>
                 </li>
                 <li>
-                  <a href="javascript:;" class="nav-link">账号设置</a>
-                </li>
-                <li>
-                  <a href="javascript:;" class="nav-link logout">退出登录</a>
+                  <a ng-click="logout()" href="javascript:;" class="nav-link logout">退出登录</a>
                 </li>
               </ul>
             </div>

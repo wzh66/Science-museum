@@ -1,0 +1,14 @@
+<div class="sidebar">
+    <div class="userInfo">
+        <a href="/member/setting/avatar" class="avatar">
+            <img ng-src="{{profile.faceImg ? (profile.faceImg | thumb) : '/images/avatar.png'}}">
+            <i class="icons icons-edit"></i></a>
+        <a href="/member/setting/name" class="name">{{profile.name}}<i class="icons icons-edit"></i></a>
+        <div class="company">{{companyName}}</div>
+    </div>
+    <ul class="menu-list">
+        <li ng-repeat="menu in menus" class="menu-item {{menu.path === path ? 'selected' : ''}}">
+            <a href="{{menu.path}}">{{menu.label}}</a>
+        </li>
+    </ul>
+</div>

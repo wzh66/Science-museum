@@ -1,0 +1,181 @@
+.ng-address {
+  letter-spacing: 0;
+
+  .selector {
+    //display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    z-index: 999;
+  }
+
+  .selector .text {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px #ddd inset;
+    box-sizing: border-box;
+    color: #666;
+    font-size: 14px;
+    padding: 0.4em 20px 0.4em 4px;
+    position: relative;
+    vertical-align: middle;
+    width: 280px;
+  }
+
+  .selector .text b {
+    background-image: url("../images/icon.png");
+    background-position: -264px -188px;
+    background-repeat: no-repeat;
+    display: block;
+    height: 24px;
+    overflow: hidden;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 17px;
+  }
+
+  .selector.hover .content {
+    display: block;
+  }
+
+  .selector {
+    .content {
+      background: #fff none repeat scroll 0 0;
+      border: 1px solid #cf0000;
+      box-shadow: 0 0 5px #ddd;
+      box-sizing: content-box;
+      //display: none;
+      padding: 15px;
+      position: absolute;
+      //top: 40px;
+      width: 490px;
+
+      .m {
+        margin-bottom: 10px;
+        overflow: hidden;
+      }
+
+      .mt {
+        cursor: default;
+        overflow: hidden;
+      }
+
+      .mc {
+        overflow: hidden;
+
+        .selector-list {
+          padding-top: 5px;
+
+          li {
+            clear: none;
+            float: left;
+            padding: 2px 0 2px 15px;
+            width: 80px;
+
+            &.long {
+              width: 170px;
+            }
+
+            a {
+              color: #005aa0;
+              float: left;
+              font-size: 14px;
+              padding: 2px 4px;
+
+              :hover {
+                background: #cf0000 none repeat scroll 0 0;
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+
+      .stock {
+        position: relative;
+
+        .tab {
+          border-bottom: 2px solid #cf0000;
+          float: left;
+          height: 25px;
+          overflow: visible;
+          width: 100%;
+
+          li {
+            clear: none;
+            float: left;
+            padding: 0;
+            text-align: center;
+
+            a {
+              border-color: #ddd #ddd currentcolor;
+              border-image: none;
+              border-style: solid solid none;
+              border-width: 1px 1px 0;
+              color: #005aa0;
+              cursor: pointer;
+              float: left;
+              height: 23px;
+              line-height: 23px;
+              margin-right: 3px;
+              padding: 0 21px 1px 11px;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+
+              em {
+                cursor: pointer;
+                font-size: 15px;
+                font-style: normal;
+                line-height: 22px;
+              }
+
+              i {
+                background-image: url("/images/cf-stock.png");
+                background-position: 0 -35px;
+                display: block;
+                height: 5px;
+                overflow: hidden;
+                position: absolute;
+                right: 4px;
+                top: 10px;
+                width: 7px;
+              }
+            }
+
+            &.curr a {
+              -moz-border-bottom-colors: none;
+              -moz-border-left-colors: none;
+              -moz-border-right-colors: none;
+              -moz-border-top-colors: none;
+              background-color: #fff;
+              border-color: #cf0000 #cf0000 currentcolor;
+              border-image: none;
+              border-style: solid solid none;
+              border-width: 2px 2px 0;
+              color: #333;
+              font-weight: bold;
+              height: 25px;
+              line-height: 22px;
+              padding: 0 20px 0 10px;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+
+    .close {
+      background-image: url("../images/icon.png");
+      background-position: -257px -86px;
+      cursor: pointer;
+      height: 17px;
+      left: 412px;
+      opacity: 1;
+      position: absolute;
+      top: 31px;
+      width: 17px;
+      z-index: 2;
+    }
+  }
+}

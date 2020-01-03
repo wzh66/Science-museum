@@ -8,33 +8,56 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'pages/goods/list/list.html',
             controller: "goodsListController"
         });
-}]).controller('goodsListController', ['$scope', 'goodsSvc', function ($scope, goodsSvc) {
+}]).controller('goodsListController', ['$scope', '$routeParams', 'goodsSvc', function ($scope, $routeParams, goodsSvc) {
+    $scope.FILE_PREFIX_URL = FILE_PREFIX_URL;
+    $scope.searchKey = $routeParams.searchKey;
     $scope.params = {
-        goodsName: '',
+        goodsName: $scope.searchKey,
         productTypeId: '',
         price: ''
     };
 
     $scope.page = {
-        total: 20,
+        total: 0,
+        totalPages: 1,
         page: 1
     };
 
-    $scope.items = Array(20)
-        .fill(0)
-        .map(function (_v, i) {
-            return i;
-        });
-    $scope.turnPage = function (page) {
-        console.log(page);
+    $scope.search = function (searchKey) {
+        $scope.params.goodsName = searchKey;
     };
-    goodsSvc.find($scope.params).then(function success(res) {
+
+    goodsSvc.types().then(function success(res) {
         console.log(res);
+        $scope.types = res.result;
     });
+
+    $scope.setTypeId = function (typeId) {
+        $scope.params.productTypeId = typeId;
+    };
+
+    $scope.getData = function () {
+        var body = JSON.parse(JSON.stringify($scope.params));
+        body.page = $scope.page.page;
+        goodsSvc.find(body).then(function success(res) {
+            $scope.items = res.result.list;
+            $scope.page.totalPages = res.result.totalPages;
+            $scope.page.total = res.result.total;
+        });
+    };
+
+    $scope.getData();
 
     $scope.$watch('page.page', function (n, o) {
         if (n !== o || o !== undefined) {
-            console.log(n);
+            $scope.getData();
+        }
+    }, true);
+
+    $scope.$watch('params', function (n, o) {
+        if (n !== o || o !== undefined) {
+            $scope.page.page = 1;
+            $scope.getData();
         }
     }, true);
 }]);
