@@ -8,7 +8,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'pages/goods/list/list.html',
             controller: "goodsListController"
         });
-}]).controller('goodsListController', ['$scope', '$routeParams', 'goodsSvc', function ($scope, $routeParams, goodsSvc) {
+}]).controller('goodsListController', ['$scope', '$routeParams', 'goodsSvc', 'authSvc', function ($scope, $routeParams, goodsSvc, authSvc) {
     $scope.FILE_PREFIX_URL = FILE_PREFIX_URL;
     $scope.searchKey = $routeParams.searchKey;
     $scope.params = {
@@ -60,4 +60,20 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             $scope.getData();
         }
     }, true);
+
+    $scope.like = function (e, item) {
+        e.preventDefault();
+        var key = authSvc.key();
+        if (item.isCollect) {
+            goodsSvc.unlike(key, item.id).then(function success(res) {
+                console.log(res);
+                item.isCollect = 0;
+            })
+        } else {
+            goodsSvc.like(key, item.id).then(function success(res) {
+                console.log(res);
+                item.isCollect = 1;
+            })
+        }
+    }
 }]);

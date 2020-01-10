@@ -8,8 +8,18 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'pages/goods/type/index/index.html',
             controller: "goodsTypeIndexController"
         });
-}]).controller('goodsTypeIndexController', ['$scope', '$routeParams', '$location', 'productSvc', function ($scope, $routeParams, $location, productSvc) {
+}]).controller('goodsTypeIndexController', ['$scope', '$routeParams', '$location', 'productSvc', 'goodsSvc', function ($scope, $routeParams, $location, productSvc, goodsSvc) {
     $scope.searchKey = '';
+    $scope.items;
+    $scope.FILE_PREFIX_URL = FILE_PREFIX_URL;
+    goodsSvc.list().then(function success(res) {
+        res.result.forEach(item => {
+            item.img = FILE_PREFIX_URL + item.backgroupFileId;
+            item.gid = item.linkUrl.slice(item.linkUrl.lastIndexOf('/') + 1);
+        });
+        $scope.items = res.result;
+        console.log($scope.items);
+    });
     $scope.search = function () {
         console.log('aa');
         window.location.href = '/goods/list?searchKey=' + $scope.searchKey;

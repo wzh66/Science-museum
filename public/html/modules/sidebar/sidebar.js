@@ -25,6 +25,10 @@ app.directive('ngSidebar', ['$location', 'authSvc', 'subjectSvc', function ($loc
                     path: '/member/balance'
                 },
                 {
+                    label: '我的收藏',
+                    path: '/member/like/list'
+                },
+                {
                     label: '消息中心',
                     path: '/member/message'
                 },

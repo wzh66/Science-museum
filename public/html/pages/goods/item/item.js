@@ -8,7 +8,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'pages/goods/item/item.html',
             controller: "goodsItemController"
         });
-}]).controller('goodsItemController', ['$scope', '$routeParams', '$location', '$cookieStore', 'goodsSvc', function ($scope, $routeParams, $location, $cookieStore, goodsSvc) {
+}]).controller('goodsItemController', ['$scope', '$routeParams', '$location', '$cookieStore', 'goodsSvc', 'authSvc', function ($scope, $routeParams, $location, $cookieStore, goodsSvc, authSvc) {
     $scope.id = $routeParams.id;
     $scope.FILE_PREFIX_URL = FILE_PREFIX_URL;
     var data = {};
@@ -236,4 +236,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $cookieStore.put('tempOrder', $scope.tempOrder);
         $location.path('/checkout/' + $scope.tempOrder.gpId);
     };
+    $scope.like = function () {
+        var key = authSvc.key();
+        goodsSvc.like(key, $scope.id).then(function success(res) {
+            console.log(res);
+        })
+    }
 }]);

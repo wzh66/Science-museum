@@ -1,0 +1,94 @@
+<div class="page-member">
+    <div class="ng-header header-shadow"></div>
+    <div class="member-wrap row">
+        <div class="pure-g">
+            <div class="pure-u-1-5">
+                <div key="key" class="ng-sidebar"></div>
+            </div>
+            <div class="pure-u-4-5">
+                <div class="order-content main-container">
+                    <div class="title pure-g">
+                        <div class="pure-u-1-2"><h2 class="title">我的收藏</h2></div>
+                        <div class="pure-u-1-2">
+                            <div class="search-form">
+                                <div class="search-form-control">
+                                    <input name="key" ng-model="params.orderNo" placeholder="请输入关键词">
+                                </div>
+                                <div ng-click="search(searchKey)" class="search-form-button"><i
+                                        class="icons icons-search"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-result">
+                        <div class="search-result-statistics">
+                            <div class="pure-g">
+                                <div class="pure-u-1-2">
+                                    <span class="nums">共有 <em>{{page.total}}</em> 条收藏记录</span>
+                                </div>
+                                <div ng-if="items.length > 0" class="actions pure-u-1-2">
+                                    <a ng-if="type === 1" ng-click="all()" href="javascript:;">全选</a>
+                                    <a ng-if="type === 1" ng-click="del()" href="javascript:;">删除</a>
+                                    <a ng-if="type === 0" ng-click="setType(1)" href="javascript:;">批量管理</a>
+                                    <a ng-if="type === 1" ng-click="setType(0)" href="javascript:;">取消管理</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search-result-data">
+                            <ul class="result-list pure-g">
+                                <li ng-repeat="item in items" class="result-item pure-u-1-4">
+                                    <a href="#/goods/item/{{item.gpId}}" class="result-item-box">
+                                        <div class="result-item-img">
+                                            <img ng-if="item.logo" ng-src="{{FILE_PREFIX_URL + item.logo}}">
+                                        </div>
+                                        <div class="result-item-txt">
+                                            <div class="result-item-label">{{item.name}}</div>
+                                            <div class="result-item-detail pure-g">
+                                                <div class="result-item-detail-price pure-u-1-2">
+                                                    <em>￥{{item.price}}</em></div>
+                                                <!--<div class="result-item-detail-count pure-u-1-2">2838人付款</div>-->
+                                            </div>
+                                        </div>
+                                        <div ng-if="type === 1" ng-click="selected(item,$event)" class="overlay">
+                                            <img ng-if="!item.selected" src="/images/goods/square.png">
+                                            <img ng-if="item.selected" src="/images/goods/square_check_fill.png">
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div ng-if="items.length < 1" class="ng-empty"></div>
+                        <div ng-if="items.length > 0" class="ng-page" page="page.page" total="page.totalPages"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ng-footer"></div>
+</div>
+
+<div ng-if="returnShow">
+    <div class="overlay" style="display: block; opacity: 0.6;"></div>
+    <div class="modal-box-blurb">
+        <div class="modal-box-wrapper" style="min-height: 140px;">
+            <div class="modal-box-header">
+                <div ng-click="close()" class="modal-close"><a class="modal-close-icon"></a></div>
+                <h5>退款申请</h5>
+            </div>
+            <div class="modal-box-content" style="text-align: left">
+                <form name="form" class="pure-form pure-form-stacked" novalidate>
+                    <input id="key" name="key" ng-model="selected.key" type="hidden">
+                    <input id="orderId" name="orderId" ng-model="selected.orderId" type="hidden">
+                    <textarea id="remark" name="remark" ng-model="selected.remark"
+                              type="text" placeholder="请填写退款原因*" class="pure-u-1" required></textarea>
+                    <span ng-if="loading && form.remark.$invalid"
+                          class="pure-form-message" style="color: red">请填写退款原因</span>
+                    <div class="modal-box-footer">
+                        <input type="button" class="confirm-button" name="save"
+                               ng-click="submit(form)" value="确认退款">
+                        <input type="button" class="cancel-button" ng-click="close()" value="取消">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

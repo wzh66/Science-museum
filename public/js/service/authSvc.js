@@ -32,6 +32,16 @@ appServices.factory('authSvc', ['$q', '$http', '$location', '$cookieStore', func
         return d.promise;
     };
 
+    service.register = function (body) {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.post(PREFIX_URL + 'register' + formDataToUrl(body)).success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
     service.updateName = function (body) {//获取用户信息 promise对象
         var d = $q.defer();
         $http.post(PREFIX_URL + 'updateUserName' + formDataToUrl(body)).success(function (data) {
@@ -62,6 +72,16 @@ appServices.factory('authSvc', ['$q', '$http', '$location', '$cookieStore', func
         return d.promise;
     };
 
+    service.updatePwd = function (body) {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.post(PREFIX_URL + 'findPwd' + formDataToUrl(body)).success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
     service.logout = function () {
         $cookieStore.remove('auth');
         $location.url('/auth/login');
@@ -72,6 +92,14 @@ appServices.factory('authSvc', ['$q', '$http', '$location', '$cookieStore', func
             return $cookieStore.get('auth').key;
         } else {
             $location.url('/auth/login?callbackUrl=' + $location.url());
+        }
+    };
+
+    service.storeKey = function () {
+        if ($cookieStore.get('auth')) {
+            return $cookieStore.get('auth').key;
+        } else {
+            return '';
         }
     };
 

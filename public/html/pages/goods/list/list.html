@@ -34,6 +34,10 @@
                                 <div class="result-item-label">{{item.name}}</div>
                                 <div class="result-item-detail pure-g">
                                     <div class="result-item-detail-price pure-u-1-2"><em>￥{{item.price}}</em></div>
+                                    <div class="result-item-detail-like pure-u-1-2">
+                                        <img ng-if="!item.isCollect" ng-click="like($event,item)" src="/images/goods/like.png">
+                                        <img ng-if="item.isCollect" ng-click="like($event,item)" src="/images/goods/like_hover.png">
+                                    </div>
                                     <!--<div class="result-item-detail-count pure-u-1-2">2838人付款</div>-->
                                 </div>
                             </div>

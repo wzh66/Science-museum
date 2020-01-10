@@ -1,5 +1,5 @@
 <div class="ng-header type-index"></div>
-<div class="page-type">
+<div ng-if="items" class="page-type">
     <div class="type-banner"
          ng-style="{'background-image' : 'url(/images/type/banner-bg.png)'}">
         <div class="banner-content row">
@@ -28,45 +28,45 @@
                 <div class="section-content">
                     <div class="pure-g">
                         <div class="pure-u-1-4">
-                            <div class="section-content-item big-red">
-                                <h2>商标注册</h2>
-                                <p>¥ 600</p>
-                                <a href="/goods/item/78">了解更多 ></a>
+                            <div class="section-content-item big-red" ng-style="{'background-image':'url({{items[0].img}})'}">
+                                <h2>{{items[0].title}}</h2>
+                                <p>¥ {{items[0].price}}</p>
+                                <a href="/goods/item/{{items[0].gid}}">了解更多 ></a>
                             </div>
                         </div>
                         <div class="pure-u-1-4">
                             <div class="section-content-item">
-                                <h2>商标转让申请</h2>
-                                <p>¥ 5000</p>
-                                <a href="/goods/item/79">了解更多 ></a>
-                                <img src="/images/type/item-icon.png">
+                                <h2>{{items[1].title}}</h2>
+                                <p>¥ {{items[1].price}}</p>
+                                <a href="/goods/item/{{items[1].gid}}">了解更多 ></a>
+                                <img src="{{items[1].img}}">
                             </div>
                             <div class="section-content-item">
-                                <h2>商标异议申请</h2>
-                                <p>¥ 2500</p>
-                                <a href="/goods/item/80">了解更多 ></a>
-                                <img src="/images/type/item-icon.png">
+                                <h2>{{items[2].title}}</h2>
+                                <p>¥ {{items[2].price}}</p>
+                                <a href="/goods/item/{{items[2].gid}}">了解更多 ></a>
+                                <img src="{{items[2].img}}">
                             </div>
                         </div>
                         <div class="pure-u-1-4">
                             <div class="section-content-item big-blue">
-                                <h2>商标撤三答辩</h2>
-                                <p>¥ 899</p>
-                                <a href="/goods/item/81">了解更多 ></a>
+                                <h2>{{items[3].title}}</h2>
+                                <p>¥ {{items[3].price}}</p>
+                                <a href="/goods/item/{{items[3].gid}}">了解更多 ></a>
                             </div>
                         </div>
                         <div class="pure-u-1-4">
                             <div class="section-content-item">
-                                <h2>商标驳回复审</h2>
-                                <p>¥ 1099</p>
-                                <a href="/goods/item/82">了解更多 ></a>
-                                <img src="/images/type/item-icon.png">
+                                <h2>{{items[4].title}}</h2>
+                                <p>¥ {{items[4].price}}</p>
+                                <a href="/goods/item/{{items[4].gid}}">了解更多 ></a>
+                                <img src="{{items[4].img}}">
                             </div>
                             <div class="section-content-item">
-                                <h2>商标续展</h2>
-                                <p>¥ 699</p>
-                                <a href="/goods/item/83">了解更多 ></a>
-                                <img src="/images/type/item-icon.png">
+                                <h2>{{items[5].title}}</h2>
+                                <p>¥ {{items[5].price}}</p>
+                                <a href="/goods/item/{{items[5].gid}}">了解更多 ></a>
+                                <img src="{{items[5].img}}">
                             </div>
                         </div>
                     </div>
@@ -85,44 +85,44 @@
                 <div class="pure-g">
                     <div class="pure-u-1-4">
                         <div class="section-content-item">
-                            <h2>发明专利</h2>
-                            <p>¥ 2199</p>
-                            <a href="/goods/item/85">了解更多 ></a>
-                            <img src="/images/type/item-icon.png">
+                            <h2>{{items[6].title}}</h2>
+                            <p>¥ {{items[6].price}}</p>
+                            <a href="/goods/item/{{items[6].gid}}">了解更多 ></a>
+                            <img src="{{items[6].img}}">
                         </div>
                         <div class="section-content-item">
-                            <h2>实用新型专利</h2>
-                            <p>¥ 799</p>
-                            <a href="/goods/item/86">了解更多 ></a>
-                            <img src="/images/type/item-icon.png">
+                            <h2>{{items[7].title}}</h2>
+                            <p>¥ {{items[7].price}}</p>
+                            <a href="/goods/item/{{items[7].gid}}">了解更多 ></a>
+                            <img src="{{items[7].img}}">
                         </div>
                     </div>
                     <div class="pure-u-1-4">
-                        <div class="section-content-item big-red">
-                            <h2>外观专利申请</h2>
-                            <p>¥ 399</p>
-                            <a href="/goods/item/87">了解更多 ></a>
+                        <div class="section-content-item big-red" ng-style="{'background-image':'url({{items[8].img}})'}">
+                            <h2>{{items[8].title}}</h2>
+                            <p>¥ {{items[8].price}}</p>
+                            <a href="/goods/item/{{items[8].gid}}">了解更多 ></a>
                         </div>
                     </div>
                     <div class="pure-u-1-4">
                         <div class="section-content-item">
-                            <h2>专利申请复审</h2>
-                            <p>¥ 3000</p>
-                            <a href="/goods/item/90">了解更多 ></a>
-                            <img src="/images/type/item-icon.png">
+                            <h2>{{items[9].title}}</h2>
+                            <p>¥ {{items[9].price}}</p>
+                            <a href="/goods/item/{{items[9].gid}}">了解更多 ></a>
+                            <img src="{{items[9].img}}">
                         </div>
                         <div class="section-content-item">
-                            <h2>要求优先权</h2>
-                            <p>¥ 200</p>
-                            <a href="/goods/item/88">了解更多 ></a>
-                            <img src="/images/type/item-icon.png">
+                            <h2>{{items[10].title}}</h2>
+                            <p>¥ {{items[10].price}}</p>
+                            <a href="/goods/item/{{items[10].gid}}">了解更多 ></a>
+                            <img src="{{items[10].img}}">
                         </div>
                     </div>
                     <div class="pure-u-1-4">
-                        <div class="section-content-item big-blue">
-                            <h2>答复审核意见</h2>
-                            <p>¥ 5000</p>
-                            <a href="/goods/item/89">了解更多 ></a>
+                        <div class="section-content-item big-blue" ng-style="{'background-image':'url({{items[11].img}})'}">
+                            <h2>{{items[11].title}}</h2>
+                            <p>¥ {{items[11].price}}</p>
+                            <a href="/goods/item/{{items[11].gid}}">了解更多 ></a>
                         </div>
                     </div>
                 </div>
@@ -141,60 +141,60 @@
                     <div class="pure-u-1-5">
                         <div class="section-content-item">
                             <div class="section-content-item-img">
-                                <a href="/goods/item/91"><img src="/images/type/item.png"></a>
-                                <h2>软件著作申请</h2>
+                                <a href="/goods/item/{{items[12].gid}}"><img src="{{items[12].img}}"></a>
+                                <h2>{{items[12].title}}</h2>
                             </div>
                             <div class="section-content-item-txt">
-                                <div class="section-content-item-label"><a href="/goods/item/91">软件著作申请</a></div>
-                                <div class="section-content-item-price"><em>¥ 499</em></div>
+                                <div class="section-content-item-label"><a href="/goods/item/{{items[12].gid}}">{{items[12].title}}</a></div>
+                                <div class="section-content-item-price"><em>¥ {{items[12].price}}</em></div>
                             </div>
                         </div>
                     </div>
                     <div class="pure-u-1-5">
                         <div class="section-content-item">
                             <div class="section-content-item-img">
-                                <a href="/goods/item/92"><img src="/images/type/item.png"></a>
-                                <h2>美术作品登记</h2>
+                                <a href="/goods/item/{{items[13].gid}}"><img src="{{items[13].img}}"></a>
+                                <h2>{{items[13].title}}</h2>
                             </div>
                             <div class="section-content-item-txt">
-                                <div class="section-content-item-label"><a href="/goods/item/92">美术作品登记</a></div>
-                                <div class="section-content-item-price"><em>¥ 499</em></div>
+                                <div class="section-content-item-label"><a href="/goods/item/{{items[13].gid}}">{{items[13].title}}</a></div>
+                                <div class="section-content-item-price"><em>¥ {{items[13].price}}</em></div>
                             </div>
                         </div>
                     </div>
                     <div class="pure-u-1-5">
                         <div class="section-content-item">
                             <div class="section-content-item-img">
-                                <a href="/goods/item/93"><img src="/images/type/item.png"></a>
-                                <h2>文字作品版权登记</h2>
+                                <a href="/goods/item/{{items[14].gid}}"><img src="{{items[14].img}}"></a>
+                                <h2>{{items[14].title}}</h2>
                             </div>
                             <div class="section-content-item-txt">
-                                <div class="section-content-item-label"><a href="/goods/item/93">文字作品版权登记</a></div>
-                                <div class="section-content-item-price"><em>¥ 899</em></div>
+                                <div class="section-content-item-label"><a href="/goods/item/{{items[14].gid}}">{{items[14].title}}</a></div>
+                                <div class="section-content-item-price"><em>¥ {{items[14].price}}</em></div>
                             </div>
                         </div>
                     </div>
                     <div class="pure-u-1-5">
                         <div class="section-content-item">
                             <div class="section-content-item-img">
-                                <a href="/goods/item/94"><img src="/images/type/item.png"></a>
-                                <h2>音乐作品版权登记</h2>
+                                <a href="/goods/item/{{items[15].gid}}"><img src="{{items[15].img}}"></a>
+                                <h2>{{items[15].title}}</h2>
                             </div>
                             <div class="section-content-item-txt">
-                                <div class="section-content-item-label"><a href="/goods/item/94">音乐作品版权登记</a></div>
-                                <div class="section-content-item-price"><em>¥ 1000</em></div>
+                                <div class="section-content-item-label"><a href="/goods/item/{{items[15].gid}}">{{items[15].title}}</a></div>
+                                <div class="section-content-item-price"><em>¥ {{items[15].price}}</em></div>
                             </div>
                         </div>
                     </div>
                     <div class="pure-u-1-5">
                         <div class="section-content-item">
                             <div class="section-content-item-img">
-                                <a href="/goods/item/95"><img src="/images/type/item.png"></a>
-                                <h2>电视剧登记申请</h2>
+                                <a href="/goods/item/{{items[16].gid}}"><img src="{{items[16].img}}"></a>
+                                <h2>{{items[16].title}}</h2>
                             </div>
                             <div class="section-content-item-txt">
-                                <div class="section-content-item-label"><a href="/goods/item/95">电视剧登记申请</a></div>
-                                <div class="section-content-item-price"><em>¥ 500</em></div>
+                                <div class="section-content-item-label"><a href="/goods/item/{{items[16].gid}}">{{items[16].title}}</a></div>
+                                <div class="section-content-item-price"><em>¥ {{items[16].price}}</em></div>
                             </div>
                         </div>
                     </div>

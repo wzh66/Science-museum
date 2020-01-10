@@ -1,73 +1,32 @@
-@import "../../../../sass/variables";
-.page-goods-list {
-  background-color: $color-raw;
+@import "../../../../../sass/variables";
 
-  .search-bar {
-    background: #fff;
-    margin: 0 15px;
-    border: 1px solid #ededed;
-    padding: 5px 10px;
-    border-radius: 2px;
-
-    .tags {
-      .tag {
-        margin: 10px 10px;
-        display: inline-block;
-        font-size: 14px;
-        color: #666;
-        line-height: 20px;
-        cursor: pointer;
-        &.curr {
-          color: $color-primary;
-        }
-      }
-    }
-
-    .search-form {
-      font-size: 0;
-      height: 30px;
-      margin: 5px 0 5px 50px;
-      background-color: #f0f0f0;
-      border-radius: 15px;
-      position: relative;
-
-      .search-form-control {
-        padding: 0 40px 0 15px;
-        display: block;
-        height: 30px;
-
-        input {
-          display: block;
-          width: 100%;
-          margin: 0;
-          padding: 0;
-          border: none;
-          background: none;
-          font-size: 14px;
-          height: 30px;
-        }
-      }
-
-      .search-form-button {
-        position: absolute;
-        right: 0;
-        width: 40px;
-        height: 30px;
-        top: 0;
-        text-align: center;
-
-        i {
-          display: inline-block;
-          line-height: 30px;
-        }
-      }
-    }
-  }
-
+.main-container {
   .search-result {
     .search-result-statistics {
       font-size: 12px;
       margin: 15px 15px 0 15px;
+
+      .nums {
+        font-size: 12px;
+        line-height: 1;
+        margin-top: 18px;
+        display: block;
+      }
+
+      .actions {
+        text-align: right;
+
+        a {
+          display: inline-block;
+          padding: 8px 20px;
+          border: 1px solid $color-primary;
+          color: $color-primary;
+          text-decoration: none;
+          border-radius: 4px;
+          line-height: 1;
+          font-size: 12px;
+        }
+      }
     }
 
     .result-list {
@@ -77,6 +36,8 @@
           display: block;
           text-decoration: none;
           color: $color-full;
+          position: relative;
+
           .result-item-img {
             height: 200px;
 
@@ -106,19 +67,23 @@
             .result-item-detail {
               line-height: 1;
               margin-top: 12px;
+
               .result-item-detail-price {
                 line-height: 16px;
                 font-size: 16px;
               }
+
               .result-item-detail-count {
                 color: #999;
                 text-align: right;
                 font-size: 12px;
                 line-height: 16px;
               }
+
               .result-item-detail-like {
                 text-align: right;
                 position: relative;
+
                 img {
                   display: inline-block;
                   width: 32px;
@@ -131,8 +96,24 @@
               }
             }
           }
+
+          .overlay {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.2);
+            img {
+              position: absolute;
+              right: 15px;
+              top: 15px;
+              width: 24px;
+              height: 24px;
+            }
+          }
         }
       }
     }
+  }
+
+  .ng-page {
+    margin-top: 50px;
   }
 }
