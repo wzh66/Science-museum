@@ -54,7 +54,30 @@ gulp.task('public', function () {
         .pipe(gulp.dest('public/components/' + version + '/'));  //输出
 });
 
+/*//合并,压缩 app、controllers、Directives、filters
+gulp.task('js', function () {
+    return gulp.src(['public/plugs/app_iframe.js'])      //需要操作的文件
+        .pipe(concat('public.js'))    //合并所有js到public.js
+        .pipe(gulp.dest('public/plugs/' + version + '/'))       //输出到文件夹
+        .pipe(rename({suffix: '.min'}))   //rename压缩后的文件名
+        .pipe(uglify())    //压缩
+        .pipe(gulp.dest('public/plugs/' + version + '/'));  //输出
+});
+
+//合并,压缩 app、controllers、Directives、filters
+gulp.task('css', function () {
+    return gulp.src(['public/plugs/AdminLTE.css'])
+        .pipe(autoprefixer())
+        .pipe(concat('app.css'))
+        .pipe(gulp.dest('public/plugs/' + version + '/'))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(minifyCSS())
+        .pipe(gulp.dest('public/plugs/' + version + '/'));
+});*/
+
 gulp.task('watch', function () {
+    //gulp.watch(['public/plugs/app_iframe.js'], gulp.series('js'));
+    //gulp.watch(['public/plugs/AdminLTE.css'], gulp.series('css'));
     gulp.watch(['public/js/**/*.js', 'public/html/**/*.js'], gulp.series('public'));
     gulp.watch(['public/html/**/*.html'], gulp.series('html2js'));
     gulp.watch(['public/html/**/*.scss', 'public/sass/**/*.scss'], gulp.series('sass'));
@@ -62,4 +85,4 @@ gulp.task('watch', function () {
 
 gulp.task('default', async () => {
     await gulp.series(['sass', 'public', 'html2js', 'watch']);
-});
+})

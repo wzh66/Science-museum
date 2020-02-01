@@ -122,7 +122,9 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                 //window.history.back();
                 if (res.code === '0000') {
                     $cookieStore.remove('auth');
-                    $location.path('/auth/login');
+                    $scope.$root.dialog.open(true, '系统提示', '手机号码修改成功', ['我知道了'], function () {
+                        $location.path('/auth/login');
+                    });
                 } else {
                     $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了']);
                 }
@@ -139,8 +141,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                 console.log(res.result);
                 //window.history.back();
                 if (res.code === '0000') {
-                    $cookieStore.remove('auth');
-                    $location.path('/auth/login');
+                    $scope.$root.dialog.open(true, '系统提示', '您的密码修改成功', ['我知道了'], function () {
+                        $cookieStore.remove('auth');
+                        $location.path('/auth/login');
+                    });
                 } else {
                     $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了']);
                 }

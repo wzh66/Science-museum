@@ -41,7 +41,7 @@
             <div class="choose-btns">
                 <a ng-click="buy(disabled)" class="btn btn-default" ng-class="{'disabled' : disabled}"
                    href="javascript:;">立即购买</a>
-                <a ng-click="like()" class="btn btn-primary" ng-class="{'disabled' : disabled}" href="javascript:;">加入收藏</a>
+                <a ng-click="like(info)" class="btn {{info.isCollect ? 'btn-primary' : 'btn-default'}}" href="javascript:;">加入收藏</a>
             </div>
         </div>
     </div>

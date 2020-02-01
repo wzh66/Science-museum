@@ -236,10 +236,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $cookieStore.put('tempOrder', $scope.tempOrder);
         $location.path('/checkout/' + $scope.tempOrder.gpId);
     };
-    $scope.like = function () {
+    $scope.like = function (info) {
         var key = authSvc.key();
-        goodsSvc.like(key, $scope.id).then(function success(res) {
-            console.log(res);
+        goodsSvc.like(key, info.id).then(function success(res) {
+            info.isCollect = info.isCollect === 1 ? 0 : 1;
         })
     }
 }]);

@@ -68,7 +68,7 @@
                                     <div class="pure-control-group pure-u-23-24">
                                         <label><em>*</em>新密码</label>
                                         <input id="pwd" name="pwd" ng-model="params.pwd"
-                                               type="password" placeholder="请填写手机号码" class="pure-u-23-24" required>
+                                               type="password" placeholder="请填写新密码" class="pure-u-23-24" required>
                                         <span ng-if="form.companyName.$dirty && form.companyName.$invalid"
                                               class="pure-form-message">{{form.companyName.$error.pattern ? '企业名称只能由中文组成' : '请填写企业名称'}}</span>
                                     </div>
@@ -78,7 +78,7 @@
                                     <div class="pure-control-group pure-u-23-24">
                                         <label><em>*</em>确认新密码</label>
                                         <input id="confirmPwd" name="confirmPwd" ng-model="params.confirmPwd"
-                                               type="password" placeholder="请填写手机号码" class="pure-u-23-24" required>
+                                               type="password" placeholder="请确认新密码" class="pure-u-23-24" required>
                                         <span ng-if="form.companyName.$dirty && form.companyName.$invalid"
                                               class="pure-form-message">{{form.companyName.$error.pattern ? '企业名称只能由中文组成' : '请填写企业名称'}}</span>
                                     </div>

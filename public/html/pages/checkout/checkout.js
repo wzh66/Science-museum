@@ -160,7 +160,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                     $scope.codeShow = true;
                     $scope.codeUrl = res.result.payCode;
                     $scope.internal = setInterval(function () {
-                        orderSvc.item($scope.key, $scope.oid).then(function success(res) {
+                        orderSvc.item($scope.key, orderNo).then(function success(res) {
                             if (res.result.order.status > 2) {
                                 $scope.codeShow = false;
                                 clearInterval($scope.internal);
@@ -193,6 +193,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                 $scope.loading = false;
                 if (res.code === '0000') {
                     var orderNo = res.result[0];
+                    console.log(orderNo);
                     $scope.checkout(orderNo);
                 } else if (res.code === '1001') {
                     $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了'], function () {
@@ -203,6 +204,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                 }
             });
         }
+    };
+
+    $scope.close = function () {
+        $scope.codeShow = false;
     };
 
     $scope.$watch('selected', function (n, o) {

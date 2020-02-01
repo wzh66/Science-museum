@@ -1,5 +1,5 @@
 <div class="selector {{show ? 'hover' : ''}}">
-    <div ng-click="showSelector()" class="text {{disabled ? 'disabled' : ''}}">{{value.label}}<i class="icons icons-right"></i></div>
+    <div ng-click="showSelector()" class="text {{disabled ? 'disabled' : ''}}">{{value.label ? value.label : '请选择'}}<i class="icons icons-right"></i></div>
     <div class="content">
         <ul class="selector-list">
             <li class="selector-item {{value.value === item.value ? 'selected' : ''}}" ng-repeat="item in data" ng-click="select($event,item)">
