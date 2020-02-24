@@ -18,10 +18,8 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             item.gid = item.linkUrl.slice(item.linkUrl.lastIndexOf('/') + 1);
         });
         $scope.items = res.result;
-        console.log($scope.items);
     });
-    $scope.search = function () {
-        console.log('aa');
-        window.location.href = '/goods/list?searchKey=' + $scope.searchKey;
+    $scope.search = function (searchKey) {
+        window.location.href = '/goods/list?searchKey=' + searchKey;
     }
 }]);

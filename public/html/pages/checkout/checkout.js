@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
     // 设定路由
     $routeProvider
-        .when('/checkout/:id', { //app首页
-            templateUrl: 'pages/checkout/checkout.html',
-            controller: "checkoutController"
-        });
+    .when('/checkout/:id', { //app首页
+        templateUrl: 'pages/checkout/checkout.html',
+        controller: 'checkoutController'
+    });
 }]).controller('checkoutController', ['$scope', '$routeParams', '$location', '$cookieStore', 'authSvc', 'accountSvc', 'subjectSvc', 'checkoutSvc', 'orderSvc', function ($scope, $routeParams, $location, $cookieStore, authSvc, accountSvc, subjectSvc, checkoutSvc, orderSvc) {
     $scope.id = $routeParams.id;
     $scope.oid = $location.search().id;
@@ -177,6 +177,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                         $location.path('/member/order/list');
                     });
                 }
+            } else {
+                $scope.$root.dialog.open(true, '系统提示', '您已成功下单稍后会有客服通过预留的电话号码和您联系，您也可以通过拨打7055-865619138咨询订单相关事宜。', ['确认'], function () {
+                    $location.path('/member/order/list');
+                });
             }
         });
     };
@@ -219,7 +223,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         }
     }, true);
 
-    $scope.$on("$destroy", function () {
+    $scope.$on('$destroy', function () {
         if ($scope.internal) {
             clearInterval($scope.internal);
         }

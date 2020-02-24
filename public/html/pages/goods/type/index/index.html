@@ -10,12 +10,12 @@
     </div>
     <div class="section section-search">
         <div class="row">
-            <div class="search-form">
+            <form class="search-form">
                 <div class="search-form-control">
                     <input name="key" ng-model="searchKey" ng-enter="search()" placeholder="请输入关键词">
                 </div>
-                <div ng-click="search()" class="search-form-button"><i class="icons icons-search"></i> 搜索</div>
-            </div>
+                <div ng-click="search(searchKey)" class="search-form-button"><i class="icons icons-search"></i> 搜索</div>
+            </form>
         </div>
     </div>
     <div class="row-hot">
