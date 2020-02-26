@@ -81,7 +81,7 @@
       "selected": true
     },
     {
-      "text": "知产云",
+      "text": "知产云SaaS",
       "link": "#/product/item/2",
       "hover": false,
       "disable": false,
@@ -89,7 +89,7 @@
       "children": []
     },
     {
-      "text": "华海云",
+      "text": "华海云商城",
       "link": "#/goods/type/index",
       "hover": false,
       "disable": false,
@@ -97,7 +97,7 @@
       "children": []
     },
     {
-      "text": "科创宝",
+      "text": "科创直通车",
       "link": "#/product/item/3",
       "hover": false,
       "disable": false,
@@ -105,7 +105,7 @@
       "children": []
     },
     {
-      "text": "文创宝",
+      "text": "版权顾问",
       "link": "#/product/item/4",
       "hover": false,
       "disable": false,
@@ -113,7 +113,7 @@
       "children": []
     },
     {
-      "text": "创新宝",
+      "text": "知产运营直通车",
       "link": "#/product/item/5",
       "hover": false,
       "disable": false,
@@ -121,7 +121,7 @@
       "children": []
     },
     {
-      "text": "知产通",
+      "text": "知产通PLUS",
       "link": "#/product/item/1",
       "hover": false,
       "disable": false,
