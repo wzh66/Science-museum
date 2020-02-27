@@ -157,6 +157,7 @@
           font-size: 14px;
           line-height: 22px;
           margin: 26px 0 0;
+          height: 160px;
         }
 
         &.section-content-item-0 {
@@ -188,7 +189,7 @@
 
       .pure-u-1-3 {
         .section-content-item {
-          padding: 50px 70px 200px 50px;
+          padding: 50px 70px 100px 50px;
         }
       }
     }
@@ -237,7 +238,7 @@
         }
 
         .section-about-header-item {
-          padding: 40px 30px 30px 40px;
+          padding: 40px 20px 30px 30px;
           font-size: 0;
           border-right: 1px solid $color-raw;
 
