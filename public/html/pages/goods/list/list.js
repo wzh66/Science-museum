@@ -1,7 +1,6 @@
 "use strict";
 
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-
     // 设定路由
     $routeProvider
         .when('/goods/list', { //app首页

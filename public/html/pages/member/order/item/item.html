@@ -78,7 +78,7 @@
                     <th>数量</th>
                     <th>金额</th>
                     <th>类型</th>
-                    <th>商务名称</th>
+                    <th>下单主体</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -94,7 +94,8 @@
                     <td class="td-num">{{item.count}}</td>
                     <td class="td-total">￥{{order.totalAmount}}</td>
                     <td class="td-type">
-                        <span ng-if="order.status === 0">已取消</span>
+                        {{order.typeName}}
+                        <!--<span ng-if="order.status === 0">已取消</span>
                         <span ng-if="order.status === 1">待确认</span>
                         <span ng-if="order.status === 2">待付款</span>
                         <span ng-if="order.status === 3">待财务确认</span>
@@ -103,7 +104,7 @@
                         <span ng-if="order.status === 6">退款审核中</span>
                         <span ng-if="order.status === 7">退款中</span>
                         <span ng-if="order.status === 8">完成</span>
-                        <span ng-if="order.status === 9">退款完成</span>
+                        <span ng-if="order.status === 9">退款完成</span>-->
                     </td>
                     <td class="td-name" style="width: 200px">{{order.merchanName ? order.merchanName : ''}}</td>
                 </tr>

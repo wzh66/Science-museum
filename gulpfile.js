@@ -50,7 +50,6 @@ gulp.task('public', function () {
         .pipe(concat('public.js'))    //合并所有js到public.js
         .pipe(gulp.dest('public/components/' + version + '/'))       //输出到文件夹
         .pipe(rename({suffix: '.min'}))   //rename压缩后的文件名
-        .pipe(uglify())    //压缩
         .pipe(gulp.dest('public/components/' + version + '/'));  //输出
 });
 

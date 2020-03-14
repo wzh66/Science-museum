@@ -82,7 +82,8 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     $scope.page = {
         total: 0,
         totalPages: 1,
-        page: 1
+        page: 1,
+        rows: 10000
     };
     $scope.selected = {
         key: $scope.key,
