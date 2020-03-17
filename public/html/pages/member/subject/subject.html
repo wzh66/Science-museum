@@ -20,10 +20,12 @@
                     </div>
                     <div class="tabbar">
                         <ul class="tabbar-nav-list">
-                            <li ng-repeat="company in companies" ng-click="setId(company.id)"
-                                class="tabbar-nav-item {{company.id === id ? 'selected' : ''}}">{{company.companyName}}
+                            <li ng-style="{'width':100/(companies.length+1) + '%'}" ng-repeat="company in companies"
+                                ng-click="setId(company.id)"
+                                class="tabbar-nav-item {{company.id === id ? 'selected' : ''}}" title="{{company.companyName}}">{{company.companyName}}
                             </li>
-                            <li ng-click="setId('')" class="tabbar-nav-item link {{id === '' ? 'selected' : ''}}">+
+                            <li ng-style="{'width':100/(companies.length+1) + '%'}" ng-click="setId('')"
+                                class="tabbar-nav-item link {{id === '' ? 'selected' : ''}}" title="新增主体">+
                                 新增主体
                             </li>
                         </ul>
@@ -98,16 +100,26 @@
                                     <div class="pure-control-group pure-u-23-24">
                                         <label><em>*</em>选择行业</label>
                                         <input id="industryNames" name="industryNames" ng-click="showIndustryPanel()"
-                                               ng-model="selected.industryNames" value="selected.industryNames" type="text"
-                                               placeholder="请选择行业" class="pure-u-1" autocomplete="off" required readonly>
+                                               ng-model="selected.industryNames" value="selected.industryNames"
+                                               type="text"
+                                               placeholder="请选择行业" class="pure-u-1" autocomplete="off" required
+                                               readonly>
                                         <div id="industryPanel" ng-if="industryPanelShow">
                                             <div ng-repeat="industry in industries" class="industry-item pure-u-1">
                                                 <div class="industry">
-                                                    <button ng-click="checked(industry)" ng-class="{'pure-button-primary' : industry.checked}" class="button-success pure-button">{{industry.industryName}}</button>
+                                                    <button ng-click="checked(industry)"
+                                                            ng-class="{'pure-button-primary' : industry.checked}"
+                                                            class="button-success pure-button">{{industry.industryName}}
+                                                    </button>
                                                 </div>
                                                 <ul ng-if="industry.children" class="industry-sub">
-                                                    <li ng-repeat="sub in industry.children" style="display: inline-block">
-                                                        <button ng-click="checked(sub)" ng-class="{'pure-button-primary' : sub.checked}" class="button-success button-small pure-button">{{sub.industryName}}</button>
+                                                    <li ng-repeat="sub in industry.children"
+                                                        style="display: inline-block">
+                                                        <button ng-click="checked(sub)"
+                                                                ng-class="{'pure-button-primary' : sub.checked}"
+                                                                class="button-success button-small pure-button">
+                                                            {{sub.industryName}}
+                                                        </button>
                                                     </li>
                                                 </ul>
                                             </div>

@@ -13,8 +13,8 @@
                         <h3> 账号明细</h3>
                         <div class="tabbar">
                             <ul class="tabbar-nav-list">
-                                <li ng-repeat="item in items" ng-click="setItem(item)"
-                                    class="tabbar-nav-item {{item.value === selected.value ? 'selected' : ''}}">{{item.label}}
+                                <li ng-style="{'width':100/items.length + '%'}" ng-repeat="item in items" ng-click="setItem(item)"
+                                    class="tabbar-nav-item {{item.value === selected.value ? 'selected' : ''}}" title="{{item.label}}">{{item.label}}
                                 </li>
                             </ul>
                         </div>

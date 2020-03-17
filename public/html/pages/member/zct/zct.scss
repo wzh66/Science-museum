@@ -2,6 +2,23 @@
 
 .zct-content {
 
+  .tabbar {
+    .tabbar-nav-list {
+      .tabbar-nav-item {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        box-sizing: border-box;
+        padding: 20px 5px !important;
+        background: #ebeef5;
+
+        &.selected {
+          background: #fff;
+        }
+      }
+    }
+  }
+
   .zct-info {
     padding: 25px 20px;
     background-color: $color-raw;

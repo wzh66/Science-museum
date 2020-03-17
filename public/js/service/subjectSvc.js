@@ -2,9 +2,9 @@ appServices.factory('subjectSvc', ['$q', '$http', '$location', '$cookieStore', f
 
     var service = {};
 
-    service.get = function (key, type) {//获取用户信息 promise对象
+    service.get = function (key, type, rows) {//获取用户信息 promise对象
         var d = $q.defer();
-        $http.get(PREFIX_URL + 'getCompCustList&key=' + key + (typeof type === 'number' ? '&custType=' + type : '')).success(function (data) {
+        $http.get(PREFIX_URL + 'getCompCustList&key=' + key + (typeof type === 'number' ? '&custType=' + type : '') + (typeof rows === 'number' ? '&rows=' + rows : '')).success(function (data) {
             return d.resolve(data);
         }).error(function (error) {
             d.reject(error);

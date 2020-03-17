@@ -83,7 +83,6 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         total: 0,
         totalPages: 1,
         page: 1,
-        rows: 10000
     };
     $scope.selected = {
         key: $scope.key,
@@ -105,7 +104,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         isPrimary: 0
     };
     $scope.getItems = function () {
-        subjectSvc.get($scope.key, 1).then(function success(res) {
+        subjectSvc.get($scope.key, 1, 10000).then(function success(res) {
             $scope.companies = res.result.list;
             if ($scope.companies.length > 0) {
                 $scope.id = res.result.list[0].id;

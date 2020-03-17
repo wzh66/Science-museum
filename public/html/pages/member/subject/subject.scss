@@ -77,15 +77,19 @@
     #industryPanel {
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
       position: relative;
+
       .pure-button {
         margin: 10px;
       }
+
       .button-small {
         font-size: 85%;
       }
+
       .industry-item {
         border-bottom: 1px solid #ededed;
       }
+
       .close {
         cursor: pointer;
         height: 24px;
@@ -95,6 +99,7 @@
         top: -10px;
         width: 24px;
         z-index: 2;
+
         img {
           display: block;
           width: 100%;
@@ -103,4 +108,22 @@
       }
     }
   }
+
+  .tabbar {
+    .tabbar-nav-list {
+      .tabbar-nav-item {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        box-sizing: border-box;
+        padding: 20px 5px !important;
+        background: #ebeef5;
+
+        &.selected {
+          background: #fff;
+        }
+      }
+    }
+  }
 }
+
