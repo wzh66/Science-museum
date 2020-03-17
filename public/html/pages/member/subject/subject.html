@@ -106,7 +106,7 @@
                                                     <button ng-click="checked(industry)" ng-class="{'pure-button-primary' : industry.checked}" class="button-success pure-button">{{industry.industryName}}</button>
                                                 </div>
                                                 <ul ng-if="industry.children" class="industry-sub">
-                                                    <li ng-repeat="sub in industry.children">
+                                                    <li ng-repeat="sub in industry.children" style="display: inline-block">
                                                         <button ng-click="checked(sub)" ng-class="{'pure-button-primary' : sub.checked}" class="button-success button-small pure-button">{{sub.industryName}}</button>
                                                     </li>
                                                 </ul>
