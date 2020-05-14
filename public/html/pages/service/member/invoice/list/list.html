@@ -1,0 +1,63 @@
+
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left">
+            <div class="card-margin">
+                <h2 class="card-title">
+                    发票管理<span>首页 > 会员中心 > 发票管理</span>
+                </h2>
+                <div class="hr"></div>
+                <div class="card-content">
+                    <a href="#/service/member/invoice/add" style="text-decoration: none">
+                        <div class="addRecord">
+                            <img src="/images/service/add.png" height="43" width="45"/>
+                            <span>新增发票</span>
+                        </div>
+                    </a>
+
+                    <div ng-repeat="item in invoiceList" class="record {{$index === invoiceList.length - 1 ? '' : 'border'}}">
+                        <p>{{item.type === 0 ? '发票抬头'  : '单位名称'}}：<span>{{item.companyName}}</span>
+                            <button ng-click="remove(item.id)">删除</button>
+                        </p>
+                        <p ng-if="item.type === 1">单位地址：<span>{{item.address}}</span></p>
+                        <p ng-if="item.type === 1">银行账号：<span>{{item.bankAccount}}</span></p>
+                        <p ng-if="item.type === 1">税&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：<span>{{item.number}}</span></p>
+                        <p ng-if="item.type === 1">开户银行：<span>{{item.bank}}</span></p>
+                        <p ng-if="item.type === 1">电话号码：<span>{{item.phone}}</span></p>
+                        <p>发票抬头类型：<span>{{item.invoiceType === 0 ? '个人' : '单位'}}</span></p>
+                        <p>发票类型：<span>{{item.type === 0 ? '普通发票' : '专用发票'}}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-right">
+            <div class="card-margin">
+                <div class="card-subtitle">
+                    <img src="/images/service/unit.png" height="36" width="36"/>
+                    <span>会员中心</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/unit">{{type === 0 ? '个人信息' : '单位信息'}}</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/order/list">{{type === 0 ? '场馆登记记录' : '财务结算记录'}}</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/invoice/list" class="active">发票管理</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

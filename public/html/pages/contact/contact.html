@@ -1,107 +1,55 @@
-<div class="ng-header"></div>
-<div class="contact-banner" style="background-image:url('/images/contact/contact-banner-bg.png')">
-  <div class="banner-content row"></div>
-</div>
-<div class="section section-contact row">
-  <div class="section-title">
-    <h3>Contact Us</h3>
-    <h2>联系我们</h2>
-    <h4>请留下贵司的联系信息，我们将安排专业的知识产权顾问为您服务（“*” 为必填项）</h4>
-  </div>
-  <div class="section-content-form">
-    <form name="form" class="pure-form pure-form-aligned" ng-submit="submit(form)" novalidate>
-      <fieldset>
-        <div class="pure-control-group">
-          <label>公司名称：</label>
-          <input ng-model="contact.company" name="company" type="text" placeholder="请填写贵公司的全称">
-        </div>
 
-        <div class="pure-control-group">
-          <label><em>*</em>联系人：</label>
-          <input ng-class="{'error':form.name.$invalid && isSubmit}" ng-model="contact.name" name="name" type="text" placeholder="请填写联系人姓名，可简称 “赵先生/赵小姐”" required>
-          <span ng-class="{'show':form.name.$invalid && isSubmit}" class="pure-form-message-inline">请填写联系人</span>
-        </div>
 
-        <div class="pure-control-group">
-          <label><em>*</em>联系电话：</label>
-          <input ng-class="{'error':form.mobile.$invalid && isSubmit}" ng-model="contact.mobile" name="mobile" type="text" placeholder="请填写联系电话" required>
-          <span ng-class="{'show':form.mobile.$invalid && isSubmit}" class="pure-form-message-inline">请填写联系电话</span>
-        </div>
-        <h4>以下信息能让我们更懂您的现况和需求</h4>
-        <div class="pure-control-group">
-          <label>公司人数：</label>
-          <select ng-model="contact.employees" name="employees">
-            <option value='' disabled selected style='display:none;'>请选择贵司的在职人数</option>
-            <option value="50人以下">50人以下</option>
-            <option value="51-100人">51-100人</option>
-            <option value="101-200人">101-200人</option>
-            <option value="201-500人">201-500人</option>
-            <option value="501-2000人">501-2000人</option>
-            <option value="2000人以上">2000人以上</option>
-          </select>
-        </div>
-        <h5>公司最近3年收入范围</h5>
-        <div class="pure-control-group">
-          <label>2017年：</label>
-          <select ng-model="contact.revenue2016" name="revenue2016">
-            <option value='' disabled selected style='display:none;'>请选择贵司的年收入范围</option>
-            <option value="未开业">未开业</option>
-            <option value="0-200万">0-200万</option>
-            <option value="201-500万">201-500万</option>
-            <option value="501-1000万">501-1000万</option>
-            <option value="1001-5000">1001-5000</option>
-            <option value="5001-1亿">5001-1亿</option>
-            <option value="1-5亿">1-5亿</option>
-            <option value="5亿以上">5亿以上</option>
-          </select>
-        </div>
-        <div class="pure-control-group">
-          <label>2018年：</label>
-          <select ng-model="contact.revenue2017" name="revenue2017">
-            <option value='' disabled selected style='display:none;'>请选择贵司的年收入范围</option>
-            <option value="未开业">未开业</option>
-            <option value="0-200万">0-200万</option>
-            <option value="201-500万">201-500万</option>
-            <option value="501-1000万">501-1000万</option>
-            <option value="1001-5000">1001-5000</option>
-            <option value="5001-1亿">5001-1亿</option>
-            <option value="1-5亿">1-5亿</option>
-            <option value="5亿以上">5亿以上</option>
-          </select>
-        </div>
-        <div class="pure-control-group">
-          <label>2019年：</label>
-          <select ng-model="contact.revenue2018" name="revenue2018">
-            <option value='' disabled selected style='display:none;'>请选择贵司的年收入范围</option>
-            <option value="未开业">未开业</option>
-            <option value="0-200万">0-200万</option>
-            <option value="201-500万">201-500万</option>
-            <option value="501-1000万">501-1000万</option>
-            <option value="1001-5000">1001-5000</option>
-            <option value="5001-1亿">5001-1亿</option>
-            <option value="1-5亿">1-5亿</option>
-            <option value="5亿以上">5亿以上</option>
-          </select>
-        </div>
-        <h5>是否了解知识产权？</h5>
-        <div class="pure-control-group">
-          <label></label>
-          <select ng-model="contact.comprehend" name="comprehend">
-            <option value='' disabled selected style='display:none;'>请选择</option>
-            <option value="完全不了解">完全不了解</option>
-            <option value="听说过，但不了解">听说过，但不了解</option>
-            <option value="了解，知道商标、专利和版权">了解，知道商标、专利和版权</option>
-            <option value="了解，公司已具备相关知识产权">了解，公司已具备相关知识产权</option>
-            <option value="非常了解，并希望通过知识产权增值">非常了解，并希望通过知识产权增值</option>
-          </select>
-        </div>
-        <div class="pure-controls">
-          <button ng-class="{'disabled':form.$invalid}" style="margin-top: 60px" type="submit"
-                  class="pure-button pure-button-primary">确认提交
-          </button>
-        </div>
-      </fieldset>
-    </form>
+<div class="index-content">
+  <div class="owl-carousel">
+    <div href="javascript:;"
+         class="carousel-item item"
+         ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+    </div>
   </div>
 </div>
-<div class="ng-footer" contact-hide="true"></div>
+<div class="synopsis-content">
+  <div class="card">
+    <div class="card-left">
+      <div class="card-margin">
+        <h2 class="card-title">
+          联系科学馆<span>首页 > 联系我们 > 联系科学馆</span>
+        </h2>
+        <div class="hr"></div>
+        <div class="card-content">
+          <div class="hall-margin">
+            <div class="contact">
+              <h3>广东科学馆</h3>
+              <p>地 址：广州市连新路171号</p>
+              <p>电 话：28328300,28328306</p>
+              <p>网 址：http://www.gdsh.com.cn</p>
+              <p>电子邮箱：123@qq.com</p>
+
+              <img src="/images/contact/map.png"/></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="card-right">
+      <div class="card-margin">
+        <div class="card-subtitle">
+          <img src="/images/contact/contact.png" height="36" width="36"/>
+          <span>联系我们</span>
+        </div>
+        <ul>
+          <li>
+            <div class="square"></div>
+            <a href="#/contact" class="active">联系科学馆</a></li>
+          <li>
+            <div class="square"></div>
+            <a href="#/contact/consult">问题咨询</a></li>
+          <li>
+            <div class="square"></div>
+            <a href="#/contact/feedback">反馈建议</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

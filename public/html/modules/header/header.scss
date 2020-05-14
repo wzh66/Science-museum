@@ -5,20 +5,22 @@
 }
 
 nav {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   text-align: center;
-  background-color: $color-empty;
+  background: #1a6f97;
 
   .row {
+    margin-left: 10px;
     display: flex;
-    height: 80px;
+    height: 50px;
   }
 
   .nav-link {
     display: block;
     line-height: 30px;
-    padding: 15px;
-    font-size: 14px;
-    color: $color-full;
+    font-size: 12px;
+    color: #fff;
     text-decoration: none;
     white-space: nowrap;
   }
@@ -62,15 +64,15 @@ nav {
       position: relative;
 
       & > .nav-link {
-        padding: 15px;
-        margin: 10px 10px;
-        font-size: 16px;
+        padding: 10px;
+        width: 120px;
+        font-size: 14px;
         font-weight: 400;
+        opacity: 0.7;
 
         &.selected {
-          color: $color-primary;
-          border-bottom: 3px solid $color-primary;
-          padding-bottom: 12px;
+          background: #2497ce;
+          opacity: 1;
         }
 
         & + .sub-menu {
@@ -85,9 +87,8 @@ nav {
 
       &.hover, &.selected {
         & > .nav-link {
-          border-bottom: 3px solid $color-primary;
-          padding-bottom: 12px;
-          color: $color-primary;
+          background: #2497ce;
+          font-weight: 600;
           //background-color: rgba(52, 67, 96, 1);
           & + .sub-menu {
             display: block;

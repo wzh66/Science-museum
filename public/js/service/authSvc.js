@@ -42,37 +42,8 @@ appServices.factory('authSvc', ['$q', '$http', '$location', '$cookieStore', func
         return d.promise;
     };
 
-    service.updateName = function (body) {//获取用户信息 promise对象
-        var d = $q.defer();
-        $http.post(PREFIX_URL + 'updateUserName' + formDataToUrl(body)).success(function (data) {
-            return d.resolve(data);
-        }).error(function (error) {
-            d.reject(error);
-        });
-        return d.promise;
-    };
 
-    service.updateAvatar = function (body) {//获取用户信息 promise对象
-        var d = $q.defer();
-        $http.post(PREFIX_URL + 'updateFaceImg' + formDataToUrl(body)).success(function (data) {
-            return d.resolve(data);
-        }).error(function (error) {
-            d.reject(error);
-        });
-        return d.promise;
-    };
-
-    service.updateMobile = function (body) {//获取用户信息 promise对象
-        var d = $q.defer();
-        $http.post(PREFIX_URL + 'updateMobile' + formDataToUrl(body)).success(function (data) {
-            return d.resolve(data);
-        }).error(function (error) {
-            d.reject(error);
-        });
-        return d.promise;
-    };
-
-    service.updatePwd = function (body) {//获取用户信息 promise对象
+    service.findPwd = function (body) {//获取用户信息 promise对象
         var d = $q.defer();
         $http.post(PREFIX_URL + 'findPwd' + formDataToUrl(body)).success(function (data) {
             return d.resolve(data);
@@ -82,16 +53,37 @@ appServices.factory('authSvc', ['$q', '$http', '$location', '$cookieStore', func
         return d.promise;
     };
 
+    service.updatePwd = function (body) {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.post(PREFIX_URL + 'updatePwd' + formDataToUrl(body)).success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
+    service.updateMember = function (body) {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.post(PREFIX_URL + 'updateMember' + formDataToUrl(body)).success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
+
     service.logout = function () {
         $cookieStore.remove('auth');
-        $location.url('/auth/login');
+        $location.path('/service/auth/login');
     };
 
     service.key = function () {
         if ($cookieStore.get('auth')) {
             return $cookieStore.get('auth').key;
         } else {
-            $location.url('/auth/login?callbackUrl=' + $location.url());
+            $location.url('/service/auth/login?callbackUrl=' + $location.url());
         }
     };
 
@@ -115,8 +107,12 @@ appServices.factory('authSvc', ['$q', '$http', '$location', '$cookieStore', func
         return $cookieStore.get('auth') ? $cookieStore.get('auth').mobile : '';
     };
 
-    service.name = function () {
-        return $cookieStore.get('auth') ? $cookieStore.get('auth').name : '';
+    service.account = function () {
+        return $cookieStore.get('auth') ? $cookieStore.get('auth').account : '';
+    };
+
+    service.type = function () {
+        return $cookieStore.get('auth') ? $cookieStore.get('auth').type : '';
     };
 
     service.requestAuth = function () {

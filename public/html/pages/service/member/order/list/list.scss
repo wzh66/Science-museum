@@ -1,0 +1,104 @@
+.synopsis-content {
+  .card-left {
+    .card-content {
+      form {
+        .form-header {
+          input {
+            padding-left: 10px;
+            height: 36px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-right: 5px;
+
+            &.hall {
+              width: 214px;
+            }
+
+            &.date {
+              width: 164px;
+            }
+          }
+
+          button {
+            width: 90px;
+            height: 36px;
+            border: none;
+            background: #1a6f97;
+            color: #fff;
+            padding: 0;
+            margin-left: 8px;
+            border-radius: 2px;
+          }
+
+          select {
+            width: 164px;
+            height: 36px;
+            border: 1px solid #ccc;
+            appearance: none;
+            color: #757575;
+            font-size: 14px;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            background: url("/images/hall/down.png") no-repeat scroll right center transparent;
+            padding-left: 10px;
+          }
+        }
+      }
+
+      .registration {
+        margin-top: 40px;
+        .registration_content {
+          width: 100%;
+          .registration_logo {
+            width: 265px;
+            height: 175px;
+            float: left;
+            img{
+              width: 100%;
+              height: auto;
+              display: block;
+            }
+          }
+          .registration_word{
+            position: relative;
+            left: 40px;
+            p{
+              font-size: 14px;
+              color: #999;
+              margin-bottom: 8px;
+              span{
+                color: #000;
+              }
+              em{
+                color: #ff0000;
+                font-weight: bold;
+              }
+              &.date{
+                display: inline-block;
+              }
+            }
+            button{
+              width: 80px;
+              height: 30px;
+              border: none;
+              background: #ff6600;
+              color: #ffff;
+              font-size: 12px;
+              border-radius: 4px;
+              margin-right: 5px;
+              &.finance{
+                margin-top: 10px;
+                width: 100px!important;
+                height: 40px!important;
+                background: #67ad37!important;
+                margin-right: 15px!important;
+              }
+            }
+
+          }
+        }
+      }
+    }
+  }
+}

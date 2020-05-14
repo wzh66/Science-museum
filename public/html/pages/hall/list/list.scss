@@ -1,0 +1,43 @@
+.synopsis-content{
+
+  .hall{
+    width: 50%;
+    display: inline-block;
+    .trailer_logo{
+      width: 400px !important;
+      height: auto!important;
+      margin: 0 17px !important;
+      position: relative;
+      img{
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .hall_word{
+        background: #000;
+        width: 400px;
+        height: 40px;
+        opacity: 0.5;
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h2{
+          color: #fff;
+          font-size: 14px;
+          font-weight: normal;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .ng-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+}

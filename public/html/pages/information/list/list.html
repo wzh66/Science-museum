@@ -1,0 +1,53 @@
+
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left">
+            <div class="card-margin">
+                <h2 class="card-title">
+                    {{selectName ? selectName : '新闻资讯'}}<span>首页 > 新闻资讯 {{selectName ? '> ' + selectName : ''}}</span>
+                </h2>
+                <div class="hr"></div>
+
+                <div class="trailer_content" ng-repeat="item in newsList">
+                    <div class="trailer_logo">
+                        <img ng-src="{{FILE_PREFIX_URL + item.logo}}" ng-if="item.logo"/>
+                    </div>
+                    <div class="trailer_word">
+                        <h2>{{item.title}}</h2>
+                        <span>{{item.synopsis}}</span>
+                        <a class="look" href="#/information/item/{{item.id}}">查看内容></a>
+                    </div>
+                </div>
+
+                <div class="ng-page" page="page.page" total="page.totalPages" ng-if="newsList"></div>
+
+            </div>
+        </div>
+        <div class="card-right" style="height: 430px !important;">
+            <div class="card-margin">
+                <div class="card-subtitle">
+                    <img src="/images/index/news.png" height="36" width="36"/>
+                    <span>新闻资讯</span>
+                </div>
+                <ul>
+                    <li ng-repeat="item in topicList">
+                        <div class="square"></div>
+                        <a ng-click="getData(item.id,item.name)"
+                           style="cursor: pointer"
+                           class="{{selectId === item.id ? 'active' : ''}}">{{item.name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

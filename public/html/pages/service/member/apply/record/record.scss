@@ -1,0 +1,47 @@
+.synopsis-content{
+  .card-left{
+    .card-content{
+      .addRecord{
+        width: 260px;
+        height: 70px;
+        background: #67ad37;
+        border-radius: 4px;
+        margin: 40px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        span{
+          color: #fff;
+          font-size: 18px;
+          margin-left: 10px;
+        }
+      }
+
+      .record{
+        margin: 40px 0;
+        padding-bottom: 10px;
+        &.border{
+          border-bottom: 1px solid #ccc;
+        }
+        p{
+          font-size: 14px;
+          color: #999;
+          margin-bottom: 8px;
+          span{
+            color: #333;
+          }
+          button{
+            border: none;
+            float: right;
+            width: 80px;
+            height: 30px;
+            background: #3497ce;
+            color: #fff;
+            border-radius: 2px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}

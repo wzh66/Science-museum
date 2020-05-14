@@ -1,0 +1,44 @@
+.synopsis-content {
+  .card-left {
+    form {
+      .hall-form {
+        width: 100%;
+
+        .hall-form-group {
+          &.forget{
+            display: flex!important;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0 !important;
+            label{
+              font-size: 14px;
+              color: #666;
+              width: 120px!important;
+              height: auto;
+              text-align: right;
+              margin-right: 10px;
+            }
+            input{
+              width: 460px!important;
+              height: 50px!important;
+              &.readonly{
+                border: none!important;
+                background-color:inherit;
+              }
+            }
+            .getValid{
+              position: absolute;
+              right: 0;
+              padding: 5px;
+              cursor: pointer;
+              color: #666;
+              &:hover{
+                background: #edf1f3;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

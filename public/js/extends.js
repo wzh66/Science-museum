@@ -75,7 +75,9 @@ function combine(arr) {
         return totalArr;
     }
 }
+
 var SKUResult = {};
+
 function getObjKeys(obj) {
     if (obj !== Object(obj)) throw new TypeError('Invalid object');
     var keys = [];
@@ -88,13 +90,13 @@ function getObjKeys(obj) {
 //把组合的key放入结果集SKUResult
 function add2SKUResult(combArrItem, sku) {
     var key = combArrItem.join(";");
-    if(SKUResult[key]) {//SKU信息key属性·
+    if (SKUResult[key]) {//SKU信息key属性·
         SKUResult[key].id += sku.id;
         SKUResult[key].price = sku.price;
     } else {
         SKUResult[key] = {
-            id : sku.id,
-            price : sku.price
+            id: sku.id,
+            price: sku.price
         };
     }
 }
@@ -102,7 +104,7 @@ function add2SKUResult(combArrItem, sku) {
 //初始化得到结果集
 function initSKU() {
     var i, j, skuKeys = getObjKeys(data);
-    for(i = 0; i < skuKeys.length; i++) {
+    for (i = 0; i < skuKeys.length; i++) {
         var skuKey = skuKeys[i];//一条SKU信息key
         var sku = data[skuKey];	//一条SKU信息value
         var skuKeyAttrs = skuKey.split(";"); //SKU信息key属性值数组
@@ -111,14 +113,14 @@ function initSKU() {
 
         //对每个SKU信息key属性值进行拆分组合
         var combArr = arrayCombine(skuKeyAttrs);
-        for(j = 0; j < combArr.length; j++) {
+        for (j = 0; j < combArr.length; j++) {
             add2SKUResult(combArr[j], sku);
         }
 
         //结果集接放入SKUResult
         SKUResult[skuKey] = {
-            id:sku.id,
-            price:sku.price
+            id: sku.id,
+            price: sku.price
         }
     }
 }
@@ -127,7 +129,7 @@ function initSKU() {
  * 从数组中生成指定长度的组合
  */
 function arrayCombine(targetArr) {
-    if(!targetArr || !targetArr.length) {
+    if (!targetArr || !targetArr.length) {
         return [];
     }
 
@@ -135,12 +137,12 @@ function arrayCombine(targetArr) {
     var resultArrs = [];
 
     // 所有组合
-    for(var n = 1; n < len; n++) {
+    for (var n = 1; n < len; n++) {
         var flagArrs = getFlagArrs(len, n);
-        while(flagArrs.length) {
+        while (flagArrs.length) {
             var flagArr = flagArrs.shift();
             var combArr = [];
-            for(var i = 0; i < len; i++) {
+            for (var i = 0; i < len; i++) {
                 flagArr[i] && combArr.push(targetArr[i]);
             }
             resultArrs.push(combArr);
@@ -155,7 +157,7 @@ function arrayCombine(targetArr) {
  * 获得从m中取n的所有组合
  */
 function getFlagArrs(m, n) {
-    if(!n || n < 1) {
+    if (!n || n < 1) {
         return [];
     }
 
@@ -173,15 +175,15 @@ function getFlagArrs(m, n) {
     while (!isEnd) {
         leftCnt = 0;
         for (i = 0; i < m - 1; i++) {
-            if (flagArr[i] == 1 && flagArr[i+1] == 0) {
-                for(j = 0; j < i; j++) {
+            if (flagArr[i] == 1 && flagArr[i + 1] == 0) {
+                for (j = 0; j < i; j++) {
                     flagArr[j] = j < leftCnt ? 1 : 0;
                 }
                 flagArr[i] = 0;
-                flagArr[i+1] = 1;
+                flagArr[i + 1] = 1;
                 var aTmp = flagArr.concat();
                 resultArrs.push(aTmp);
-                if(aTmp.slice(-n).join("").indexOf('0') == -1) {
+                if (aTmp.slice(-n).join("").indexOf('0') == -1) {
                     isEnd = true;
                 }
                 break;
@@ -213,4 +215,87 @@ function listToTree(list) {
         }
     }
     return tree;
+}
+
+//根据开始日期和结束日期获取所有日期的方法
+function get(day1, day2) {
+    var getDate = function (str) {
+        var tempDate = getNowFormatDate();
+        tempDate = new Date(tempDate);
+        var list = str.split("-");
+        tempDate.setFullYear(list[0]);
+        tempDate.setMonth(list[1] - 1);
+        tempDate.setDate(list[2]);
+        return tempDate;
+    };
+    var date1 = getDate(day1);
+    var date2 = getDate(day2);
+    if (date1.getTime() > date2.getTime()) {
+        var tempDate = date1;
+        date1 = date2;
+        date2 = tempDate;
+    }
+    if (day1 > day2) {
+        var tempDate = day1;
+        day1 = day2;
+        day2 = tempDate;
+    }
+    if (date1.getTime() === date2.getTime()) {
+        date1.setDate(date1.getDate() - 1);
+    }
+    date1.setDate(date1.getDate() + 1);
+    var dateArr = [];
+    var i = 0;
+    while (!(date1.getFullYear() == date2.getFullYear() && date1.getMonth() == date2.getMonth() && date1.getDate() == date2.getDate())) {
+        var dayStr = date1.getDate().toString();
+        if (dayStr.length == 1) {
+            dayStr = "0" + dayStr;
+        }
+        var monthStr = (date1.getMonth() + 1).toString();
+        if (monthStr.length == 1) {
+            monthStr = "0" + monthStr;
+        }
+        dateArr[i] = date1.getFullYear() + "-" + monthStr + "-" + dayStr;
+        i++;
+        date1.setDate(date1.getDate() + 1);
+    }
+    if (day1 !== day2) {
+        dateArr.splice(0, 0, day1);
+    }
+    dateArr.push(day2);
+    return dateArr;
+}
+
+//获取当前时间，格式YYYY-MM-DD
+function getNowFormatDate() {
+    var date = new Date();
+    var seperator1 = "-";
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var currentdate = year + seperator1 + month + seperator1 + strDate;
+    return currentdate;
+}
+
+//时间戳转换成日期格式
+function timestampToTime(timestamp) {
+    var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+    var Y = date.getFullYear() + '-';
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    var D = date.getDate();
+    /*var h = date.getHours() + ':';
+    var m = date.getMinutes() + ':';
+    var s = date.getSeconds();*/
+    return Y + M + D;
+}
+
+function minDate(){
+    var now = new Date();
+    return now.getFullYear()+"-" + (now.getMonth()+1) + "-" + now.getDate();
 }

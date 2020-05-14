@@ -1,0 +1,119 @@
+
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left">
+            <div class="card-margin">
+                <h2 class="card-title">
+                    {{type === 0 ? '个人信息' : '单位信息'}}<span>首页 > 会员中心 > {{type === 0 ? '个人信息' : '单位信息'}}</span>
+                </h2>
+                <div class="hr"></div>
+
+                <div class="card-content">
+                    <div class="hall-margin" style="margin: 0 170px">
+                        <form name="form">
+                            <div class="hall-form">
+                                <div class="hall-form-group unit">
+                                    <label>登录账号：</label>
+                                    <input readonly="readonly" class="readonly" value="{{user.account}}"/>
+                                </div>
+
+                                <div class="hall-form-group unit">
+                                    <label>登录密码：</label>
+                                    <input readonly="readonly" class="readonly" value="******"/>
+                                    <span class="change">
+                                        <a href="/service/auth/forget?type=1"
+                                           style="color: inherit;text-decoration: none">修改<img
+                                                src="/images/service/edit.png"/></a>
+                                    </span>
+
+                                </div>
+
+                                <div class="hall-form-group unit" ng-if="type === 1">
+                                    <label>企业名称：</label>
+                                    <input id="companyName"
+                                           readonly="readonly"
+                                           class="readonly"
+                                           ng-model="params.companyName"/>
+                                    <span class="change {{hideCompanyName ? 'hideCompanyName' : ''}}"
+                                          ng-click="modifyCompanyName()">修改<img src="/images/service/edit.png"/></span>
+                                </div>
+
+                                <div class="hall-form-group unit">
+                                    <label>联系人姓名：</label>
+                                    <input id="name"
+                                           readonly="readonly"
+                                           class="readonly"
+                                           ng-model="params.name"/>
+                                    <span class="change {{hideName ? 'hideName' : ''}}"
+                                          ng-click="modifyName()">修改<img src="/images/service/edit.png"/></span>
+                                </div>
+
+                                <div class="hall-form-group unit">
+                                    <label>联系电话：</label>
+                                    <input id="phone"
+                                           readonly="readonly"
+                                           class="readonly"
+                                           ng-model="params.phone"/>
+                                    <span class="change {{hidePhone ? 'hidePhone' : ''}}"
+                                          ng-click="modifyPhone()">修改<img src="/images/service/edit.png"/></span>
+                                </div>
+
+                                <div class="hall-form-group unit">
+                                    <label>微信账号：</label>
+                                    <input id="wechat"
+                                           readonly="readonly"
+                                           class="readonly"
+                                           ng-model="params.wechat"/>
+                                    <span class="change {{hideWechat ? 'hideWechat' : ''}}"
+                                          ng-click="modifyWechat()">修改<img src="/images/service/edit.png"/></span>
+                                </div>
+
+                                <div style="display: flex;align-items: center;justify-content: center" ng-if="type === 1">
+                                    <div class="license">
+                                        <img src="/images/service/license.png"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-controls">
+                                    <button type="submit"
+                                            class="confirm"
+                                            ng-click="submit(form)"
+                                            ng-if="show">确认修改</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-right">
+            <div class="card-margin">
+                <div class="card-subtitle">
+                    <img src="/images/service/unit.png" height="36" width="36"/>
+                    <span>会员中心</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/unit" class="active">{{type === 0 ? '个人信息' : '单位信息'}}</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/order/list">{{type === 0 ? '场馆登记记录' : '财务结算记录'}}</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/invoice/list">发票管理</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

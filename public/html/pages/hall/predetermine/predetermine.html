@@ -1,0 +1,139 @@
+
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left" style="width: 100%">
+            <div class="card-margin">
+                <h2 class="item-title" style="margin: 30px 0">场馆预定</h2>
+                <div class="card-content">
+                    <div class="hall-margin">
+
+                        <div class="hall_condition">
+                            <p>场馆名称：{{detail.name}}</p>
+                            <p>面积：{{detail.area}}平方米</p>
+                            <p>容纳人数：{{detail.inNumber}}人</p>
+                            <p>价格：{{detail.dailyRentPrice}}元/场</p>
+                        </div>
+
+                        <form name="form" novalidate>
+                            <p class="form-title">请输入申请资料：</p>
+                            <div class="hall-form">
+                                <div class="hall-form-group">
+                                    <label><em>*</em>会议名称：</label>
+                                    <input name="meetingName"
+                                           ng-model="params.meetingName"/>
+                                </div>
+
+                                <div class="hall-form-group">
+                                    <label><em>*</em>会议类型：</label>
+                                    <select name="meetingType" ng-model="params.meetingType" style="margin-left: 4px">
+                                        <option value='' disabled selected>请选择会议类型</option>
+                                        <option ng-repeat="item in meetingType" value="{{item.dictValue}}">
+                                            {{item.dictName}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="hall-form-group">
+                                    <label><em>*</em>参会人数：</label>
+                                    <input name="attendance"
+                                           ng-model="params.attendance"
+                                           class="num"/>
+                                    <span>人</span>
+                                </div>
+
+                                <div class="hall-form-group">
+                                    <label><em>*</em>联系人：</label>
+                                    <input name="contact"
+                                           ng-model="params.contact"/>
+                                </div>
+
+                                <div class="hall-form-group" style="width: 100%">
+                                    <label><em>*</em>联系电话：</label>
+                                    <input name="phone"
+                                           ng-model="params.phone"/>
+                                </div>
+
+                                <div class="hall-form-group" style="width: 100%">
+                                    <label><em>*</em>预定时间：</label>
+                                    <input id="start"
+                                           name="beginTime"
+                                           placeholder="开始时间"
+                                           class="date laydate-icon"
+                                           ng-click="startTime()"/><span>至</span>
+                                    <input id="end"
+                                           name="endTime"
+                                           placeholder="结束时间"
+                                           class="date laydate-icon"
+                                           ng-click="endTime()"/>
+                                    <div class="scheduled-time {{show ? 'show' : ''}}">
+                                        <p ng-repeat="date in dateList">
+                                            <span>{{date}}</span>
+                                            <span ng-repeat="item in reserveTimeType">
+                                                <input type="checkbox"
+                                                       class="checkbox"
+                                                       name="{{item.dictName}}"
+                                                       id="{{item.dictValue}}"
+                                                       ng-click="addReserve($event,date)"/>
+                                                <span class="other">{{item.dictName}}</span>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <p class="form-title">请选择服务项目：</p>
+                                <div class="hall-form-group service">
+                                    <label style="margin-right: 20px">其他需求：</label>
+                                    <span ng-repeat="item in goodsList"
+                                          style="margin: 0"
+                                          ng-style="{'margin-left': $index === 0 ? '-19px' : ''}">
+                                        <input type="checkbox"
+                                               class="checkbox"
+                                               name="{{item.name}}"
+                                               id="{{item.id}}"
+                                               ng-click="addGoods($event)"/>
+                                        <span class="other">{{item.name}}</span>
+                                        <span ng-if="_goodsList.indexOf(item.id) !== -1" style="margin-left: -2px">
+                                            <input name="{{'' + $index}}"
+                                                   ng-model="count['' + $index]"
+                                                   style="width: 70px"/>
+                                            <span>{{item.unit}}</span>
+                                        </span>
+                                    </span>
+                                </div>
+
+                                <div class="hall-form-group service">
+                                    <label style="position: relative;top: -134px;">备注：</label>
+                                    <textarea name="remark" ng-model="params.remark"
+                                              style="margin-left: 10px"></textarea>
+                                </div>
+
+                                <div class="line"></div>
+                                <div class="service-cost">
+                                    <div class="cost">
+                                        <p><span>服务项目价格：</span><em>￥{{serviceCost}}元</em></p>
+                                        <p><span>会场价格：</span><em>￥{{detail.dailyRentPrice*reserveList.length}}元</em></p>
+                                        <p><span>合计：</span><em>￥{{serviceCost + detail.dailyRentPrice*reserveList.length}}元</em></p>
+                                    </div>
+                                </div>
+
+                                <div class="form-controls">
+                                    <button type="submit" ng-click="submit(form)">提交申请</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

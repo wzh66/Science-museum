@@ -1,0 +1,42 @@
+
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left">
+            <div class="card-margin">
+                <h2 class="item-title">{{detail.title}}</h2>
+                <div class="item-origin">
+                    <span>来源：{{detail.createByName}} </span>
+                    <span>作者：{{detail.createByName}} </span>
+                    <span>发布时间：{{detail.createTime | date : 'yyyy-MM-dd HH:mm:ss'}}</span>
+                </div>
+                <div class="line"></div>
+                <div class="card-content">
+                    <div class="rule" ng-bind-html="detail.detail | parseHTML"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card-right">
+            <div class="card-margin">
+                <div class="card-subtitle">
+                    <img src="/images/index/synopsis.png" height="36" width="36"/>
+                    <span>场馆介绍</span>
+                </div>
+                <ul>
+                    <li><div class="square"></div><a href="#/venue/news" class="active">场馆新闻</a></li>
+                    <li><div class="square"></div><a href="#/venue/synopsis">场馆简介</a></li>
+                    <li><div class="square"></div><a href="#/venue/system">场馆制度</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

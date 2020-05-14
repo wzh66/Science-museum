@@ -1,0 +1,151 @@
+
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left">
+            <div class="card-margin">
+                <h2 class="card-title">
+                    {{type === 0 ? '场馆登记订单详情' : '财务结算订单详情'}}<span>首页 > 会员中心 > {{type === 0 ? '场馆登记订单详情' : '财务结算订单详情'}}</span>
+                </h2>
+                <div class="hr"></div>
+                <div class="card-content">
+                    <div class="hall-margin">
+                        <form>
+                            <p class="form-title" style="font-size: 16px">订单资料：</p>
+                            <div class="hall-form">
+
+                                <div class="hall-form-group item-f">
+                                    <label>订单编号：</label>
+                                    <span>{{detail.orderNo}}</span>
+                                </div>
+
+                                <div class="hall-form-group item-f">
+                                    <label>场馆名称：</label>
+                                    <span>{{detail.venueName}}</span>
+                                </div>
+
+                                <div class="hall-form-group item-f">
+                                    <label>会议名称：</label>
+                                    <span>{{detail.title}}</span>
+                                </div>
+
+                                <div class="hall-form-group item-f">
+                                    <label>会议类型：</label>
+                                    <span>{{getMeetingTypeName(detail.meetingType)}}</span>
+                                </div>
+
+                                <!--<div class="hall-form-group item-f">
+                                    <label>会议时长：</label>
+                                    <span>{{detail.times}}天</span>
+                                </div>-->
+
+                                <div class="hall-form-group item-f">
+                                    <label>开始时间：</label>
+                                    <span>{{detail.reserveBeginTime | date : 'yyyy-MM-dd'}}</span>
+                                </div>
+
+                                <div class="hall-form-group item-f">
+                                    <label>结束时间：</label>
+                                    <span>{{detail.reserveEndTime | date : 'yyyy-MM-dd'}}</span>
+                                </div>
+
+                                <div class="hall-form-group item-f">
+                                    <label>场次安排：</label>
+                                    <div style="width: 80%">
+                                        <p ng-repeat="item in detail.timeList">{{item.reserveDate | date :
+                                            'yyyy-MM-dd'}}
+                                            <span ng-repeat="type in item.reserveTypes"
+                                                  style="margin: 0 20px!important;">{{type === '0' ? '上午' : type === '1' ? '下午' : '晚上'}}</span>
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                                <div class="hall-form-group item-f">
+                                    <label>参会人数：</label>
+                                    <span>{{detail.number}}人</span>
+                                </div>
+
+                                <div class="hall-form-group item-f">
+                                    <label>联系人：</label>
+                                    <span>{{detail.name}}</span>
+                                </div>
+
+                                <div class="hall-form-group item-f">
+                                    <label>联系电话：</label>
+                                    <span>{{detail.phone}}</span>
+                                </div>
+
+                                <p class="form-title" style="font-size: 16px">服务项目：</p>
+                                <table cellpadding="0" cellspacing="0" border="0">
+                                    <thead>
+                                    <tr>
+                                        <th class="user">服务名称</th>
+                                        <th class="grade">单价</th>
+                                        <th class="consumption">数量</th>
+                                        <th class="date">金额</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="item in detail.itemList">
+                                        <td class="user">{{item.baseGoodsName}}</td>
+                                        <td class="grade">{{item.singlePrice}}</td>
+                                        <td class="consumption">{{item.count}}</td>
+                                        <td class="date">{{item.totalPrice}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="line" style="margin: 40px 0"></div>
+                                <div class="service-cost">
+                                    <div class="cost">
+                                        <p><span>合计：</span><em>￥{{detail.totalAmount}}元</em></p>
+                                    </div>
+                                </div>
+
+                                <div class="form-controls">
+                                    <a href="/service/member/pay/{{detail.id}}" style="text-decoration: none">
+                                        <button type="submit" style="background: #ff6600;margin: 0 10px"
+                                                ng-if="detail.status === 2 && detail.isPaid === 0">立即支付>
+                                        </button>
+                                    </a>
+                                    <button type="submit" style="background: #2497ce;margin: 0 10px"
+                                            ng-click="return()">返回>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-right">
+            <div class="card-margin">
+                <div class="card-subtitle">
+                    <img src="/images/service/unit.png" height="36" width="36"/>
+                    <span>会员中心</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/unit">{{type === 0 ? '个人信息' : '单位信息'}}</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/order/list" class="active">{{type === 0 ? '场馆登记记录' : '财务结算记录'}}</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/invoice/list">发票管理</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

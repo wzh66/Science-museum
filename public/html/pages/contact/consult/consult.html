@@ -1,0 +1,117 @@
+
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left">
+            <div class="card-margin">
+                <h2 class="card-title">
+                    问题咨询<span>首页 > 联系我们 > 问题咨询</span>
+                </h2>
+                <div class="hr"></div>
+                <div class="card-content">
+                    <div class="hall-margin">
+                        <div class="consult-list">
+                            <div class="consult-title"><span>咨询列表</span></div>
+                            <div class="consult-content" ng-repeat="item in consultList">
+                                <div class="question"><span>Q</span><em>{{item.content}}[梁建国 于 {{item.createTime | date :
+                                    'yyyy-MM-dd HH:mm:ss'}} 提问]</em></div>
+                                <div class="answer">
+                                    <span>A</span>
+                                    <div style="width: 80%;display: flex;flex-direction: column">
+                                    <div ng-bind-html="item.answerContent | parseHTML"></div>
+                                    <em>[管理员 于 {{item.answerTime |
+                                    date : 'yyyy-MM-dd HH:mm:ss'}} 答复]</em>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="consult-title"><span>在线提问</span></div>
+                            <p style="margin: 15px 10px">如有问题咨询，请填写如下内容并提交。相关工作人员将尽力答复您。</p>
+
+                            <form name="form" novalidate>
+                                <div class="hall-form">
+                                    <div class="hall-form-group consult">
+                                        <label><em>*</em>姓&nbsp;&nbsp;名：</label>
+                                        <input type="text"
+                                               name="name"
+                                               ng-model="params.name" required/>
+                                    </div>
+
+                                    <div class="hall-form-group consult">
+                                        <label>联系电话：</label>
+                                        <input name="phone"
+                                               ng-pattern="/^1(3|4|5|6|7|8|9)\d{9}$/"
+                                               ng-model="params.phone"/>
+                                    </div>
+
+                                    <div class="hall-form-group consult">
+                                        <label><em>*</em>标&nbsp;&nbsp;题：</label>
+                                        <input type="text"
+                                               name="title"
+                                               ng-model="params.title" required/>
+                                    </div>
+
+
+                                    <div class="hall-form-group consult">
+                                        <label>E-mail：</label>
+                                        <input type="text"
+                                               name="email"
+                                               ng-pattern="/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/"
+                                               ng-model="params.email"/>
+                                    </div>
+
+
+                                    <!--<div class="hall-form-group consult">
+                                      <label>验证码：</label>
+                                      <input type="text" name="code"/>
+                                      <span class="getValid">获取验证码</span>
+                                    </div>-->
+
+                                    <div class="hall-form-group consult">
+                                        <label style="position: relative;top: -65px"><em>*</em>内&nbsp;&nbsp;容：</label>
+                                        <textarea name="content"
+                                                  ng-model="params.content" required></textarea>
+                                    </div>
+
+                                    <div class="btn-consult">
+                                        <button type="submit" ng-click="submit(form)">确认留言</button>
+                                        <button type="reset" style="background: #ccc;color: #666">重新填写</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-right">
+            <div class="card-margin">
+                <div class="card-subtitle">
+                    <img src="/images/contact/contact.png" height="36" width="36"/>
+                    <span>联系我们</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/contact">联系科学馆</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/contact/consult" class="active">问题咨询</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/contact/feedback">反馈建议</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

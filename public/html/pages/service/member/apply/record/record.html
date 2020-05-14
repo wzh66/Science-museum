@@ -1,0 +1,58 @@
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left">
+            <div class="card-margin">
+                <h2 class="card-title">
+                    活动申请记录<span>首页 > 会员中心 > 活动申请记录</span>
+                </h2>
+                <div class="hr"></div>
+                <div class="card-content">
+                    <a href="#/service/member/apply/list" style="text-decoration: none">
+                        <div class="addRecord">
+                            <img src="/images/service/add.png" height="43" width="45"/>
+                            <span>新增活动申请</span>
+                        </div>
+                    </a>
+
+                    <a ng-repeat="item in record" href="#/service/member/apply/item/{{item.id}}"
+                       style="text-decoration: none">
+                        <div class="record {{$index === record.length - 1 ? '' : 'border'}}">
+                            <p>活动名称：<span>{{item.title}}</span>
+                                <button ng-if="item.isAuth === 0">待审核</button>
+                                <button ng-if="item.isAuth === 1">审核通过</button>
+                                <button ng-if="item.isAuth === 2">审核不通过</button>
+                            </p>
+                            <p>活动时间：<span>{{item.activityBeginTime | date : 'yyyy-MM-dd'}} 至 {{item.activityEndTime | date : 'yyyy-MM-dd'}}</span></p>
+                            <p>活动形式：<span>{{getFormName(item.form)}}</span></p>
+                            <p>活动地点：<span>{{item.address}}</span></p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        <div class="card-right" style="height: 140px">
+            <div class="card-margin">
+                <div class="card-subtitle">
+                    <img src="/images/service/unit.png" height="36" width="36"/>
+                    <span>会员中心</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/apply/record" class="active">活动申请记录</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

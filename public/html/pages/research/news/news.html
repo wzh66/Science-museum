@@ -1,0 +1,58 @@
+
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left">
+            <div class="card-margin">
+                <h2 class="card-title">
+                    研究院新闻<span>首页 > 广东研究院 > 研究院新闻</span>
+                </h2>
+                <div class="hr"></div>
+
+                <div class="trailer_content" ng-repeat="item in newsList">
+                    <div class="trailer_logo">
+                        <img ng-src="{{FILE_PREFIX_URL + item.logo}}" ng-if="item.logo"/>
+                    </div>
+                    <div class="trailer_word">
+                        <h2>{{item.title}}</h2>
+                        <span>{{item.synopsis}}</span>
+                        <a class="look" href="{{'/research/news/item/' + item.id}}">查看内容></a>
+                    </div>
+                </div>
+
+                <div class="ng-page" page="page.page" total="page.totalPages" ng-if="newsList"></div>
+
+            </div>
+        </div>
+        <div class="card-right">
+            <div class="card-margin">
+                <div class="card-subtitle">
+                    <img src="/images/index/synopsis.png" height="36" width="36"/>
+                    <span>广东研究院</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/research/synopsis">研究院简介</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/research/news" class="active">研究院新闻</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/research/manage">管理办法</a></li>
+                    <!--<li>
+                        <div class="square"></div>
+                        <a href="#/research/talent">人才库</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

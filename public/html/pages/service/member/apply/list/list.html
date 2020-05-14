@@ -1,0 +1,120 @@
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left">
+            <div class="card-margin">
+                <h2 class="item-title" style="margin: 30px 0">填写活动申请表格</h2>
+                <div class="card-content">
+                    <div class="hall-margin">
+                        <form name="form" novalidate>
+                            <div class="hall-form">
+                                <div class="hall-form-group apply">
+                                    <label>活动主题</label>
+                                    <input name="title"
+                                           ng-model="params.title"/>
+                                </div>
+
+                                <div class="hall-form-group apply">
+                                    <label>活动时间</label>
+                                    <input id="start"
+                                           placeholder="请选择日期"
+                                           name="beginTime"
+                                           class="date laydate-icon"
+                                           ng-click="beginTime()"/>
+                                    <span>至</span>
+                                    <input id="end"
+                                           placeholder="请选择日期"
+                                           name="endTime"
+                                           class="date laydate-icon"
+                                           ng-click="endTime()"/>
+                                </div>
+
+                                <div class="hall-form-group apply">
+                                    <label>活动地点</label>
+                                    <input name="address"
+                                           ng-model="params.address"/>
+                                </div>
+
+                                <div class="hall-form-group apply">
+                                    <label>联系人电话</label>
+                                    <input name="phone"
+                                           ng-model="params.phone"/>
+                                </div>
+
+                                <div class="hall-form-group apply">
+                                    <label style="position: relative;top: -65px;">申请活动内容</label>
+                                    <textarea name="content"
+                                              ng-model="params.content"></textarea>
+                                </div>
+
+                                <div class="hall-form-group apply">
+                                    <label>活动形式</label>
+                                    <select name="activityForm" ng-model="params.activityForm">
+                                        <option value='' disabled selected>请选择活动形式</option>
+                                        <option ng-repeat="item in activityForm" value="{{item.dictValue}}">
+                                            {{item.dictName}}
+                                        </option>
+                                    </select>
+
+                                </div>
+
+                                <div class="hall-form-group apply">
+                                    <label>活动类型</label>
+                                    <select name="activityType" ng-model="params.activityType">
+                                        <option value='' disabled selected>请选择活动类型</option>
+                                        <option ng-repeat="item in activityType" value="{{item.dictValue}}">
+                                            {{item.dictName}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="hall-form-group apply">
+                                    <label>开幕仪式</label>
+                                    <select name="openCeremony" ng-model="params.openCeremony">
+                                        <option value='' disabled selected>请选择开幕仪式</option>
+                                        <option ng-repeat="item in openCeremony" value="{{item.dictValue}}">
+                                            {{item.dictName}}
+                                        </option>
+                                    </select>
+                                </div>
+
+
+                                <div class="hall-form-group apply">
+                                    <label style="position: relative;top: -65px;">活动方案</label>
+                                    <textarea name="plan"
+                                              ng-model="params.plan"></textarea>
+                                </div>
+
+                                <div class="form-controls" style="margin-right: 170px">
+                                    <button type="submit" ng-click="submit(form)">提交申请</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-right" style="height: 140px">
+            <div class="card-margin">
+                <div class="card-subtitle">
+                    <img src="/images/service/unit.png" height="36" width="36"/>
+                    <span>会员中心</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/apply/record" class="active">活动申请记录</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+.synopsis-content {
+  .card-left {
+    form {
+      .hall-form {
+        width: 100%;
+
+        .hall-form-group {
+          &.unit{
+            width: 100%!important;
+            label{
+              color: #666!important;
+              width: 84px;
+              height: auto;
+              display: inline-block;
+              text-align: right;
+            }
+            input{
+              width: 250px!important;
+              &.readonly{
+                border: none!important;
+                background-color:inherit;
+              }
+            }
+            span{
+              &.change{
+                color: #4c9de4!important;
+                cursor: pointer;
+                &.hideCompanyName{
+                  display: none;
+                }
+                &.hideName{
+                  display: none;
+                }
+                &.hidePhone{
+                  display: none;
+                }
+                &.hideWechat{
+                  display: none;
+                }
+                img{
+                  position: relative;
+                  top: 7px;
+                  left: 5px;
+                  width: 22px;
+                  height: auto;
+                }
+              }
+            }
+
+          }
+        }
+
+        .license{
+          width: 222px;
+          height: auto;
+          img{
+            width: 100%;
+            height: auto;
+          }
+        }
+
+        .form-controls{
+          button{
+            &.confirm{
+              width: 120px!important;
+              height: 40px!important;
+              font-size: 14px!important;
+              margin-right: 120px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 var app = angular.module('app', ['ngRoute', 'appServices', 'appTemplates', 'ngAnimate', 'ngCookies', 'appFilters', 'thatisuday.dropzone', 'monospaced.qrcode']);
-var PREFIX_URL = '/api/wisp/intf/call?action=';
-var FILE_PREFIX_URL = '/api/wisp/admin/fileupload/previewFile?id=';
+var PREFIX_URL = '/api/intf/call?action=';
+var FILE_PREFIX_URL = '/api/admin/fileupload/previewFile?id=';
 app.config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {
         $routeProvider.otherwise({

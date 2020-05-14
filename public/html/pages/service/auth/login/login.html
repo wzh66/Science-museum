@@ -1,0 +1,66 @@
+
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left" style="width: 100%">
+            <div class="login">
+                <div class="login-content">
+                    <div class="login-margin">
+                        <div class="login-tab">
+                            <h2 ng-click="setType(1)" class="{{type === 1 ? 'curr' : ''}}">密码登录</h2>
+                            <h2 ng-click="setType(0)" class="{{type === 0 ? 'curr' : ''}}">快捷登录</h2>
+                        </div>
+                        <form name="form" novalidate>
+                            <div class="login-input">
+                                <img src="/images/service/user.png" height="12" width="12"/>
+                                <input name="loginid"
+                                       placeholder="{{type === 1 ? '请输入登录账号' : '请输入手机号码'}}"
+                                       ng-model="params.loginid"
+                                       required/>
+                            </div>
+                            <div class="login-input" ng-if="type === 1">
+                                <img src="/images/service/lock.png" height="12" width="12"/>
+                                <input type="password"
+                                       name="pwd"
+                                       ng-model="params.pwd"
+                                       placeholder="请输入密码" required/>
+                            </div>
+                            <div class="login-input" ng-if="type === 0">
+                                <img src="/images/service/code.png" height="12" width="12"/>
+                                <input name="validCode"
+                                       ng-model="params.validCode"
+                                       ng-pattern="/^\d{4}$/"
+                                       required placeholder="请输入验证码"/>
+                                <span id="sendValidCode"
+                                      ng-click="sendValidCode(form)"
+                                      class="getCode">{{activeText}}</span>
+                            </div>
+
+                            <p>
+                                <!--<input type="checkbox"/><span>自动登录</span>-->
+                                <a style="float: right;text-decoration: none;color: #666" href="#/service/auth/forget?type=0" ng-if="type === 1">忘记密码？</a>
+                            </p>
+
+                            <button type="submit" class="btn-login" ng-click="submit(form)">登录</button>
+
+                            <p style="text-align: center">还没有账号？<a href="#/service/auth/register"
+                                                                   style="text-decoration: underline;color: #666!important;">立即注册</a>
+                            </p>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="popup-captcha"></div>

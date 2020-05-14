@@ -1,0 +1,107 @@
+
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left">
+            <div class="card-margin">
+                <h2 class="item-title" style="margin: 30px 0">填写发票信息表格</h2>
+                <div class="card-content">
+                    <div class="hall-margin">
+                        <form name="form" novalidate>
+                            <div class="hall-form">
+                                <div class="hall-form-group apply">
+                                    <label>发票类型</label>
+                                    <select name="type" ng-model="params.type" style="padding: 9px 142px 9px 10px!important">
+                                        <option value='' disabled selected>请选择发票类型</option>
+                                        <option value="0">普通发票</option>
+                                        <option value="1" ng-if="invoiceType !== '0'">专用发票</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="hall-form-group apply">
+                                    <label>发票抬头类型</label>
+                                    <select name="invoiceType" ng-model="params.invoiceType">
+                                        <option value='' disabled selected>请选择发票抬头类型</option>
+                                        <option value="0" ng-if="_type !== '1'">个人</option>
+                                        <option value="1">单位</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="hall-form-group apply">
+                                    <label>{{invoiceType === '1' ? '单位名称' : '发票抬头'}}</label>
+                                    <input name="title"
+                                           ng-model="params.companyName"/>
+                                </div>
+
+                                <div class="hall-form-group apply" ng-if="invoiceType === '1'">
+                                    <label>税号</label>
+                                    <input name="number"
+                                           ng-model="params.number"/>
+                                </div>
+
+                                <div class="hall-form-group apply" ng-if="invoiceType === '1'">
+                                    <label>单位地址</label>
+                                    <input name="address"
+                                           ng-model="params.address"/>
+                                </div>
+
+                                <div class="hall-form-group apply" ng-if="invoiceType === '1'">
+                                    <label>联系电话</label>
+                                    <input name="phone"
+                                           ng-model="params.phone"/>
+                                </div>
+
+                                <div class="hall-form-group apply" ng-if="invoiceType === '1'">
+                                    <label>开户银行</label>
+                                    <input name="bank"
+                                           ng-model="params.bank"/>
+                                </div>
+
+                                <div class="hall-form-group apply" ng-if="invoiceType === '1'">
+                                    <label>银行账号</label>
+                                    <input name="bankAccount"
+                                           ng-model="params.bankAccount"/>
+                                </div>
+
+                                <div class="form-controls" style="margin-right: 170px">
+                                    <button type="submit" ng-click="submit(form)">提交申请</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-right">
+            <div class="card-margin">
+                <div class="card-subtitle">
+                    <img src="/images/service/unit.png" height="36" width="36"/>
+                    <span>会员中心</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/unit">{{type === 0 ? '个人信息' : '单位信息'}}</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/order/list">{{type === 0 ? '场馆登记记录' : '财务结算记录'}}</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/invoice/list" class="active">发票管理</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

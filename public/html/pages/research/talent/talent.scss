@@ -1,0 +1,18 @@
+.synopsis-content{
+
+  .trailer{
+    width: 50%;
+    display: inline-block;
+    .trailer_logo{
+      width: 200px !important;
+      height: 250px !important;
+    }
+    .trailer_word{
+      margin: 0 10px;
+      span{
+        color: #666;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,37 @@
+.synopsis-content {
+  .card-left {
+    form {
+      .hall-form {
+        width: 100%;
+
+        .hall-form-group {
+          &.register{
+            width: 100%!important;
+            display: flex!important;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0 !important;
+            label{
+              font-size: 14px;
+              color: #666;
+              width: 112px!important;
+              height: auto;
+              text-align: right;
+              margin-right: 10px;
+              em{
+                color: #fd5451;
+              }
+            }
+            input{
+              width: 460px!important;
+              height: 50px!important;
+            }
+            select{
+              padding: 14px 350px 14px 10px!important;
+            }
+          }
+        }
+      }
+    }
+  }
+}

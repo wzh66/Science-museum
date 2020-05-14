@@ -1,0 +1,29 @@
+
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left" style="width: 100%">
+            <div class="card-margin">
+                <h2 class="item-title">{{detail.name}}</h2>
+                <div class="item-origin">
+                    <span>来源：{{detail.createBy}} </span>
+                    <span>作者：{{detail.createBy}} </span>
+                    <span>发布时间：{{detail.createTime | date : 'yyyy-MM-dd HH:mm:ss'}}</span>
+                </div>
+                <div class="line"></div>
+                <div class="card-content">
+                    <div class="rule" ng-bind-html="detail.content | parseHTML"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

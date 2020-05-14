@@ -2,9 +2,9 @@ appServices.factory('orderSvc', ['$q', '$http', '$location', '$cookieStore', fun
 
     var service = {};
 
-    service.items = function (body) {//获取用户信息 promise对象
+    service.getOrderList = function (body) {//获取用户信息 promise对象
         var d = $q.defer();
-        $http.post(PREFIX_URL + 'searchOrder', body).success(function (data) {
+        $http.post(PREFIX_URL + 'getOrderList' + formDataToUrl(body)).success(function (data) {
             return d.resolve(data);
         }).error(function (error) {
             d.reject(error);
@@ -12,9 +12,9 @@ appServices.factory('orderSvc', ['$q', '$http', '$location', '$cookieStore', fun
         return d.promise;
     };
 
-    service.item = function (key, id) {//获取用户信息 promise对象
+    service.cancelOrder = function (key, id) {//获取用户信息 promise对象
         var d = $q.defer();
-        $http.get(PREFIX_URL + 'orderInfo&key=' + key + '&id=' + id).success(function (data) {
+        $http.get(PREFIX_URL + 'cancelOrder&key=' + key + '&id=' + id).success(function (data) {
             return d.resolve(data);
         }).error(function (error) {
             d.reject(error);
@@ -22,15 +22,87 @@ appServices.factory('orderSvc', ['$q', '$http', '$location', '$cookieStore', fun
         return d.promise;
     };
 
-    service.return = function (body) {//获取用户信息 promise对象
+    service.getOrderDetail = function (key, id) {//获取用户信息 promise对象
         var d = $q.defer();
-        $http.post(PREFIX_URL + 'refundOrder',body).success(function (data) {
+        $http.get(PREFIX_URL + 'getOrderDetail&key=' + key + '&id=' + id).success(function (data) {
             return d.resolve(data);
         }).error(function (error) {
             d.reject(error);
         });
         return d.promise;
     };
+
+    service.updateOrder = function (body) {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.post(PREFIX_URL + 'updateOrder' + formDataToUrl(body)).success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
+    service.getInvoiceList = function (key) {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.get(PREFIX_URL + 'getInvoiceList&key=' + key).success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
+
+    service.addInvoice = function (body) {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.post(PREFIX_URL + 'addInvoice' + formDataToUrl(body)).success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
+    service.getOrderInvoiceDetail = function (id) {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.get(PREFIX_URL + 'getOrderInvoiceDetail&orderInvoiceId=' + id).success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
+    service.openInvoice = function (body) {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.post(PREFIX_URL + 'openInvoice' + formDataToUrl(body)).success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
+    service.payOrders = function (body) {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.post(PREFIX_URL + 'payOrders' + formDataToUrl(body)).success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
+    service.removeInvoice = function (key, id) {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.get(PREFIX_URL + 'removeInvoice&key=' + key + '&id=' + id).success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
 
     return service;
 }]);

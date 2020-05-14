@@ -1,0 +1,181 @@
+.synopsis-content {
+  .card {
+    .card-left {
+      .card-content {
+        .hall-margin{
+          margin: 0 10px;
+
+          .hall_condition{
+            border-radius: 4px;
+            background: #f7f7f7;
+            height: 100px;
+
+            p{
+              display: inline-block;
+              width: 50%;
+              position: relative;
+              top: 40%;
+              transform: translateY(-50%);
+              left: 20px;
+              color: #000;
+              font-weight: bold;
+              font-size: 14px;
+            }
+          }
+
+          form{
+            .form-title{
+              font-size: 14px;
+              font-weight: bold;
+              color: #000;
+              margin: 20px 0;
+            }
+            .hall-form{
+              width: 100%;
+              .hall-form-group{
+                width: 50%;
+                display: inline-block;
+                position: relative;
+                left: 40px;
+                margin: 8px 0;
+                label{
+                  color: #666!important;
+                  width: 84px;
+                  height: auto;
+                  display: inline-block;
+                  text-align: right;
+                  em{
+                    color: #fd5451;
+                  }
+                }
+
+
+                .scheduled-time{
+                  margin: 10px 88px;
+                  border: 1px solid #e7e7e7;
+                  border-radius: 4px;
+                  display: none;
+                  &.show{
+                    display: block;
+                  }
+                  p{
+                    padding: 10px 0;
+                    border-bottom: 1px solid #e7e7e7;
+                  }
+                }
+
+                &.service{
+                  width: 100%;
+                  display: block;
+                  margin: 20px 0;
+                }
+                label{
+                  font-size: 14px;
+                  color: #333;
+                  width: 84px;
+                  text-align: right;
+                }
+                input{
+                  width: 300px;
+                  height: 40px;
+                  padding-left:10px;
+                  border: 1px solid #e7e7e7;
+                  border-radius: 4px;
+                  &.date{
+                    width: 200px;
+                    &.laydate-icon{
+                      cursor: pointer;
+                    }
+                  }
+                  &.num{
+                    width: 250px;
+                  }
+                  &.banner{
+                    width: 600px;
+                  }
+                  &.checkbox{
+                    width: 18px;
+                    height: 18px;
+                    position: relative;
+                    top: 3px;
+                    left: 10px;
+                  }
+                  &.note{
+                    width: 600px;
+                    height: 150px;
+                  }
+                }
+                span{
+                  margin: 0 12px;
+                  &.service{
+                    font-size: 16px;
+                  }
+                  &.tea{
+                    margin: 0 20px;
+                  }
+                }
+
+                textarea{
+                  width: 600px;
+                  height: 150px;
+                  border: 1px solid #e7e7e7;
+                }
+
+                select{
+                  padding: 9px 185px 9px 10px;
+                  border: 1px solid #e7e7e7;
+                  border-radius: 4px;
+                  appearance:none;
+                  -moz-appearance:none;
+                  -webkit-appearance:none;
+                  background: url("/images/hall/down.png") no-repeat scroll right center transparent;
+                  &.equipment{
+                    padding: 5px 20px 5px 10px;
+                    background: url("/images/hall/down_s.png") no-repeat scroll right center transparent;
+                  }
+                }
+              }
+
+              .service-cost{
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                .cost{
+                  p{
+                    text-align: right;
+                    span{
+                      font-size: 14px;
+                      color: #000;
+                    }
+                    em{
+                      font-size: 20px;
+                      color: #ff0000;
+                      font-weight: bold;
+                    }
+                  }
+                }
+              }
+
+              .form-controls{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 40px;
+                button{
+                  width: 260px;
+                  height: 60px;
+                  color: #fff;
+                  font-size: 20px;
+                  background: #67ad37;
+                  border: none;
+                  border-radius: 4px;
+                }
+              }
+            }
+          }
+        }
+
+      }
+    }
+  }
+}

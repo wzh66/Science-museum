@@ -1,0 +1,32 @@
+
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left" style="width: 100%">
+            <div class="card-margin">
+                <h2 class="card-title">
+                    以下是为您搜索到的内容：
+                </h2>
+                <div class="hr"></div>
+
+                <div class="search_content" ng-repeat="item in searchResult">
+                    <div class="search_word">
+                        <h2>{{item.title}}</h2>
+                        <p>{{item.synopsis}}</p>
+                        <a href="#/information/item/{{item.id}}">查看内容></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

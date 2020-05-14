@@ -1,0 +1,58 @@
+
+
+.content-top {
+  margin: 30px auto;
+  width: 1200px;
+  position: relative;
+
+  .content-logo {
+    display: inline-block;
+
+    img {
+      width: 323px;
+      height: auto;
+    }
+  }
+
+  .search {
+    display: inline-block;
+    float: right;
+    width: 25%;
+    height: 35px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    border-radius: 5px;
+
+    input::-webkit-input-placeholder {
+      color: #999;
+    }
+
+    input:-moz-placeholder {
+      color: #999
+    }
+
+    input:-ms-input-placeholder {
+      color: #999
+    }
+
+    .search-input {
+      text-indent: 15px;
+      border: 0;
+      padding: 8px 0;
+      width: 86%;
+      top: -1px;
+      left: 2px;
+      position: relative;
+    }
+
+    span {
+      img {
+        width: 20px;
+        height: auto;
+        left: 5px;
+        position: relative;
+        top: 5px;
+      }
+    }
+  }
+}

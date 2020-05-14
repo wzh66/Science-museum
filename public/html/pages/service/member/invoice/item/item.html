@@ -1,0 +1,102 @@
+
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left">
+            <div class="card-margin">
+                <h2 class="card-title">
+                    发票详情<span>首页 > 会员中心 > 发票详情</span>
+                </h2>
+                <div class="hr"></div>
+                <div class="card-content">
+                    <div class="hall-margin">
+                        <form>
+                            <p class="form-title" style="font-size: 16px">发票资料：</p>
+                            <div class="hall-form">
+
+                                <div class="hall-form-group item-f">
+                                    <label>单位名称：</label>
+                                    <span>{{detail.companyName}}</span>
+                                </div>
+
+                                <div class="hall-form-group item-f">
+                                    <label>单位地址：</label>
+                                    <span>{{detail.address}}</span>
+                                </div>
+
+                                <div class="hall-form-group item-f">
+                                    <label>银行账号：</label>
+                                    <span>{{detail.bankAccount}}</span>
+                                </div>
+
+                                <div class="hall-form-group item-f">
+                                    <label>税号：</label>
+                                    <span>{{detail.number}}</span>
+                                </div>
+
+                                <div class="hall-form-group item-f">
+                                    <label>开户银行：</label>
+                                    <span>{{detail.bank}}</span>
+                                </div>
+
+                                <div class="hall-form-group item-f">
+                                    <label>电话号码：</label>
+                                    <span>{{detail.phone}}</span>
+                                </div>
+
+                                <div class="hall-form-group item-f">
+                                    <label>发票抬头类型：</label>
+                                    <span>{{detail.invoiceType === 0 ? '个人' : '单位'}}</span>
+                                </div>
+
+                                <div class="hall-form-group item-f">
+                                    <label>发票类型：</label>
+                                    <span>{{detail.type === 0 ? '普通发票' : '专用发票'}}</span>
+                                </div>
+
+                                <p class="form-title" style="font-size: 16px">发票附件：</p>
+                                <a href="{{FILE_PREFIX_URL + detail.invoiceFileId}}"
+                                   class="link"
+                                   ng-if="detail.invoiceFileId"
+                                   target="_blank">附件</a>
+                                <div class="hall-form-group item-f" ng-if="!detail.invoiceFileId">
+                                    <label>发票正在开具中...</label>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-right">
+            <div class="card-margin">
+                <div class="card-subtitle">
+                    <img src="/images/service/unit.png" height="36" width="36"/>
+                    <span>会员中心</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/unit">{{type === 0 ? '个人信息' : '单位信息'}}</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/order/list">{{type === 0 ? '场馆登记记录' : '财务结算记录'}}</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/invoice/list" class="active">发票管理</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

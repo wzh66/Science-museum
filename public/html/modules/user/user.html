@@ -1,0 +1,20 @@
+<div class="top">
+    <div class="top_center">
+        <p>开放时间: &nbsp;&nbsp;周二至周五 &nbsp;9:30-16:30　&nbsp;&nbsp;周六至周日 &nbsp;9:30-17:00　&nbsp;法定节假日 9:30-17:00 &nbsp;&nbsp;&nbsp;周一闭馆
+            &nbsp;(国家法定节假日除外)</p>
+        <div class="user" ng-if="!account">
+            <a href="#/service/auth/register" style="text-decoration: none">
+                <span>会员注册</span>
+            </a>
+            <a href="#/service/auth/login" style="text-decoration: none">
+                <span style="background: #67ad37;margin-left: 40px;">会员登录</span>
+            </a>
+        </div>
+
+        <div class="user" ng-if="account">
+            <h2>您好，{{account}}<span style="color: #ffff00;cursor: pointer" ng-click="logout()">退出</span></h2>
+        </div>
+
+    </div>
+</div>
+<div class="header_bg"></div>

@@ -1,0 +1,139 @@
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left">
+            <div class="card-margin">
+                <h2 class="card-title">
+                    {{type === 0 ? '场馆登记记录' : '财务结算记录'}}<span>首页 > 会员中心 > {{type === 0 ? '场馆登记记录' : '财务结算记录'}}</span>
+                </h2>
+                <div class="hr"></div>
+                <div class="card-content">
+                    <form name="form">
+                        <div class="form-header">
+                            <input placeholder="请输入场馆名称"
+                                   class="hall"
+                                   name="title"
+                                   ng-model="params.title"/>
+                            <input id="start"
+                                   placeholder="请选择日期"
+                                   name="beginTime"
+                                   class="date laydate-icon"
+                                   ng-click="start()"/>
+                            <span style="margin: 0 5px 0 0">至</span>
+                            <input id="end"
+                                   placeholder="请选择日期"
+                                   name="endTime"
+                                   class="date laydate-icon"
+                                   ng-click="end()"/>
+                            <select name="isPaid" ng-model="params.isPaid">
+                                <option value='' disabled selected>请选择结算状态</option>
+                                <option value="0">未支付</option>
+                                <option value="1">已支付</option>
+                            </select>
+                            <button type="submit"
+                                    ng-click="submit(form)">搜索记录
+                            </button>
+                        </div>
+                    </form>
+                    <div class="registration" ng-repeat="item in order">
+                        <div class="registration_content">
+                            <div class="registration_logo">
+                                <img ng-src="{{FILE_PREFIX_URL + item.logo}}" ng-if="item.logo"/>
+                            </div>
+                            <div class="registration_word">
+                                <p>场馆名称：<span>{{item.venueName}}</span></p>
+                                <p>会议名称：<span>{{item.title}}</span></p>
+                                <p>参会人数：<span>{{item.number}}人</span></p>
+                                <p>会议类型：<span>{{getMeetingTypeName(item.meetingType)}}</span></p>
+                                <p>预定开始时间：<span style="font-weight: bold;margin-right: 80px">{{item.reserveBeginTime | date : 'yyyy-MM-dd'}}</span>
+                                    结束时间：<span style="font-weight: bold;">{{item.reserveEndTime | date : 'yyyy-MM-dd'}}</span>
+                                </p>
+                                <button style="background: #2497ce!important;"
+                                        class="finance"
+                                        ng-if="item.status === 0 || item.status === 1">待审核
+                                </button>
+                                <a href="/service/member/order/edit/{{item.id}}" style="text-decoration: none">
+                                    <button ng-if="item.status === 0 || item.status === 1"
+                                            style="background: #2497ce!important;"
+                                            class="finance">修改订单>
+                                    </button>
+                                </a>
+                                <a href="/service/member/pay/{{item.id}}"
+                                   style="text-decoration: none"
+                                   ng-if="item.status === 2 && item.isPaid === 0">
+                                    <button style="background: #ff6600!important;"
+                                            class="finance">待支付>
+                                    </button>
+                                </a>
+                                <button ng-if="item.status === 2 && item.isPaid === 1"
+                                        style="background: #2497ce;!important;"
+                                        class="finance">进行中
+                                </button>
+                                <button style="background: #333!important;"
+                                        class="finance"
+                                        ng-if="item.status === 2"
+                                        ng-click="cancel(item.id)">取消订单>
+                                </button>
+                                <button style="background: #67ad37!important;"
+                                        class="finance"
+                                        ng-if="item.status === 3">已完成
+                                </button>
+                                <button style="background: #ccc!important;"
+                                        class="finance"
+                                        ng-if="item.status === 4">已取消
+                                </button>
+                                <a href="/service/member/order/item/{{item.id}}" style="text-decoration: none">
+                                    <button style="background: #2497ce!important;"
+                                            class="finance">查看订单>
+                                    </button>
+                                </a>
+                                <a href="/service/member/invoice/item/{{item.orderInvoiceId}}"
+                                   style="text-decoration: none"
+                                   ng-if="item.isPaid === 1 && item.orderInvoiceId">
+                                    <button style="background: #2497ce!important;"
+                                            class="finance">查看发票>
+                                    </button>
+                                </a>
+                                <a href="/service/member/invoice/issue/{{item.id}}"
+                                   style="text-decoration: none"
+                                   ng-if="item.isPaid === 1 && !item.orderInvoiceId">
+                                    <button style="background: #2497ce!important;"
+                                            class="finance">开具发票>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-right">
+            <div class="card-margin">
+                <div class="card-subtitle">
+                    <img src="/images/service/unit.png" height="36" width="36"/>
+                    <span>会员中心</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/unit">{{type === 0 ? '个人信息' : '单位信息'}}</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/order/list" class="active">{{type === 0 ? '场馆登记记录' : '财务结算记录'}}</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/invoice/list">发票管理</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

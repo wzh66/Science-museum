@@ -34,3 +34,9 @@ appFilters.filter('disabled', function () {//订单状态
         return keys.indexOf(field.fieldId + ':' + field.fieldValue) !== -1;
     };
 });
+
+appFilters.filter("parseHTML", function ($sce) {
+    return function (text) {
+        return $sce.trustAsHtml(text);
+    };
+});

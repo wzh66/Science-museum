@@ -81,48 +81,48 @@
       "selected": true
     },
     {
-      "text": "知产云SaaS",
-      "link": "#/product/item/2",
+      "text": "科学馆简介",
+      "link": "#/venue/synopsis",
       "hover": false,
       "disable": false,
       "selected": false,
       "children": []
     },
     {
-      "text": "华海云商城",
-      "link": "#/goods/type/index",
+      "text": "广东研究院",
+      "link": "#/research/synopsis",
       "hover": false,
       "disable": false,
       "selected": false,
       "children": []
     },
     {
-      "text": "科创直通车",
-      "link": "#/product/item/3",
+      "text": "新闻资讯",
+      "link": "#/information/list",
       "hover": false,
       "disable": false,
       "selected": false,
       "children": []
     },
     {
-      "text": "版权顾问",
-      "link": "#/product/item/4",
+      "text": "场馆列表",
+      "link": "#/hall/list",
       "hover": false,
       "disable": false,
       "selected": false,
       "children": []
     },
     {
-      "text": "知产运营直通车",
-      "link": "#/product/item/5",
+      "text": "场馆预定",
+      "link": "#/hall/reserve",
       "hover": false,
       "disable": false,
       "selected": false,
       "children": []
     },
     {
-      "text": "知产通PLUS",
-      "link": "#/product/item/1",
+      "text": "线上服务",
+      "link": "#/service/auth/login",
       "hover": false,
       "disable": false,
       "selected": false,

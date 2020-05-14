@@ -1,0 +1,74 @@
+
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left">
+            <div class="card-margin">
+                <h2 class="card-title">
+                    支付信息<span>首页 > 会员中心 > 支付信息</span>
+                </h2>
+                <div class="hr"></div>
+
+                <div class="card-content">
+                    <div class="hall-margin">
+                        <div class="order-success">
+                            <div class="icon-success">
+                                <img src="/images/service/success.png"/></div>
+                            <div class="success-word">
+                                <p class="amount">订单提交成功，应付金额：<em>{{detail.totalAmount}}</em>元</p>
+                                <p class="num">订单编号：{{detail.orderNo}}，购买服务：科学会馆预订</p>
+                            </div>
+                        </div>
+
+                        <div class="pay-type" ng-if="detail.status === 2 && detail.isPaid === 0">
+                            <div class="wechat-pay {{active ? 'active' : ''}}" ng-click="wechatPay(detail.orderNo)">
+                                <img ng-src="/images/service/wechat-pay.png"/>
+                                <span>微信支付</span>
+                            </div>
+                            <div class="offline-pay">
+                                <img src="/images/service/offline-pay.png"/>
+                                <span>线下支付</span>
+                            </div>
+                        </div>
+
+                        <div class="pay-code" ng-if="detail.status === 0 || detail.status === 1">
+                            <p>等待后台客服人员确认</p>
+                        </div>
+
+                        <div class="pay-code" ng-if="codeShow">
+                            <qrcode ng-if="payCode" data="{{payCode}}" href="{{payCode}}" size="243"></qrcode>
+                            <p>请用微信扫描二维码支付</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-right">
+            <div class="card-margin">
+                <div class="card-subtitle">
+                    <img src="/images/service/unit.png" height="36" width="36"/>
+                    <span>会员中心</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/unit" class="active">{{type === 0 ? '个人信息' : '单位信息'}}</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/order/list">{{type === 0 ? '场馆登记记录' : '财务结算记录'}}</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/invoice/list">发票管理</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

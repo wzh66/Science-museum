@@ -1,0 +1,61 @@
+
+
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left">
+            <div class="card-margin">
+                <h2 class="card-title">
+                    {{detail.name}}<span>首页 > 场馆列表 > {{detail.name}}</span>
+                </h2>
+                <div class="hr"></div>
+                <div class="card-content">
+                    <div class="hall_synopsis">
+                        <div class="box_left"></div>
+                        <span>{{detail.synopsis}}</span>
+                        <div class="box_right"></div>
+                    </div>
+
+                    <div class="hall_parameter">
+                        <div class="parameter">
+                            <p>容纳人数：{{detail.inNumber}}人</p>
+                            <p>面积：{{detail.area}}平方米</p>
+                            <p>价格：{{detail.dailyRentPrice}}元/全天</p>
+                        </div>
+
+
+                        <a class="reserve" href="#/hall/predetermine/{{detail.id}}">
+                            <span>预定</span>
+                        </a>
+
+                    </div>
+
+                    <div class="hall_img" ng-bind-html="detail.detail | parseHTML"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-right" style="height: 150px !important;">
+            <div class="card-margin">
+                <div class="card-subtitle">
+                    <img src="/images/index/synopsis.png" height="36" width="36"/>
+                    <span>场馆列表</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/hall/list">场馆列表</a></li>
+                    <li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,38 @@
+.synopsis-content {
+  .card-left {
+    form {
+      .hall-form {
+        width: 100%;
+
+        .hall-form-group {
+          &.apply{
+            left: 50px!important;
+            width: 100%!important;
+            display: flex!important;
+            align-items: center;
+            margin: 20px 0 !important;
+            label{
+              font-size: 16px !important;
+              color: #666!important;
+              width: 112px!important;
+              height: auto;
+              text-align: right;
+              margin-right: 40px;
+            }
+            input{
+              width: 600px!important;
+              height: 50px!important;
+              &.date{
+                width: 280px !important;
+              }
+            }
+
+            select{
+              padding: 9px 115px 9px 10px!important;
+            }
+          }
+        }
+      }
+    }
+  }
+}

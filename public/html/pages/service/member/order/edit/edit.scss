@@ -1,0 +1,27 @@
+.synopsis-content {
+  .card-left {
+    form {
+      .hall-form {
+        width: 100%;
+
+        .hall-form-group {
+          &.edit{
+            width: 100%!important;
+            display: inline-block;
+            position: relative;
+            left: 40px;
+            margin: 20px 0 !important;
+            label{
+              font-size: 16px !important;
+              color: #999!important;
+              width: 120px!important;
+              height: auto;
+              text-align: right;
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

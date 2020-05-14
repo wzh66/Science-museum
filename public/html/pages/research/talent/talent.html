@@ -1,0 +1,65 @@
+<div class="ng-user"></div>
+
+<div class="index-content">
+    <div class="ng-banner"></div>
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left">
+            <div class="card-margin">
+                <h2 class="card-title">
+                    人才库<span>首页 > 广东研究院 > 人才库</span>
+                </h2>
+                <div class="hr"></div>
+                <div style="width: 100%">
+
+                    <div class="trailer" ng-repeat="item in talentList">
+                            <div class="trailer_content">
+                                <div class="trailer_logo">
+                                    <img ng-src="{{FILE_PREFIX_URL + item.headImage}}"/>
+                                </div>
+                                <div class="trailer_word">
+                                    <h2>{{item.name}}</h2>
+                                    <span>{{item.sex === '1' ? '男' : '女'}}</span>
+                                    <span style="margin-top: 0">{{item.jobTitle}}</span>
+                                    <span style="margin-top: 0">{{item.birthday | date : 'yyyy-MM-dd'}}</span>
+                                    <span>工作场所：{{item.workplace}}</span>
+                                </div>
+                            </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="card-right" style="height: 270px !important;">
+            <div class="card-margin">
+                <div class="card-subtitle">
+                    <img src="/images/index/synopsis.png" height="36" width="36"/>
+                    <span>广东研究院</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/research/synopsis">研究院简介</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/research/news">研究院新闻</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/research/manage">管理办法</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/research/talent" class="active">人才库</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ng-footer"></div>

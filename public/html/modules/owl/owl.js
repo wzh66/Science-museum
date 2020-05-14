@@ -3,20 +3,29 @@
 app.directive('ngOwl', ['$location', 'appSvc', function ($location, appSvc) {
     return {
         restrict: 'C',
-        scope: {},
+        scope: {
+            items: '=items',
+            images: '=images',
+            autoplay: '=autoplay',
+            url: '=url'
+        },
         templateUrl: 'modules/owl/owl.html',
         link: function (scope, element, attrs) {
-            $(".owl-carousel").owlCarousel({
-                navigation: true, // Show next and prev buttons
-                slideSpeed: 300,
-                loop: true,
-                paginationSpeed: 400,
-                singleItem: true,
-                autoplay:true,
-                autoplayTimeout:3000,
-                autoplayHoverPause:true,
-                items: 1
-            });
+            setTimeout(() => {
+                $(element).find('.owl-carousel').owlCarousel({
+                    navigation: true, // Show next and prev buttons
+                    slideSpeed: 300,
+                    loop: true,
+                    paginationSpeed: 400,
+                    singleItem: true,
+                    autoplay: !!scope.autoplay,
+                    autoplayTimeout: 3000,
+                    autoplayHoverPause: true,
+                    items: scope.items ? scope.items : 1,
+                    dots: true,
+                    mouseDrag: false
+                });
+            }, 500)
         }
     };
 }]);
