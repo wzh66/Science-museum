@@ -83,7 +83,7 @@ appServices.factory('authSvc', ['$q', '$http', '$location', '$cookieStore', func
         if ($cookieStore.get('auth')) {
             return $cookieStore.get('auth').key;
         } else {
-            $location.url('/service/auth/login?callbackUrl=' + $location.url());
+                $location.url('/service/auth/login?callbackUrl=' + $location.url());
         }
     };
 
@@ -113,6 +113,10 @@ appServices.factory('authSvc', ['$q', '$http', '$location', '$cookieStore', func
 
     service.type = function () {
         return $cookieStore.get('auth') ? $cookieStore.get('auth').type : '';
+    };
+
+    service.accountType = function () {
+        return $cookieStore.get('auth') ? $cookieStore.get('auth').accountType : '';
     };
 
     service.requestAuth = function () {

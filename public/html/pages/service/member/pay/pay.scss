@@ -71,6 +71,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 
     img {
       width: 36px;
@@ -104,3 +105,47 @@
     font-size: 24px;
   }
 }
+
+.card-content {
+  .hall-margin {
+    .hall-form-group {
+      width: 50%;
+      display: inline-block;
+      position: relative;
+      left: 40px;
+      margin: 8px 0;
+
+      label {
+        color: #666!important;
+        width: 84px;
+        height: auto;
+        display: inline-block;
+        text-align: right;
+      }
+      input{
+        width: 300px!important;
+        height: 50px;
+        padding-left:10px;
+        border: 1px solid #e7e7e7;
+        border-radius: 4px;
+      }
+
+        &.unit {
+          width: 100% !important;
+
+
+          label {
+            color: #666 !important;
+            width: 84px;
+            height: auto;
+            display: inline-block;
+            text-align: right;
+          }
+
+          input {
+            width: 250px !important;
+          }
+        }
+      }
+    }
+  }

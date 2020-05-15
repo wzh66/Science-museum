@@ -49,7 +49,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         });
     };
 
-    $scope.getData({key: $scope.key, orderType: 0});
+    $scope.getData({key: $scope.key, orderType: $scope.type});
 
 
     indexSvc.getImage(6).then(function success(res) {

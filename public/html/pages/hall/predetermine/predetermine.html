@@ -1,5 +1,3 @@
-
-
 <div class="index-content">
     <div class="owl-carousel">
         <div href="javascript:;"
@@ -75,15 +73,16 @@
                                            class="date laydate-icon"
                                            ng-click="endTime()"/>
                                     <div class="scheduled-time {{show ? 'show' : ''}}">
-                                        <p ng-repeat="date in dateList">
-                                            <span>{{date}}</span>
-                                            <span ng-repeat="item in reserveTimeType">
+                                        <p ng-repeat="item in dateList">
+                                            <span>{{item.reserveDate}}</span>
+                                            <span ng-repeat="type in item.reserveTypes">
                                                 <input type="checkbox"
                                                        class="checkbox"
-                                                       name="{{item.dictName}}"
-                                                       id="{{item.dictValue}}"
-                                                       ng-click="addReserve($event,date)"/>
-                                                <span class="other">{{item.dictName}}</span>
+                                                       ng-disabled="type.disabled"
+                                                       name="{{type.dictName}}"
+                                                       id="{{type.dictValue}}"
+                                                       ng-click="addReserve($event,item.reserveDate)"/>
+                                                <span class="other">{{type.dictName}}</span>
                                             </span>
                                         </p>
                                     </div>
@@ -121,7 +120,8 @@
                                     <div class="cost">
                                         <p><span>服务项目价格：</span><em>￥{{serviceCost}}元</em></p>
                                         <p><span>会场价格：</span><em>￥{{detail.dailyRentPrice*reserveList.length}}元</em></p>
-                                        <p><span>合计：</span><em>￥{{serviceCost + detail.dailyRentPrice*reserveList.length}}元</em></p>
+                                        <p><span>合计：</span><em>￥{{serviceCost +
+                                            detail.dailyRentPrice*reserveList.length}}元</em></p>
                                     </div>
                                 </div>
 

@@ -52,6 +52,50 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $scope.goodsList = res.result;
     });
 
+    $scope.getReserveTime = function (beginTime, endTime) {
+        var dateList = get(beginTime, endTime);
+        var _dateList = [];
+        var source = [];
+        hallSvc.getReserveTime(beginTime, endTime).then(function success(res) {
+            if (res.code === '0000') {
+                res.result.forEach(item => {
+                    item.reserveDate = timestampToTime(item.reserveDate);
+                    item.reserveTypes = item.reserveTypes.replace(/[^0-9]/ig, '');
+                    item.reserveTypes = item.reserveTypes.split('');
+                    dateList.forEach(date => {
+                        if (date === item.reserveDate) {
+                            _dateList.push({
+                                reserveDate: date,
+                                reserveTypes: item.reserveTypes
+                            });
+                        }
+                    });
+                });
+                dateList.forEach(item => {
+                    source.push({
+                        reserveDate: item,
+                        reserveTypes: JSON.parse(JSON.stringify($scope.reserveTimeType))
+                    });
+                });
+                source.forEach(item => {
+                    const index = getIndex(_dateList, 'reserveDate', item.reserveDate);
+                    let resultItem;
+                    if (index >= 0) {
+                        resultItem = _dateList[index];
+                    } else {
+                        resultItem = {reserveDate: item.reserveDate, reserveTypes: []};
+                    }
+                    resultItem.reserveTypes.forEach(reserveType => {
+                        item.reserveTypes[reserveType].disabled = true;
+                    });
+
+                });
+                $scope.dateList = source;
+            }
+        });
+    };
+
+
     $scope.startTime = function () {
         laydate({
             elem: '#start',
@@ -60,7 +104,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             choose: function (data) { //选择日期完毕的回调
                 $scope.params.beginTime = data;
                 if ($scope.params.endTime) {
-                    $scope.$apply($scope.dateList = get($scope.params.beginTime, $scope.params.endTime));
+                    $scope.getReserveTime($scope.params.beginTime, $scope.params.endTime);
                 }
             }
         });
@@ -74,7 +118,8 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             choose: function (data) { //选择日期完毕的回调
                 $scope.params.endTime = data;
                 $scope.$apply($scope.show = true);
-                $scope.$apply($scope.dateList = get($scope.params.beginTime, $scope.params.endTime));
+                $scope.getReserveTime($scope.params.beginTime, $scope.params.endTime);
+
             }
         });
     };

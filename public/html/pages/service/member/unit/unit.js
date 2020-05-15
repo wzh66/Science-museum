@@ -10,17 +10,45 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         });
 }]).controller('serviceMemberUnitController', ['$scope', '$cookieStore', '$location', 'indexSvc', 'authSvc', function ($scope, $cookieStore, $location, indexSvc, authSvc) {
     $scope.type = authSvc.type();
+    $scope.accountType = authSvc.accountType();
     $scope.user = authSvc.user();
+    $scope.FILE_PREFIX_URL = FILE_PREFIX_URL;
     $scope.params = {
         companyName: $scope.user.companyName,
         name: $scope.user.name,
         phone: $scope.user.phone,
-        wechat: $scope.user.wechat ? $scope.user.wechat : '-'
+        wechat: $scope.user.wechat ? $scope.user.wechat : '-',
+        licenseImg: $scope.user.licenseImg ? $scope.user.licenseImg : '',
+        idCard: $scope.user.idCard ? $scope.user.idCard : ''
     };
+    $scope.license = {
+        option: {
+            url: PREFIX_URL + 'uploadFile',
+            paramName: 'file',
+            maxFilesize: 5,
+            acceptedFiles: 'image/jpeg, images/jpg, image/png',
+            addRemoveLinks: true,
+            dictDefaultMessage: '营业执照',
+            dictRemoveFile: '更换',
+            dictCancelUpload: '取消',
+            params: {type: 'cust_cert', dir: 'cust_cert'}
+        },
+        callback: {
+            'success': function (file, res) {
+                $scope.params.licenseImg = res.result;
+                $scope.show = true;
+            }
+        }
+    };
+
     indexSvc.getImage(6).then(function success(res) {
         res.result.proimg = FILE_PREFIX_URL + res.result.proimg;
         $scope.img = res.result;
     });
+
+    if ($scope.user.auditStatus === 0){
+        $scope.$root.dialog.open(true, '系统提示', '您的账号正在审核中，审核通过之前暂时无法预定场馆，如您急需预定，可拨打020-28328300联系客服快速审核。', ['我知道了']);
+    }
 
     $scope.modifyCompanyName = function () {
         $('#companyName').removeClass('readonly');
@@ -74,16 +102,38 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $scope.hideWechat = false;
     };
 
-    $scope.submit = function () {
+    $scope.modifyIdCard = function () {
+        $('#idCard').removeClass('readonly');
+        $('#idCard').removeAttr('readonly');
+        $scope.hideIdCard = true;
+        $scope.show = true;
+    };
+
+    $scope.saveIdCard = function () {
+        $('#idCard').addClass('readonly');
+        $('#idCard').attr('readonly', 'readonly');
+        $scope.hideIdCard = false;
+    };
+
+    $scope.submit = function (form) {
         var body = {
             key: $scope.user.key,
-            companyName: $scope.params.companyName,
             name: $scope.params.name,
             phone: $scope.params.phone,
             wechat: $scope.params.wechat
         };
 
+        if ($scope.accountType === 0) {
+            body.idCard = $scope.params.idCard;
+        }
+
+        if ($scope.accountType === 1) {
+            body.licenseImg = $scope.params.licenseImg;
+            body.companyName = $scope.params.companyName;
+        }
+
         authSvc.updateMember(body).then(function success(res) {
+            console.log(res.result);
             if (res.code === '0000') {
                 $cookieStore.put('auth', res.result);
                 $scope.$root.dialog.open(true, '系统提示', '修改成功', ['我知道了']);
@@ -100,15 +150,11 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                 if ($scope.hideWechat) {
                     $scope.saveWechat();
                 }
+                if ($scope.hideIdCard) {
+                    $scope.saveIdCard();
+                }
             } else {
-                $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了'], function () {
-                        console.log(res);
-                        if (res.code === '1001') {
-                            $cookieStore.remove('auth');
-                            $location.path('/service/auth/login');
-                        }
-                    }
-                );
+                $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了']);
             }
         })
     };

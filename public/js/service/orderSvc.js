@@ -22,6 +22,16 @@ appServices.factory('orderSvc', ['$q', '$http', '$location', '$cookieStore', fun
         return d.promise;
     };
 
+    service.offlinePay = function (body) {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.post(PREFIX_URL + 'offlinePay' + formDataToUrl(body)).success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
     service.getOrderDetail = function (key, id) {//获取用户信息 promise对象
         var d = $q.defer();
         $http.get(PREFIX_URL + 'getOrderDetail&key=' + key + '&id=' + id).success(function (data) {
@@ -31,6 +41,8 @@ appServices.factory('orderSvc', ['$q', '$http', '$location', '$cookieStore', fun
         });
         return d.promise;
     };
+
+
 
     service.updateOrder = function (body) {//获取用户信息 promise对象
         var d = $q.defer();

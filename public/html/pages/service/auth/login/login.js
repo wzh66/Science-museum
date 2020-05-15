@@ -24,8 +24,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     $scope.timePromise = null;
     $scope.captchaObj = null;
 
-    if ($scope.user) {
-        console.log($scope.user);
+    if ($scope.user.key) {
         $location.path('/service/member/unit');
     }
 

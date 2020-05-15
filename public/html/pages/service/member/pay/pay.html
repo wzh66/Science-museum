@@ -1,5 +1,3 @@
-
-
 <div class="index-content">
     <div class="owl-carousel">
         <div href="javascript:;"
@@ -33,10 +31,73 @@
                                 <img ng-src="/images/service/wechat-pay.png"/>
                                 <span>微信支付</span>
                             </div>
-                            <div class="offline-pay">
+                            <div class="offline-pay {{show ? 'active' : ''}}" ng-click="offlinePay()">
                                 <img src="/images/service/offline-pay.png"/>
                                 <span>线下支付</span>
                             </div>
+                        </div>
+
+                        <div class="pure-g" ng-if="show"
+                             style="display: flex;justify-content: center;margin-top: 40px">
+                            <div class="pure-u-1-4" style="margin-right: 20px">
+                                <input id="paymentA"
+                                       name="paymentA"
+                                       class="block"
+                                       ng-model="params.paymentA"
+                                       type="hidden">
+                                <div style="background-image: url('{{params.paymentA | thumb}}')"
+                                     class="dropzone"
+                                     options="license.A.option"
+                                     callbacks="license.A.callback"
+                                     ng-dropzone></div>
+                            </div>
+
+                            <span>
+                                <img src="/images/service/add-p.png"
+                                     height="35"
+                                     width="35"
+                                     style="cursor: pointer"
+                                     ng-if="!paymentShow"
+                                     ng-click="addPayment()"/>
+                            </span>
+
+                            <div class="pure-u-1-4" ng-if="paymentShow" style="margin-right: 20px">
+                                <input id="paymentB"
+                                       name="paymentB"
+                                       class="block"
+                                       ng-model="params.paymentB"
+                                       type="hidden">
+                                <div style="background-image: url('{{params.paymentB | thumb}}')"
+                                     class="dropzone"
+                                     options="license.B.option"
+                                     callbacks="license.B.callback"
+                                     ng-dropzone></div>
+                            </div>
+
+                            <span>
+                                <img src="/images/service/remove.png"
+                                     height="35"
+                                     width="35"
+                                     ng-if="paymentShow"
+                                     style="cursor: pointer"
+                                     ng-click="hide()"/>
+                            </span>
+                        </div>
+
+                        <div class="hall-form-group unit"
+                             ng-if="show"
+                             style="width: 100%;display: flex;justify-content: center;align-items: center;margin-top: 30px">
+                            <label>支付时间：</label>
+                            <input name="payTime"
+                                   ng-model="params.payTime"
+                                   style="width: 420px!important;"/>
+                        </div>
+
+                        <div class="form-controls" ng-if="show">
+                            <button type="submit"
+                                    ng-click="submit(detail.orderNo)"
+                                    ng-if="show">提交
+                            </button>
                         </div>
 
                         <div class="pay-code" ng-if="detail.status === 0 || detail.status === 1">

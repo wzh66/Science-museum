@@ -1,5 +1,3 @@
-
-
 <div class="index-content">
     <div class="owl-carousel">
         <div href="javascript:;"
@@ -13,7 +11,8 @@
         <div class="card-left">
             <div class="card-margin">
                 <h2 class="card-title">
-                    {{type === 0 ? '个人信息' : '单位信息'}}<span>首页 > 会员中心 > {{type === 0 ? '个人信息' : '单位信息'}}</span>
+                    {{accountType === 0 ? '个人信息' :
+                    '单位信息'}}<span>首页 > 会员中心 > {{accountType === 0 ? '个人信息' : '单位信息'}}</span>
                 </h2>
                 <div class="hr"></div>
 
@@ -37,14 +36,15 @@
 
                                 </div>
 
-                                <div class="hall-form-group unit" ng-if="type === 1">
+                                <div class="hall-form-group unit" ng-if="accountType === 1">
                                     <label>企业名称：</label>
                                     <input id="companyName"
                                            readonly="readonly"
                                            class="readonly"
                                            ng-model="params.companyName"/>
                                     <span class="change {{hideCompanyName ? 'hideCompanyName' : ''}}"
-                                          ng-click="modifyCompanyName()">修改<img src="/images/service/edit.png"/></span>
+                                          ng-click="modifyCompanyName()"
+                                          ng-if="user.auditStatus === 0">修改<img src="/images/service/edit.png"/></span>
                                 </div>
 
                                 <div class="hall-form-group unit">
@@ -54,7 +54,8 @@
                                            class="readonly"
                                            ng-model="params.name"/>
                                     <span class="change {{hideName ? 'hideName' : ''}}"
-                                          ng-click="modifyName()">修改<img src="/images/service/edit.png"/></span>
+                                          ng-click="modifyName()"
+                                          ng-if="user.auditStatus === 0">修改<img src="/images/service/edit.png"/></span>
                                 </div>
 
                                 <div class="hall-form-group unit">
@@ -64,7 +65,19 @@
                                            class="readonly"
                                            ng-model="params.phone"/>
                                     <span class="change {{hidePhone ? 'hidePhone' : ''}}"
-                                          ng-click="modifyPhone()">修改<img src="/images/service/edit.png"/></span>
+                                          ng-click="modifyPhone()"
+                                          ng-if="user.auditStatus === 0">修改<img src="/images/service/edit.png"/></span>
+                                </div>
+
+                                <div class="hall-form-group unit" ng-if="accountType === 0">
+                                    <label>身份证号：</label>
+                                    <input id="idCard"
+                                           readonly="readonly"
+                                           class="readonly"
+                                           ng-model="params.idCard"/>
+                                    <span class="change {{hideIdCard ? 'hideIdCard' : ''}}"
+                                          ng-click="modifyIdCard()"
+                                          ng-if="user.auditStatus === 0">修改<img src="/images/service/edit.png"/></span>
                                 </div>
 
                                 <div class="hall-form-group unit">
@@ -74,12 +87,30 @@
                                            class="readonly"
                                            ng-model="params.wechat"/>
                                     <span class="change {{hideWechat ? 'hideWechat' : ''}}"
-                                          ng-click="modifyWechat()">修改<img src="/images/service/edit.png"/></span>
+                                          ng-click="modifyWechat()"
+                                          ng-if="user.auditStatus === 0">修改<img src="/images/service/edit.png"/></span>
                                 </div>
 
-                                <div style="display: flex;align-items: center;justify-content: center" ng-if="type === 1">
+                                <div style="display: flex;align-items: center;justify-content: center"
+                                     ng-if="accountType === 1 && user.auditStatus === 1">
                                     <div class="license">
-                                        <img src="/images/service/license.png"/>
+                                        <img ng-src="{{FILE_PREFIX_URL + user.licenseImg}}" ng-if="user.licenseImg"/>
+                                    </div>
+                                </div>
+
+                                <div class="pure-g" ng-if="accountType === 1 && user.auditStatus === 0"
+                                     style="display: flex;justify-content: center">
+                                    <div class="pure-u-1-2">
+                                        <input id="licenseFileId"
+                                               name="licenseImg"
+                                               class="block"
+                                               ng-model="params.licenseImg"
+                                               type="hidden">
+                                        <div style="background-image: url('{{params.licenseImg | thumb}}')"
+                                             class="dropzone"
+                                             options="license.option"
+                                             callbacks="license.callback"
+                                             ng-dropzone></div>
                                     </div>
                                 </div>
 
@@ -87,7 +118,8 @@
                                     <button type="submit"
                                             class="confirm"
                                             ng-click="submit(form)"
-                                            ng-if="show">确认修改</button>
+                                            ng-if="show">确认修改
+                                    </button>
                                 </div>
 
                             </div>
@@ -105,10 +137,10 @@
                 <ul>
                     <li>
                         <div class="square"></div>
-                        <a href="#/service/unit" class="active">{{type === 0 ? '个人信息' : '单位信息'}}</a></li>
+                        <a href="#/service/unit" class="active">{{accountType === 0 ? '个人信息' : '单位信息'}}</a></li>
                     <li>
                         <div class="square"></div>
-                        <a href="#/service/member/order/list">{{type === 0 ? '场馆登记记录' : '财务结算记录'}}</a></li>
+                        <a href="#/service/member/order/list">{{accountType === 0 ? '场馆登记记录' : '财务结算记录'}}</a></li>
                     <li>
                         <div class="square"></div>
                         <a href="#/service/member/invoice/list">发票管理</a></li>

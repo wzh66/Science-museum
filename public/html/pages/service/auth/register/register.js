@@ -33,6 +33,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             addRemoveLinks: true,
             dictDefaultMessage: '营业执照',
             dictRemoveFile: '更换',
+            dictCancelUpload: '取消',
             params: {type: 'cust_cert', dir: 'cust_cert'}
         },
         callback: {

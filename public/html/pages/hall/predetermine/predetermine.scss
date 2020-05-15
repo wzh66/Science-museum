@@ -156,25 +156,27 @@
                 }
               }
 
-              .form-controls{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-top: 40px;
-                button{
-                  width: 260px;
-                  height: 60px;
-                  color: #fff;
-                  font-size: 20px;
-                  background: #67ad37;
-                  border: none;
-                  border-radius: 4px;
-                }
-              }
+
             }
           }
         }
 
+      }
+
+      .form-controls{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 40px;
+        button{
+          width: 260px;
+          height: 60px;
+          color: #fff;
+          font-size: 20px;
+          background: #67ad37;
+          border: none;
+          border-radius: 4px;
+        }
       }
     }
   }
