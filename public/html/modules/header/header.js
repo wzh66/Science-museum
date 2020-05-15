@@ -1,12 +1,11 @@
 'use strict';
 
-app.directive('ngHeader', ['$location', 'appSvc', 'authSvc', function ($location, appSvc, authSvc) {
+app.directive('ngHeader', ['$location', '$rootScope', 'appSvc', 'authSvc', function ($location, $rootScope, appSvc, authSvc) {
     return {
         restrict: 'C',
         scope: {},
         templateUrl: 'modules/header/header.html',
         link: function (scope, element, attrs) {
-            scope.path = $location.path();
             appSvc.get().then(function success(res) {
                 scope.appData = res;
             });
@@ -19,13 +18,16 @@ app.directive('ngHeader', ['$location', 'appSvc', 'authSvc', function ($location
 
             scope.login = function () {
                 if (!scope.mobile) {
-                  $location.path('/auth/login');
+                    $location.path('/auth/login');
                 }
             };
 
             scope.logout = function () {
                 authSvc.logout();
             };
+            $rootScope.$on('$locationChangeStart', function () {//初始化全局控件的状态
+                scope.path = $location.path();
+            });
         }
     };
 }]);
