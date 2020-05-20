@@ -49,8 +49,48 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     });
 
     $scope.submit = function (form) {
-        if (form.$invalid) {
+        if (form.accountType.$error.required) {
+            alert('请选择账户类型!');
             return false;
+        }
+        if (form.account.$error.required || form.account.$error.pattern) {
+            if (form.account.$error.required) {
+                alert('请输入登录账号!');
+            } else {
+                alert('请输入正确的登录账号！');
+            }
+            return false;
+        }
+        if (form.pwd.$error.required) {
+            alert('请输入登录密码!');
+            return false;
+        }
+        if (form.confirmPwd.$error.required) {
+            alert('请再次输入密码!');
+            return false;
+        }
+        if ($scope.params.accountType === '1') {
+            if (form.company.$error.required) {
+                alert('请输入企业名称!');
+                return false;
+            }
+        }
+        if (form.name.$error.required) {
+            alert('请输入联系人姓名!');
+            return false;
+        }
+        if (form.phone.$error.required || form.phone.$error.pattern) {
+            if (form.phone.$error.required) {
+                alert('请输入联系电话!');
+            } else {
+                alert('请输入正确的联系电话！');
+            }
+            return false;
+        }
+        if (form.idCard) {
+            if (form.idCard.$error.pattern) {
+                alert('请输入正确的身份证号！');
+            }
         }
         var body = {
             account: $scope.params.account,

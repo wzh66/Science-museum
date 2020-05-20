@@ -38,7 +38,72 @@
   }
 }
 
-table {
+table.service{
+   background: #fff;
+   width: 100%;
+   border: 1px solid #f4f4f4;
+   thead {
+     tr {
+       background: #f4f4f4;
+       th {
+         font-size: 14px;
+         font-weight: 600;
+         color: #444;
+         line-height: 17px;
+         text-align: center;
+         padding: 14px 0;
+
+         &.user {
+           width: 16%;
+         }
+
+         &.grade {
+           width: 28%;
+         }
+
+         &.consumption {
+           width: 28%;
+         }
+
+         &.date {
+           width: 28%;
+         }
+       }
+     }
+   }
+
+   tbody {
+     tr {
+       border-bottom: 1px solid #f4f4f4;
+       td {
+         font-size: 14px;
+         color: #333;
+         line-height: 12px;
+         padding: 14px 0;
+         position: relative;
+         text-align: center;
+
+         &.user {
+           width: 16%;
+         }
+
+         &.grade {
+           width: 28%;
+         }
+
+         &.consumption {
+           width: 28%;
+         }
+
+         &.date {
+           width: 28%;
+         }
+       }
+     }
+   }
+ }
+
+table.pay{
   background: #fff;
   width: 100%;
   border: 1px solid #f4f4f4;
@@ -54,19 +119,22 @@ table {
         padding: 14px 0;
 
         &.user {
-          width: 16%;
+          width: 20%;
         }
 
         &.grade {
-          width: 28%;
+          width: 20%;
         }
 
         &.consumption {
-          width: 28%;
+          width: 20%;
         }
 
         &.date {
-          width: 28%;
+          width: 20%;
+        }
+        &.num{
+          width: 20%;
         }
       }
     }
@@ -74,7 +142,7 @@ table {
 
   tbody {
     tr {
-        border-bottom: 1px solid #f4f4f4;
+      border-bottom: 1px solid #f4f4f4;
       td {
         font-size: 14px;
         color: #333;
@@ -84,19 +152,22 @@ table {
         text-align: center;
 
         &.user {
-          width: 16%;
+          width: 20%;
         }
 
         &.grade {
-          width: 28%;
+          width: 20%;
         }
 
         &.consumption {
-          width: 28%;
+          width: 20%;
         }
 
         &.date {
-          width: 28%;
+          width: 20%;
+        }
+        &.num{
+          width: 20%;
         }
       }
     }

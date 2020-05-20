@@ -29,8 +29,17 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     });
 
     $scope.submit = function (form) {
-        if (form.$invalid) {
-            return false;
+        if (form.phone) {
+            if (form.phone.$error.pattern) {
+                alert('请输入正确的手机号！');
+                return false;
+            }
+        }
+        if (form.email) {
+            if (form.email.$error.pattern) {
+                alert('请输入正确的邮箱！');
+                return false;
+            }
         }
         var body = {
             name: $scope.params.name,

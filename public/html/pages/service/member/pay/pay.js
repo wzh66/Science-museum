@@ -35,7 +35,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             callback: {
                 'success': function (file, res) {
                     $scope.params.paymentA = res.result;
-                    $scope.payment.push($scope.params.paymentA);
+                    $scope.payment.push({
+                        fileId: $scope.params.paymentA
+                    });
+                    $scope.paymentShow = true;
                 }
             }
         },
@@ -54,7 +57,9 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             callback: {
                 'success': function (file, res) {
                     $scope.params.paymentB = res.result;
-                    $scope.payment.push($scope.params.paymentB);
+                    $scope.payment.push({
+                        fileId: $scope.params.paymentB
+                    })
                 }
             }
         }
@@ -69,6 +74,17 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $scope.detail = res.result;
     });
 
+    $scope.payTime = function () {
+        laydate({
+            elem: '#payTime',
+            istime: true,
+            format: 'YYYY-MM-DD hh:mm:ss', // 分隔符可以任意定义，该例子表示只显示年月
+            choose: function (data) { //选择日期完毕的回调
+                $scope.params.payTime = data;
+            }
+        });
+    };
+
     $scope.wechatPay = function (orderNo) {
         $scope.active = true;
         $scope.show = false;
@@ -79,12 +95,11 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         };
         orderSvc.payOrders(body).then(function success(res) {
             if (res.code === '0000') {
-                $scope.codeShow = true;
                 $scope.payCode = res.result.payCode;
                 $scope.internal = setInterval(function () {
                     orderSvc.getOrderDetail($scope.key, $scope.orderId).then(function success(res) {
                         if (res.result.isPaid === 1) {
-                            $scope.codeShow = false;
+                            $scope.active = false;
                             clearInterval($scope.internal);
                             $scope.$root.dialog.open(true, '系统提示', '您已成功支付', ['确认'], function () {
                                 $location.path('/service/member/order/list');
@@ -107,10 +122,12 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 
     $scope.addPayment = function () {
         $scope.paymentShow = true;
+        $scope.add = false;
     };
 
     $scope.hide = function () {
         $scope.paymentShow = false;
+        $scope.add = true;
     };
 
     $scope.submit = function (orderNo) {
@@ -120,15 +137,19 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             fileIds: JSON.stringify($scope.payment),
             payTime: $scope.params.payTime
         };
-        orderSvc.offlinePay(body).then(function success(res) {
-            if (res.code === '0000') {
-                $scope.$root.dialog.open(true, '系统提示', '线下支付凭证提交成功，请等待后台人员审核！', ['我知道了'], function () {
-                    $location.path('/service/member/order/list');
-                });
-            } else {
-                $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了']);
-            }
-        })
+        $scope.$root.dialog.open(true, '系统提示', '您确定要提交？', ['确定'], function () {
+            orderSvc.offlinePay(body).then(function success(res) {
+                if (res.code === '0000') {
+                    $scope.$root.dialog.open(true, '系统提示', '线下支付凭证提交成功，请等待后台人员审核！', ['我知道了'], function () {
+                        $location.path('/service/member/order/list');
+                    });
+                } else {
+                    $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了'], function () {
+                        return false;
+                    });
+                }
+            })
+        });
     };
 
 

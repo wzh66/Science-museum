@@ -219,15 +219,6 @@ function listToTree(list) {
 
 //根据开始日期和结束日期获取所有日期的方法
 function get(day1, day2) {
-    var getDate = function (str) {
-        var tempDate = getNowFormatDate();
-        tempDate = new Date(tempDate);
-        var list = str.split("-");
-        tempDate.setFullYear(list[0]);
-        tempDate.setMonth(list[1] - 1);
-        tempDate.setDate(list[2]);
-        return tempDate;
-    };
     var date1 = getDate(day1);
     var date2 = getDate(day2);
     if (date1.getTime() > date2.getTime()) {
@@ -295,7 +286,17 @@ function timestampToTime(timestamp) {
     return Y + M + D;
 }
 
-function minDate(){
+function minDate() {
     var now = new Date();
-    return now.getFullYear()+"-" + (now.getMonth()+1) + "-" + now.getDate();
+    return now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate();
+}
+
+function getDate(str) {
+    var tempDate = getNowFormatDate();
+    tempDate = new Date(tempDate);
+    var list = str.split("-");
+    tempDate.setFullYear(list[0]);
+    tempDate.setMonth(list[1] - 1);
+    tempDate.setDate(list[2]);
+    return tempDate;
 }

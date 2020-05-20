@@ -5,6 +5,11 @@
         width: 100%;
 
         .hall-form-group {
+          input[type=text], select {
+            &.error {
+              border:1px solid #961522;
+            }
+          }
           &.register{
             width: 100%!important;
             display: flex!important;

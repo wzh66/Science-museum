@@ -18,7 +18,7 @@
                 <div class="card-content">
                     <form name="form">
                         <div class="form-header">
-                            <input placeholder="请输入场馆名称"
+                            <input placeholder="请输入会议名称"
                                    class="hall"
                                    name="title"
                                    ng-model="params.title"/>
@@ -77,11 +77,11 @@
                                         style="background: #2497ce;!important;"
                                         class="finance">进行中
                                 </button>
-                                <button style="background: #333!important;"
+                                <!--<button style="background: #333!important;"
                                         class="finance"
                                         ng-if="item.status === 2"
                                         ng-click="cancel(item.id)">取消订单>
-                                </button>
+                                </button>-->
                                 <button style="background: #67ad37!important;"
                                         class="finance"
                                         ng-if="item.status === 3">已完成

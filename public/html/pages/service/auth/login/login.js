@@ -71,6 +71,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             return false;
         }
 
+
         var validate = $scope.captchaObj.getValidate();
         console.log(validate);
         if (!validate) {

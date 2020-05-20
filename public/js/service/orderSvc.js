@@ -43,7 +43,6 @@ appServices.factory('orderSvc', ['$q', '$http', '$location', '$cookieStore', fun
     };
 
 
-
     service.updateOrder = function (body) {//获取用户信息 promise对象
         var d = $q.defer();
         $http.post(PREFIX_URL + 'updateOrder' + formDataToUrl(body)).success(function (data) {
@@ -75,9 +74,9 @@ appServices.factory('orderSvc', ['$q', '$http', '$location', '$cookieStore', fun
         return d.promise;
     };
 
-    service.getOrderInvoiceDetail = function (id) {//获取用户信息 promise对象
+    service.getOrderInvoiceDetail = function (key, id) {//获取用户信息 promise对象
         var d = $q.defer();
-        $http.get(PREFIX_URL + 'getOrderInvoiceDetail&orderInvoiceId=' + id).success(function (data) {
+        $http.get(PREFIX_URL + 'getOrderInvoiceDetail&key=' + key + '&orderInvoiceId=' + id).success(function (data) {
             return d.resolve(data);
         }).error(function (error) {
             d.reject(error);

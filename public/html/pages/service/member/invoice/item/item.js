@@ -18,7 +18,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $scope.img = res.result;
     });
 
-    orderSvc.getOrderInvoiceDetail($scope.id).then(function success(res) {
+    orderSvc.getOrderInvoiceDetail($scope.key, $scope.id).then(function success(res) {
         $scope.detail = res.result;
     });
 

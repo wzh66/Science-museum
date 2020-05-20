@@ -125,16 +125,29 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     };
 
 
-    /*$scope.checkDate = function (data) {
-        if ($scope.params.beginTime <= data) {
-            $scope.params.endTime = data;
-            $scope.$apply($scope.show = true);
-        } else {
-            $scope.$root.dialog.open(true, '系统提示', '结束时间应大于或等于开始时间', ['我知道了']);
-        }
-    }*/
-
     $scope.submit = function (form) {
+        if ($scope.params.beginTime && $scope.params.endTime) {
+            if (getDate($scope.params.beginTime).getMonth() !== getDate($scope.params.endTime).getMonth()) {
+                alert('不允许提交跨月预约，请分别预约！');
+                return false;
+            }
+        }
+        if (form.attendance.$error.required) {
+            alert('请输入参会人数！');
+            return false;
+        }
+        if (form.contact.$error.required) {
+            alert('请输入联系人！');
+            return false;
+        }
+        if (form.phone.$error.required || form.phone.$error.pattern) {
+            if (form.phone.$error.required) {
+                alert('请输入联系电话!');
+            } else {
+                alert('请输入正确的联系电话！');
+            }
+            return false;
+        }
         var goodsList = [];
         $scope._goodsList.forEach(item => {
             var index = $scope.goodsList.findIndex(i => i.id === item);
@@ -166,7 +179,6 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         hallSvc.submitOrder(body).then(function success(res) {
             if (res.code === '0000') {
                 $location.path('/service/member/pay/' + res.result);
-                // window.location.href = '#/service/member/pay?orderId=' + res.result;
             } else {
                 $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了']);
             }

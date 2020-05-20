@@ -57,7 +57,7 @@
                                      height="35"
                                      width="35"
                                      style="cursor: pointer"
-                                     ng-if="!paymentShow"
+                                     ng-if="add"
                                      ng-click="addPayment()"/>
                             </span>
 
@@ -88,9 +88,12 @@
                              ng-if="show"
                              style="width: 100%;display: flex;justify-content: center;align-items: center;margin-top: 30px">
                             <label>支付时间：</label>
-                            <input name="payTime"
-                                   ng-model="params.payTime"
-                                   style="width: 420px!important;"/>
+                            <input id="payTime"
+                                   name="payTime"
+                                   style="width: 420px!important;"
+                                   autocomplete="off"
+                                   class="laydate-icon"
+                                   ng-click="payTime()"/>
                         </div>
 
                         <div class="form-controls" ng-if="show">
@@ -104,7 +107,7 @@
                             <p>等待后台客服人员确认</p>
                         </div>
 
-                        <div class="pay-code" ng-if="codeShow">
+                        <div class="pay-code" ng-if="active">
                             <qrcode ng-if="payCode" data="{{payCode}}" href="{{payCode}}" size="243"></qrcode>
                             <p>请用微信扫描二维码支付</p>
                         </div>
@@ -121,7 +124,7 @@
                 <ul>
                     <li>
                         <div class="square"></div>
-                        <a href="#/service/unit" class="active">{{type === 0 ? '个人信息' : '单位信息'}}</a></li>
+                        <a href="#/service/member/unit" class="active">{{type === 0 ? '个人信息' : '单位信息'}}</a></li>
                     <li>
                         <div class="square"></div>
                         <a href="#/service/member/order/list">{{type === 0 ? '场馆登记记录' : '财务结算记录'}}</a></li>

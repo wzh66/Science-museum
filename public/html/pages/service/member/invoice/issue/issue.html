@@ -39,11 +39,11 @@
                                                style="height: 30px"/>
                                         <div class="record" style="margin: 0 0 10px;border: none">
                                             <p>{{item.type === 0 ? '发票抬头'  : '单位名称'}}：<span>{{item.companyName}}</span></p>
-                                            <p ng-if="item.type === 1">单位地址：<span>{{item.address}}</span></p>
-                                            <p ng-if="item.type === 1">银行账号：<span>{{item.bankAccount}}</span></p>
-                                            <p ng-if="item.type === 1">税&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：<span>{{item.number}}</span></p>
-                                            <p ng-if="item.type === 1">开户银行：<span>{{item.bank}}</span></p>
-                                            <p ng-if="item.type === 1">电话号码：<span>{{item.phone}}</span></p>
+                                            <p ng-if="item.invoiceType === 1">单位地址：<span>{{item.address}}</span></p>
+                                            <p ng-if="item.invoiceType === 1">银行账号：<span>{{item.bankAccount}}</span></p>
+                                            <p ng-if="item.invoiceType === 1">税&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：<span>{{item.number}}</span></p>
+                                            <p ng-if="item.invoiceType === 1">开户银行：<span>{{item.bank}}</span></p>
+                                            <p ng-if="item.invoiceType === 1">电话号码：<span>{{item.phone}}</span></p>
                                             <p>发票抬头类型：<span>{{item.invoiceType === 0 ? '个人' : '单位'}}</span></p>
                                             <p>发票类型：<span>{{item.type === 0 ? '普通发票' : '专用发票'}}</span></p>
                                         </div>
@@ -73,7 +73,7 @@
                         <a href="#/service/member/unit">{{type === 0 ? '个人信息' : '单位信息'}}</a></li>
                     <li>
                         <div class="square"></div>
-                        <a href="#/service/member/order/list">{{type === 0 ? '场馆登记记录' : '财务结算记录'}}</a></li>>
+                        <a href="#/service/member/order/list">{{type === 0 ? '场馆登记记录' : '财务结算记录'}}</a></li>
                     <li>
                         <div class="square"></div>
                         <a href="#/service/member/invoice/list" class="active">发票管理</a></li>

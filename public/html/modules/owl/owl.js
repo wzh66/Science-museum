@@ -7,7 +7,8 @@ app.directive('ngOwl', ['$location', 'appSvc', function ($location, appSvc) {
             items: '=items',
             images: '=images',
             autoplay: '=autoplay',
-            url: '=url'
+            hallurl: '=hallurl',
+            newsurl: '=newsurl'
         },
         templateUrl: 'modules/owl/owl.html',
         link: function (scope, element, attrs) {

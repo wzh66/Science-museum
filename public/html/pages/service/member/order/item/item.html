@@ -1,5 +1,3 @@
-
-
 <div class="index-content">
     <div class="owl-carousel">
         <div href="javascript:;"
@@ -13,7 +11,8 @@
         <div class="card-left">
             <div class="card-margin">
                 <h2 class="card-title">
-                    {{type === 0 ? '场馆登记订单详情' : '财务结算订单详情'}}<span>首页 > 会员中心 > {{type === 0 ? '场馆登记订单详情' : '财务结算订单详情'}}</span>
+                    {{type === 0 ? '场馆登记订单详情' :
+                    '财务结算订单详情'}}<span>首页 > 会员中心 > {{type === 0 ? '场馆登记订单详情' : '财务结算订单详情'}}</span>
                 </h2>
                 <div class="hr"></div>
                 <div class="card-content">
@@ -85,7 +84,7 @@
                                 </div>
 
                                 <p class="form-title" style="font-size: 16px">服务项目：</p>
-                                <table cellpadding="0" cellspacing="0" border="0">
+                                <table cellpadding="0" cellspacing="0" border="0" class="service">
                                     <thead>
                                     <tr>
                                         <th class="user">服务名称</th>
@@ -103,6 +102,82 @@
                                     </tr>
                                     </tbody>
                                 </table>
+
+                                <p class="form-title" style="font-size: 16px">支付凭证/第三方订单号：</p>
+                                <!--<div class="hall-form" ng-repeat="item in detail.payList">
+
+                                    <div class="hall-form-group item-f" ng-if="item.outTradeNo">
+                                        <label>微信支付订单号：</label>
+                                        <span>{{item.outTradeNo}}</span>
+                                    </div>
+
+                                    <div class="hall-form-group item-f">
+                                        <label>创建时间：</label>
+                                        <span>{{item.createTime | date : 'yyyy-MM-dd hh:mm:ss'}}</span>
+                                    </div>
+
+                                    <div class="hall-form-group item-f" ng-if="item.payedTime">
+                                        <label>支付时间：</label>
+                                        <span>{{item.payedTime | date : 'yyyy-MM-dd hh:mm:ss'}}</span>
+                                    </div>
+
+                                    <div class="hall-form-group item-f">
+                                        <label>支付状态：</label>
+                                        <span ng-if="item.status === 0">未支付</span>
+                                        <span ng-if="item.status === 1">已支付</span>
+                                        <span ng-if="item.status === 2">部分退款</span>
+                                        <span ng-if="item.status === 3">全额退款</span>
+                                    </div>
+
+                                    <div class="hall-form-group item-f" ng-if="item.tradeType">
+                                        <label>支付类型：</label>
+                                        <span>{{item.tradeType === 'offline' ? '线下支付' : '微信支付'}}</span>
+                                    </div>
+
+                                    <div class="hall-form-group item-f" ng-if="item.payFileId">
+                                        <label>线下支付凭证：</label>
+                                        <span>
+                                            <a href="{{FILE_PREFIX_URL + item.payFileId}}"
+                                               style="color: #3399FF"
+                                               target="_blank">支付凭证</a>
+                                        </span>
+
+                                    </div>
+
+
+                                </div>-->
+                                <table cellpadding="0" cellspacing="0" border="0" class="pay">
+                                    <thead>
+                                    <tr>
+                                        <th class="user">创建时间</th>
+                                        <th class="grade">支付时间</th>
+                                        <th class="consumption">支付状态</th>
+                                        <th class="date">支付类型</th>
+                                        <th class="num">支付凭证</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="item in detail.payList">
+                                        <td class="user">{{item.createTime | date : 'yyyy-MM-dd hh:mm:ss'}}</td>
+                                        <td class="grade">{{item.payedTime | date : 'yyyy-MM-dd hh:mm:ss'}}</td>
+                                        <td class="consumption">
+                                            <span ng-if="item.status === 0">未支付</span>
+                                            <span ng-if="item.status === 1">已支付</span>
+                                            <span ng-if="item.status === 2">部分退款</span>
+                                            <span ng-if="item.status === 3">全额退款</span>
+                                        </td>
+                                        <td class="date">{{item.tradeType === 'offline' ? '线下支付' : '微信支付'}}</td>
+                                        <td class="num">
+                                            <a href="{{FILE_PREFIX_URL + item.payFileId}}"
+                                               style="color: #3399FF"
+                                               ng-if="item.payFileId"
+                                               target="_blank">支付凭证</a>
+                                            <span ng-if="item.outTradeNo">{{item.outTradeNo}}</span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
 
                                 <div class="line" style="margin: 40px 0"></div>
                                 <div class="service-cost">
@@ -140,7 +215,8 @@
                         <a href="#/service/member/unit">{{type === 0 ? '个人信息' : '单位信息'}}</a></li>
                     <li>
                         <div class="square"></div>
-                        <a href="#/service/member/order/list" class="active">{{type === 0 ? '场馆登记记录' : '财务结算记录'}}</a></li>
+                        <a href="#/service/member/order/list" class="active">{{type === 0 ? '场馆登记记录' : '财务结算记录'}}</a>
+                    </li>
                     <li>
                         <div class="square"></div>
                         <a href="#/service/member/invoice/list">发票管理</a></li>

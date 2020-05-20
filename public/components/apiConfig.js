@@ -1,4 +1,4 @@
 var apiConfig = {
-    host: 'http://192.168.31.89:8080/',
+    host: 'http://login.ai-fox.net/musWeb/',
     apiHost: '/api'
 };

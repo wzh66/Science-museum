@@ -79,14 +79,21 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     };
 
     $scope.cancel = function (id) {
-        orderSvc.cancelOrder($scope.key, id).then(function success(res) {
-            if (res.code === '0000') {
-                $scope.$root.dialog.open(true, '系统提示', res.result, ['我知道了']);
-            } else {
-                $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了']);
-            }
-            $scope.getData({key: $scope.key});
-        })
+        $scope.$root.dialog.open(true, '系统提示', '您确定要取消订单？', ['确定'], function () {
+            orderSvc.cancelOrder($scope.key, id).then(function success(res) {
+                if (res.code === '0000') {
+                    $scope.$root.dialog.open(true, '系统提示', res.result, ['我知道了'], function () {
+                        return false;
+                    });
+                } else {
+                    $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了'], function () {
+                        return false;
+                    });
+                }
+                $scope.getData({key: $scope.key});
+            })
+        });
+
     }
 
 

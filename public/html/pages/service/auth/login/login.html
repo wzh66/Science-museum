@@ -22,9 +22,17 @@
                             <div class="login-input">
                                 <img src="/images/service/user.png" height="12" width="12"/>
                                 <input name="loginid"
-                                       placeholder="{{type === 1 ? '请输入登录账号' : '请输入手机号码'}}"
+                                       ng-if="type === 1"
+                                       placeholder="请输入登录账号"
                                        ng-model="params.loginid"
                                        required/>
+                                <input name="loginid"
+                                       ng-if="type === 0"
+                                       placeholder="请输入手机号码"
+                                       ng-pattern="/^1(3|4|5|6|7|8|9)\d{9}$/"
+                                       ng-model="params.loginid"
+                                       required/>
+
                             </div>
                             <div class="login-input" ng-if="type === 1">
                                 <img src="/images/service/lock.png" height="12" width="12"/>

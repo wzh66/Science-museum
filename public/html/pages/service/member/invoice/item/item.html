@@ -1,5 +1,3 @@
-
-
 <div class="index-content">
     <div class="owl-carousel">
         <div href="javascript:;"
@@ -23,31 +21,31 @@
                             <div class="hall-form">
 
                                 <div class="hall-form-group item-f">
-                                    <label>单位名称：</label>
+                                    <label>{{detail.type === 0 ? '发票抬头' : '单位名称'}}：</label>
                                     <span>{{detail.companyName}}</span>
                                 </div>
 
-                                <div class="hall-form-group item-f">
+                                <div class="hall-form-group item-f" ng-if="detail.invoiceType === 1">
                                     <label>单位地址：</label>
                                     <span>{{detail.address}}</span>
                                 </div>
 
-                                <div class="hall-form-group item-f">
+                                <div class="hall-form-group item-f" ng-if="detail.invoiceType === 1">
                                     <label>银行账号：</label>
                                     <span>{{detail.bankAccount}}</span>
                                 </div>
 
-                                <div class="hall-form-group item-f">
+                                <div class="hall-form-group item-f" ng-if="detail.invoiceType === 1">
                                     <label>税号：</label>
                                     <span>{{detail.number}}</span>
                                 </div>
 
-                                <div class="hall-form-group item-f">
+                                <div class="hall-form-group item-f" ng-if="detail.invoiceType === 1">
                                     <label>开户银行：</label>
                                     <span>{{detail.bank}}</span>
                                 </div>
 
-                                <div class="hall-form-group item-f">
+                                <div class="hall-form-group item-f" ng-if="detail.invoiceType === 1">
                                     <label>电话号码：</label>
                                     <span>{{detail.phone}}</span>
                                 </div>
@@ -67,10 +65,8 @@
                                    class="link"
                                    ng-if="detail.invoiceFileId"
                                    target="_blank">附件</a>
-                                <div class="hall-form-group item-f" ng-if="!detail.invoiceFileId">
-                                    <label>发票正在开具中...</label>
-                                </div>
-
+                                <label style="margin-left: 100px;"
+                                       ng-if="!detail.invoiceFileId">发票正在开具中...</label>
                             </div>
                         </form>
                     </div>

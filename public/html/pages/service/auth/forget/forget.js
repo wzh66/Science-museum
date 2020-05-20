@@ -36,7 +36,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         }
         var body = {
             type: $scope.type === '0' ? 4 : 3,
-            phone: $scope.params.phone,
+            phone: $scope.type === '0' ? $scope.params.phone : $scope.user.phone,
             validCode: $scope.params.validCode
         };
         body.pwd = $scope.params.pwd;
@@ -111,7 +111,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             return false;
         }
 
-        if ($scope.type === '0'){
+        if ($scope.type === '0') {
             if (form.phone.$error.required || form.phone.$error.pattern) {
                 if (form.phone.$error.required) {
                     alert('请输入手机号码');

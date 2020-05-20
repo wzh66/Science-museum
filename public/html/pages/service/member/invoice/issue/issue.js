@@ -27,6 +27,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     };
 
     $scope.submit = function (form) {
+        if (!$scope.invoiceId) {
+            $scope.$root.dialog.open(true, '系统提示', '请选择您的开票信息！', ['我知道了']);
+            return false;
+        }
         var body = {
             key: $scope.key,
             orderId: $scope.id,
@@ -36,11 +40,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         orderSvc.openInvoice(body).then(function success(res) {
             if (res.code === '0000') {
                 $scope.$root.dialog.open(true, '系统提示', '提交成功', ['我知道了'], function () {
-                    if ($scope.type === 0) {
-                        $location.path('/service/member/registration');
-                    } else {
-                        $location.path('/service/member/finance');
-                    }
+                    $location.path('/service/member/order/list');
                 });
             } else {
                 $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了']);

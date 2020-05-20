@@ -21,7 +21,7 @@
                         <div class="consult-list">
                             <div class="consult-title"><span>咨询列表</span></div>
                             <div class="consult-content" ng-repeat="item in consultList">
-                                <div class="question"><span>Q</span><em>{{item.content}}[梁建国 于 {{item.createTime | date :
+                                <div class="question"><span>Q</span><em>{{item.content}}[{{item.name}} 于 {{item.createTime | date :
                                     'yyyy-MM-dd HH:mm:ss'}} 提问]</em></div>
                                 <div class="answer">
                                     <span>A</span>
