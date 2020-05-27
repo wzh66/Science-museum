@@ -8,8 +8,9 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'pages/hall/reserve/reserve.html',
             controller: "hallReserveController"
         });
-}]).controller('hallReserveController', ['$scope', '$cookieStore', '$location', 'indexSvc', 'hallSvc', function ($scope, $cookieStore, $location, indexSvc, hallSvc) {
+}]).controller('hallReserveController', ['$scope', '$cookieStore', '$location', 'indexSvc', 'hallSvc', 'authSvc', function ($scope, $cookieStore, $location, indexSvc, hallSvc, authSvc) {
     $scope.FILE_PREFIX_URL = FILE_PREFIX_URL;
+    $scope.type = authSvc.type();
     $scope.params = {
         meetingTypeId: '',
         beginTime: '',
@@ -19,6 +20,13 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         goods: []
     };
     $scope.goodsList = [];
+
+    if ($scope.type === 2) {
+        $scope.$root.dialog.open(true, '系统提示', '合作单位无法预定场馆!', ['我知道了'], function () {
+            window.history.back();
+        });
+    }
+
     indexSvc.getImage(5).then(function success(res) {
         res.result.proimg = FILE_PREFIX_URL + res.result.proimg;
         $scope.img = res.result;

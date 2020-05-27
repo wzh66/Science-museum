@@ -16,6 +16,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         totalPages: 1,
         page: 1
     };
+    $scope.images = [];
 
     indexSvc.getImage(5).then(function success(res) {
         res.result.proimg = FILE_PREFIX_URL + res.result.proimg;
@@ -23,16 +24,18 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     });
 
     $scope.getData = function () {
+        $scope.images = [];
         var body = JSON.parse(JSON.stringify($scope.body));
         body.page = $scope.page.page;
         hallSvc.venueQuery(body).then(function success(res) {
             $scope.result = res.result.list;
+            $scope.result.forEach(item => {
+                $scope.images.push($scope.FILE_PREFIX_URL + item.logo);
+            });
             $scope.page.totalPages = res.result.totalPages;
             $scope.page.total = res.result.total;
         });
     };
-
-    $scope.getData();
 
 
     $scope.$watch('page.page', function (n, o) {

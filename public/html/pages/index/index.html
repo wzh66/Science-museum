@@ -1,5 +1,5 @@
 <div class="index-content">
-    <div class="banner ng-owl" autoplay="true" images="imageList" hallurl="true"></div>
+    <div class="banner ng-owl" autoplay="true" images="imageList" ng-if="imageList"></div>
     <div class="announcement">
         <img src="/images/index/notice.png" height="20" width="19"/>
         <span>公告栏：</span>
@@ -17,10 +17,10 @@
                 <a href="#/information/list"><span class="more">更多></span></a>
             </h2>
             <div class="ng-owl newsBanner"
+                 ng-if="newsImageList"
                  autoplay="true"
                  images="newsImageList"
-                 items="1"
-                 newsurl="true">
+                 items="1">
             </div>
         </div>
 
@@ -32,14 +32,14 @@
             <!--<i style="left: 5px"><img src="/images/index/prev.png" height="16" width="9"/></i>-->
             <div class="ng-owl"
                  images="hallImageList"
-                 hallurl="true">
+                 ng-if="hallImageList">
             </div>
             <!--<i style="right: 5px"><img src="/images/index/next.png" height="16" width="9"/></i>-->
             <div class="synopsis_service">
 
                 <a style="margin: 23px 10px 0 0" href="#/hall/reserve">
                     <img src="/images/index/reserve.png" height="50" width="59"/>
-                    <em>会馆预定</em>
+                    <em>场馆预定</em>
                 </a>
 
 
@@ -106,7 +106,7 @@
             </h2>
             <div class="review_images"
                  style="width: 100%;height: 190px;border: 5px solid #cccc;border-radius: 5px;margin-top: 5px">
-                <div class="ng-owl" items="4" images="reviewImageList" hallurl="true"></div>
+                <div class="ng-owl" items="4" images="reviewImageList" ng-if="reviewImageList"></div>
             </div>
         </div>
     </div>

@@ -6,13 +6,11 @@ app.directive('ngOwl', ['$location', 'appSvc', function ($location, appSvc) {
         scope: {
             items: '=items',
             images: '=images',
-            autoplay: '=autoplay',
-            hallurl: '=hallurl',
-            newsurl: '=newsurl'
+            autoplay: '=autoplay'
         },
         templateUrl: 'modules/owl/owl.html',
         link: function (scope, element, attrs) {
-            setTimeout(() => {
+            scope.renderFinish = function(){
                 $(element).find('.owl-carousel').owlCarousel({
                     navigation: true, // Show next and prev buttons
                     slideSpeed: 300,
@@ -26,7 +24,7 @@ app.directive('ngOwl', ['$location', 'appSvc', function ($location, appSvc) {
                     dots: true,
                     mouseDrag: false
                 });
-            }, 500)
+            };
         }
     };
 }]);

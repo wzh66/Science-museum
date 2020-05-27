@@ -1,40 +1,42 @@
 <!doctype html>
 <html lang="en" id="ng-app" ng-app="app" class="{{state.bodyClass}}">
 <head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <base href="/"/>
-  <meta charset="utf-8">
-  <title>广州科学馆</title>
-  <meta name="keywords" content="科学馆">
-  <meta name="description" content="科学馆">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://cdn.bootcss.com/dropzone/5.4.0/min/dropzone.min.css" rel="stylesheet">
-  <link href="https://cdn.bootcss.com/pure/1.0.0/pure-min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
-  <link rel="stylesheet" type="text/css" href="https://at.alicdn.com/t/font_1427441_ocz6ko6ler.css">
-  <link rel="stylesheet" href="/components/owl/owl.carousel.min.css">
-  <link rel="stylesheet" href="/components/owl/owl.theme.default.min.css">
-  <link rel="stylesheet" href="/components/laydate/laydate.css">
-  <script src="https://cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js"></script>
-  <script src="https://cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
-  <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-  <script src="https://cdn.bootcss.com/es5-shim/4.5.9/es5-shim.min.js"></script>
-  <script src="https://cdn.bootcss.com/es5-shim/4.5.9/es5-sham.min.js"></script>
-  <style>
-    [ng\:cloak],[ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-      display: none ! important;
-    }
-    .ng-header {
-      margin: 0 auto;
-      width: 1200px;
-      position: relative;
-    }
-  </style>
-  <script type="text/javascript">
-      var tampTime = new Date().getTime();
-      //var ngVersion = "1.6.3";
-      document.write("<link rel='stylesheet' href='/css/1.0.0/app.min.css?" + tampTime + "'>");
-  </script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <base href="/"/>
+    <meta charset="utf-8">
+    <title>广州科学馆</title>
+    <meta name="keywords" content="科学馆">
+    <meta name="description" content="科学馆">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://cdn.bootcss.com/dropzone/5.4.0/min/dropzone.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/pure/1.0.0/pure-min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://at.alicdn.com/t/font_1427441_ocz6ko6ler.css">
+    <link rel="stylesheet" href="/components/owl/owl.carousel.min.css">
+    <link rel="stylesheet" href="/components/owl/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/components/laydate/laydate.css">
+    <link type="text/css" rel="stylesheet" href="/components/lightbox/angular-lightbox.css">
+    <script src="https://cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="https://cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://cdn.bootcss.com/es5-shim/4.5.9/es5-shim.min.js"></script>
+    <script src="https://cdn.bootcss.com/es5-shim/4.5.9/es5-sham.min.js"></script>
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none ! important;
+        }
+
+        .ng-header {
+            margin: 0 auto;
+            width: 1200px;
+            position: relative;
+        }
+    </style>
+    <script type="text/javascript">
+        var tampTime = new Date().getTime();
+        //var ngVersion = "1.6.3";
+        document.write("<link rel='stylesheet' href='/css/1.0.0/app.min.css?" + tampTime + "'>");
+    </script>
 </head>
 
 <body class="{{state.bodyClass}}">
@@ -42,15 +44,16 @@
 <div class="ng-banner"></div>
 <div class="ng-header"></div>
 <div id="container" class="page-wrapper">
-  <div id="content-container" class="view-container">
-    <div id="ng-view" ng-view class="view-frame"></div>
-  </div>
-  <ng-share></ng-share>
-  <ng-dialog></ng-dialog>
-  <ng-preview></ng-preview>
+    <div id="content-container" class="view-container">
+        <div id="ng-view" ng-view class="view-frame"></div>
+    </div>
+    <ng-share></ng-share>
+    <ng-dialog></ng-dialog>
+    <ng-preview></ng-preview>
 </div>
 <div class="ng-footer"></div>
 <div class="ng-top"></div>
+
 <script src="https://cdn.bootcss.com/dropzone/5.4.0/min/dropzone.min.js"></script>
 <script src="https://static.geetest.com/static/tools/gt.js"></script>
 <script src="https://cdn.bootcss.com/json2/20160511/json2.min.js"></script>
@@ -72,15 +75,17 @@
     document.write("<script src='/components/1.0.0/template.tpl.js?" + tampTime + "'><\/script>");
     document.write("<script src='/components/1.0.0/public.min.js?" + tampTime + "'><\/script>");
 </script>
+
 <script>
 
-  var _hmt = _hmt || [];
-  (function() {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?1ffafbf715ad85b2496e69c5915c51c1";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-  })();
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1ffafbf715ad85b2496e69c5915c51c1";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
 </script>
+
 </body>
 </html>

@@ -12,6 +12,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     $scope.id = $routeParams.id;
     $scope.key = authSvc.key();
     $scope.type = authSvc.type();
+    $scope.FILE_PREFIX_URL = FILE_PREFIX_URL;
     indexSvc.getImage(6).then(function success(res) {
         res.result.proimg = FILE_PREFIX_URL + res.result.proimg;
         $scope.img = res.result;
@@ -23,6 +24,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                 item.reserveTypes = item.reserveTypes.split('');
             }
         );
+        res.result.meetingType = $scope.getMeetingTypeName(res.result.meetingType);
         $scope.detail = res.result;
     });
 
@@ -31,8 +33,11 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     });
 
     $scope.getMeetingTypeName = function (value) {
-        var index = $scope.meetingType.findIndex(item => item.dictValue === value);
-        return $scope.meetingType[index].dictName;
+        if (value){
+            var index = $scope.meetingType.findIndex(item => item.dictValue === value);
+            return $scope.meetingType[index].dictName;
+        }
+
     };
 
     $scope.return = function () {

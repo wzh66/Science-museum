@@ -87,9 +87,14 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             }
             return false;
         }
-        if (form.idCard) {
-            if (form.idCard.$error.pattern) {
-                alert('请输入正确的身份证号！');
+        if ($scope.params.accountType === '0') {
+            if (form.idCard.$error.required || form.idCard.$error.pattern) {
+                if (form.idCard.$error.required) {
+                    alert('请输入身份证号!');
+                } else {
+                    alert('请输入正确的身份证号！');
+                }
+                return false;
             }
         }
         var body = {

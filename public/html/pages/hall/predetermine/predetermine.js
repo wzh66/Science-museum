@@ -11,6 +11,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 }]).controller('hallPredetermineController', ['$scope', '$routeParams', '$location', 'indexSvc', 'hallSvc', 'authSvc', function ($scope, $routeParams, $location, indexSvc, hallSvc, authSvc) {
     $scope.id = $routeParams.id;
     $scope.key = authSvc.key();
+    $scope.type = authSvc.type();
     $scope.FILE_PREFIX_URL = FILE_PREFIX_URL;
     $scope.params = {
         meetingName: '',
@@ -30,6 +31,13 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     $scope.detail = {
         dailyRentPrice: ''
     };
+
+    if ($scope.type === 2) {
+        $scope.$root.dialog.open(true, '系统提示', '合作单位无法预定场馆!', ['我知道了'], function () {
+            window.history.back();
+        });
+    }
+
     indexSvc.getImage(4).then(function success(res) {
         res.result.proimg = FILE_PREFIX_URL + res.result.proimg;
         $scope.img = res.result;
@@ -56,7 +64,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         var dateList = get(beginTime, endTime);
         var _dateList = [];
         var source = [];
-        hallSvc.getReserveTime(beginTime, endTime).then(function success(res) {
+        hallSvc.getReserveTime($scope.id,beginTime, endTime).then(function success(res) {
             if (res.code === '0000') {
                 res.result.forEach(item => {
                     item.reserveDate = timestampToTime(item.reserveDate);

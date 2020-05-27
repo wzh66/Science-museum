@@ -8,7 +8,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'pages/service/member/apply/list/list.html',
             controller: "serviceMemberApplyListController"
         });
-}]).controller('serviceMemberApplyListController', ['$scope', 'indexSvc', 'authSvc', 'applySvc', 'hallSvc', function ($scope, indexSvc, authSvc, applySvc, hallSvc) {
+}]).controller('serviceMemberApplyListController', ['$scope', '$location', 'indexSvc', 'authSvc', 'applySvc', 'hallSvc', function ($scope, $location, indexSvc, authSvc, applySvc, hallSvc) {
     $scope.key = authSvc.key();
     $scope.params = {
         title: '',
@@ -43,6 +43,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     $scope.beginTime = function () {
         laydate({
             elem: '#start',
+            min: minDate(),
             format: 'YYYY-MM-DD', // 分隔符可以任意定义，该例子表示只显示年月
             choose: function (data) { //选择日期完毕的回调
                 $scope.params.beginTime = data;
@@ -53,6 +54,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     $scope.endTime = function () {
         laydate({
             elem: '#end',
+            min: minDate(),
             format: 'YYYY-MM-DD', // 分隔符可以任意定义，该例子表示只显示年月
             choose: function (data) { //选择日期完毕的回调
                 $scope.params.endTime = data;
@@ -61,6 +63,12 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     };
 
     $scope.submit = function (form) {
+
+        if (form.phone.$error.pattern) {
+            alert('请输入正确的联系电话！');
+            return false;
+        }
+
         var body = {
             key: $scope.key,
             title: $scope.params.title,
@@ -77,14 +85,15 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 
         applySvc.apply(body).then(function success(res) {
             if (res.code === '0000') {
-
+                $scope.$root.dialog.open(true, '系统提示', '提交成功！', ['我知道了'], function () {
+                    $location.path('/service/member/apply/record');
+                });
             } else {
                 $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了']);
             }
         })
 
     };
-
 
 
 }]);

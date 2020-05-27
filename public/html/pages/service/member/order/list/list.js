@@ -43,13 +43,19 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         orderSvc.getOrderList(body).then(function success(res) {
             if (res.code === '0000') {
                 $scope.order = res.result.list;
+                $scope.params.beginTime = '';
+                $scope.params.endTime = '';
             } else {
                 $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了']);
             }
         });
     };
 
-    $scope.getData({key: $scope.key, orderType: $scope.type});
+    if ($scope.type === 0) {
+        $scope.getData({key: $scope.key, orderType: $scope.type});
+    } else {
+        $scope.getData({key: $scope.key});
+    }
 
 
     indexSvc.getImage(6).then(function success(res) {
@@ -64,8 +70,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             reserveBeginTime: $scope.params.beginTime,
             reserveEndTime: $scope.params.endTime,
             isPaid: $scope.params.isPaid,
-            orderType: $scope.type
         };
+        if ($scope.type === 0) {
+            body.orderType = $scope.type;
+        }
         $scope.getData(body);
     };
 

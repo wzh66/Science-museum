@@ -15,7 +15,7 @@
                     {{type === 0 ? '场馆登记记录' : '财务结算记录'}}<span>首页 > 会员中心 > {{type === 0 ? '场馆登记记录' : '财务结算记录'}}</span>
                 </h2>
                 <div class="hr"></div>
-                <div class="card-content">
+                <div class="card-content" ng-if="meetingType">
                     <form name="form">
                         <div class="form-header">
                             <input placeholder="请输入会议名称"
@@ -26,12 +26,14 @@
                                    placeholder="请选择日期"
                                    name="beginTime"
                                    class="date laydate-icon"
+                                   autocomplete="off"
                                    ng-click="start()"/>
                             <span style="margin: 0 5px 0 0">至</span>
                             <input id="end"
                                    placeholder="请选择日期"
                                    name="endTime"
                                    class="date laydate-icon"
+                                   autocomplete="off"
                                    ng-click="end()"/>
                             <select name="isPaid" ng-model="params.isPaid">
                                 <option value='' disabled selected>请选择结算状态</option>
@@ -51,8 +53,8 @@
                             <div class="registration_word">
                                 <p>场馆名称：<span>{{item.venueName}}</span></p>
                                 <p>会议名称：<span>{{item.title}}</span></p>
-                                <p>参会人数：<span>{{item.number}}人</span></p>
-                                <p>会议类型：<span>{{getMeetingTypeName(item.meetingType)}}</span></p>
+                                <p ng-if="item.number">参会人数：<span>{{item.number}}人</span></p>
+                                <p ng-if="item.meetingType">会议类型：<span>{{getMeetingTypeName(item.meetingType)}}</span></p>
                                 <p>预定开始时间：<span style="font-weight: bold;margin-right: 80px">{{item.reserveBeginTime | date : 'yyyy-MM-dd'}}</span>
                                     结束时间：<span style="font-weight: bold;">{{item.reserveEndTime | date : 'yyyy-MM-dd'}}</span>
                                 </p>

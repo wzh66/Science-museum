@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'appServices', 'appTemplates', 'ngAnimate', 'ngCookies', 'appFilters', 'thatisuday.dropzone', 'monospaced.qrcode']);
+var app = angular.module('app', ['ngRoute', 'appServices', 'appTemplates', 'ngAnimate', 'ngCookies', 'appFilters', 'appDirectives', 'thatisuday.dropzone', 'monospaced.qrcode']);
 var PREFIX_URL = '/api/intf/call?action=';
 var FILE_PREFIX_URL = '/api/admin/fileupload/previewFile?id=';
 app.config(['$routeProvider', '$locationProvider',

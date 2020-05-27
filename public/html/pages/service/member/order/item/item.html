@@ -36,9 +36,9 @@
                                     <span>{{detail.title}}</span>
                                 </div>
 
-                                <div class="hall-form-group item-f">
+                                <div class="hall-form-group item-f" ng-if="detail.meetingType">
                                     <label>会议类型：</label>
-                                    <span>{{getMeetingTypeName(detail.meetingType)}}</span>
+                                    <span>{{detail.meetingType}}</span>
                                 </div>
 
                                 <!--<div class="hall-form-group item-f">
@@ -56,7 +56,7 @@
                                     <span>{{detail.reserveEndTime | date : 'yyyy-MM-dd'}}</span>
                                 </div>
 
-                                <div class="hall-form-group item-f">
+                                <div class="hall-form-group item-f" ng-if="detail.timeList">
                                     <label>场次安排：</label>
                                     <div style="width: 80%">
                                         <p ng-repeat="item in detail.timeList">{{item.reserveDate | date :
@@ -68,7 +68,7 @@
 
                                 </div>
 
-                                <div class="hall-form-group item-f">
+                                <div class="hall-form-group item-f" ng-if="detail.number">
                                     <label>参会人数：</label>
                                     <span>{{detail.number}}人</span>
                                 </div>
@@ -103,50 +103,8 @@
                                     </tbody>
                                 </table>
 
-                                <p class="form-title" style="font-size: 16px">支付凭证/第三方订单号：</p>
-                                <!--<div class="hall-form" ng-repeat="item in detail.payList">
-
-                                    <div class="hall-form-group item-f" ng-if="item.outTradeNo">
-                                        <label>微信支付订单号：</label>
-                                        <span>{{item.outTradeNo}}</span>
-                                    </div>
-
-                                    <div class="hall-form-group item-f">
-                                        <label>创建时间：</label>
-                                        <span>{{item.createTime | date : 'yyyy-MM-dd hh:mm:ss'}}</span>
-                                    </div>
-
-                                    <div class="hall-form-group item-f" ng-if="item.payedTime">
-                                        <label>支付时间：</label>
-                                        <span>{{item.payedTime | date : 'yyyy-MM-dd hh:mm:ss'}}</span>
-                                    </div>
-
-                                    <div class="hall-form-group item-f">
-                                        <label>支付状态：</label>
-                                        <span ng-if="item.status === 0">未支付</span>
-                                        <span ng-if="item.status === 1">已支付</span>
-                                        <span ng-if="item.status === 2">部分退款</span>
-                                        <span ng-if="item.status === 3">全额退款</span>
-                                    </div>
-
-                                    <div class="hall-form-group item-f" ng-if="item.tradeType">
-                                        <label>支付类型：</label>
-                                        <span>{{item.tradeType === 'offline' ? '线下支付' : '微信支付'}}</span>
-                                    </div>
-
-                                    <div class="hall-form-group item-f" ng-if="item.payFileId">
-                                        <label>线下支付凭证：</label>
-                                        <span>
-                                            <a href="{{FILE_PREFIX_URL + item.payFileId}}"
-                                               style="color: #3399FF"
-                                               target="_blank">支付凭证</a>
-                                        </span>
-
-                                    </div>
-
-
-                                </div>-->
-                                <table cellpadding="0" cellspacing="0" border="0" class="pay">
+                                <p class="form-title" style="font-size: 16px" ng-if="detail.payList">支付凭证/第三方订单号：</p>
+                                <table cellpadding="0" cellspacing="0" border="0" class="pay" ng-if="detail.payList">
                                     <thead>
                                     <tr>
                                         <th class="user">创建时间</th>

@@ -15,7 +15,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $scope.img = res.result;
     });
     venueSvc.rules(2).then(function success(res) {
-        res.result.rules=res.result.rules.replace('mus_web', 'api');
+        res.result.rules=res.result.rules.replace(/musWeb/gi, 'api');
         $scope.rules = res.result;
     });
 }]);

@@ -11,6 +11,14 @@ app.directive('ngFooter', ['$location', 'indexSvc', function ($location, indexSv
             indexSvc.getFriendUrl().then(function success(res) {
                 scope.urls = res.result;
             });
+            indexSvc.addAccessLog().then(function success(res) {
+
+            });
+            indexSvc.getAccessCount().then(function success(res) {
+                res.result = res.result.toString().split('');
+                console.log(res.result);
+                scope.counts = res.result;
+            });
         }
     };
 }]);

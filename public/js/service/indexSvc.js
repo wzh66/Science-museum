@@ -63,6 +63,26 @@ appServices.factory('indexSvc', ['$q', '$http', '$location', '$cookieStore', fun
         return d.promise;
     };
 
+    service.addAccessLog = function () {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.get(PREFIX_URL + 'addAccessLog').success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
+    service.getAccessCount = function () {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.get(PREFIX_URL + 'getAccessCount').success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
 
     return service;
 }]);

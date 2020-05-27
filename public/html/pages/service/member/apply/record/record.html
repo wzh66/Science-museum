@@ -15,7 +15,7 @@
                     活动申请记录<span>首页 > 会员中心 > 活动申请记录</span>
                 </h2>
                 <div class="hr"></div>
-                <div class="card-content">
+                <div class="card-content" ng-if="activityForm && activityType && openCeremony">
                     <a href="#/service/member/apply/list" style="text-decoration: none">
                         <div class="addRecord">
                             <img src="/images/service/add.png" height="43" width="45"/>
@@ -33,6 +33,8 @@
                             </p>
                             <p>活动时间：<span>{{item.activityBeginTime | date : 'yyyy-MM-dd'}} 至 {{item.activityEndTime | date : 'yyyy-MM-dd'}}</span></p>
                             <p>活动形式：<span>{{getFormName(item.form)}}</span></p>
+                            <p>活动类型：<span>{{getActivityType(item.activityType)}}</span></p>
+                            <p>开幕仪式：<span>{{getOpenCeremony(item.openCeremony)}}</span></p>
                             <p>活动地点：<span>{{item.address}}</span></p>
                         </div>
                     </a>

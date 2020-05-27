@@ -25,7 +25,12 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     $scope.captchaObj = null;
 
     if ($scope.user.key) {
-        $location.path('/service/member/unit');
+        if ($scope.user.type === 0 || $scope.user.type === 1){
+            $location.path('/service/member/unit');
+        }else {
+            $location.path('/service/member/apply/record');
+        }
+
     }
 
     indexSvc.getImage(6).then(function success(res) {

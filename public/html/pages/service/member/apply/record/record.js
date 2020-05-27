@@ -24,7 +24,26 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     });
 
     $scope.getFormName = function (value) {
-        var index = $scope.activityForm.findIndex(item => item.dictValue === value);
+        var index = $scope.activityForm.findIndex(item => item.dictValue === value.toString());
         return $scope.activityForm[index].dictName;
-    }
+    };
+
+    hallSvc.getDictsByKey('activityType').then(function success(res) {
+        $scope.activityType = res.result;
+    });
+
+    $scope.getActivityType = function (value) {
+        var index = $scope.activityType.findIndex(item => item.dictValue === value.toString());
+        return $scope.activityType[index].dictName;
+    };
+
+    hallSvc.getDictsByKey('openCeremony').then(function success(res) {
+        $scope.openCeremony = res.result;
+    });
+
+    $scope.getOpenCeremony = function (value) {
+        var index = $scope.openCeremony.findIndex(item => item.dictValue === value.toString());
+        return $scope.openCeremony[index].dictName;
+
+    };
 }]);

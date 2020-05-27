@@ -19,7 +19,7 @@
                 <div class="card-content">
                     <div class="hall-margin">
                         <form>
-                            <div class="hall-form">
+                            <div class="hall-form" ng-if="activityForm && activityType && openCeremony">
                                 <div class="hall-form-group item">
                                     <label>活动主题：</label>
                                     <span style="font-weight: bold">{{detail.title}}</span>
@@ -42,12 +42,32 @@
 
                                 <div class="hall-form-group item">
                                     <label>活动形式：</label>
-                                    <span>{{detail.form}}</span>
+                                    <span>{{getFormName(detail.form)}}</span>
+                                </div>
+
+                                <div class="hall-form-group item">
+                                    <label>活动类型：</label>
+                                    <span>{{getActivityType(detail.activityType)}}</span>
+                                </div>
+
+                                <div class="hall-form-group item">
+                                    <label>开幕仪式：</label>
+                                    <span>{{getOpenCeremony(detail.openCeremony)}}</span>
                                 </div>
 
                                 <div class="hall-form-group item">
                                     <label>活动方案：</label>
                                     <span>{{detail.plan}}</span>
+                                </div>
+
+                                <div class="hall-form-group item" ng-if="detail.authBeginTime && detail.authEndTime">
+                                    <label>批准开展时间：</label>
+                                    <span>{{detail.authBeginTime | date : 'yyyy-MM-dd'}} 至 {{detail.authEndTime | date : 'yyyy-MM-dd'}}</span>
+                                </div>
+
+                                <div class="hall-form-group item">
+                                    <label>审批意见：</label>
+                                    <div style="width: 80%" ng-bind-html="detail.opinion | parseHTML">
                                 </div>
 
                             </div>

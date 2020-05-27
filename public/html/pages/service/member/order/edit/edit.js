@@ -39,7 +39,6 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         res.result.timeList.forEach(item => {
                 item.reserveTypes = item.reserveTypes.replace(/[^0-9]/ig, '');
                 item.reserveTypes = item.reserveTypes.split('');
-                $scope.dateList.push(timestampToTime(item.reserveDate));
             }
         );
         $scope.detail = res.result;
@@ -47,6 +46,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $scope.detail.dailyRentPrice = res.result.dailyRentPrice;
         $scope.detail.reserveBeginTime = timestampToTime(res.result.reserveBeginTime);
         $scope.detail.reserveEndTime = timestampToTime(res.result.reserveEndTime);
+        $scope.dateList = $scope.getReserveTime($scope.detail.reserveBeginTime, $scope.detail.reserveEndTime);
     });
 
 
@@ -63,14 +63,58 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $scope.goodsList = res.result;
     });
 
+    $scope.getReserveTime = function (beginTime, endTime) {
+        var dateList = get(beginTime, endTime);
+        var _dateList = [];
+        var source = [];
+        hallSvc.getReserveTime($scope.detail.venueId, beginTime, endTime).then(function success(res) {
+            if (res.code === '0000') {
+                res.result.forEach(item => {
+                    item.reserveDate = timestampToTime(item.reserveDate);
+                    item.reserveTypes = item.reserveTypes.replace(/[^0-9]/ig, '');
+                    item.reserveTypes = item.reserveTypes.split('');
+                    dateList.forEach(date => {
+                        if (date === item.reserveDate) {
+                            _dateList.push({
+                                reserveDate: date,
+                                reserveTypes: item.reserveTypes
+                            });
+                        }
+                    });
+                });
+                dateList.forEach(item => {
+                    source.push({
+                        reserveDate: item,
+                        reserveTypes: JSON.parse(JSON.stringify($scope.reserveTimeType))
+                    });
+                });
+                source.forEach(item => {
+                    const index = getIndex(_dateList, 'reserveDate', item.reserveDate);
+                    let resultItem;
+                    if (index >= 0) {
+                        resultItem = _dateList[index];
+                    } else {
+                        resultItem = {reserveDate: item.reserveDate, reserveTypes: []};
+                    }
+                    resultItem.reserveTypes.forEach(reserveType => {
+                        item.reserveTypes[reserveType].disabled = true;
+                    });
+
+                });
+                $scope.dateList = source;
+            }
+        });
+    };
+
     $scope.startTime = function () {
         laydate({
             elem: '#start',
+            min: minDate(),
             format: 'YYYY-MM-DD', // 分隔符可以任意定义，该例子表示只显示年月
             choose: function (data) { //选择日期完毕的回调
                 $scope.detail.reserveBeginTime = data;
                 if ($scope.detail.reserveEndTime) {
-                    $scope.$apply($scope.dateList = get($scope.detail.reserveBeginTime, $scope.detail.reserveEndTime));
+                    $scope.getReserveTime($scope.detail.reserveBeginTime, $scope.detail.reserveEndTime);
                 }
             }
         });
@@ -79,11 +123,12 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     $scope.endTime = function () {
         laydate({
             elem: '#end',
+            min: minDate(),
             format: 'YYYY-MM-DD', // 分隔符可以任意定义，该例子表示只显示年月
             choose: function (data) { //选择日期完毕的回调
                 $scope.detail.reserveEndTime = data;
                 $scope.$apply($scope.show = true);
-                $scope.$apply($scope.dateList = get($scope.detail.reserveBeginTime, $scope.detail.reserveEndTime));
+                $scope.getReserveTime($scope.detail.reserveBeginTime, $scope.detail.reserveEndTime);
             }
         });
     };
@@ -116,6 +161,20 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     };
 
     $scope.submit = function (form) {
+        if ($scope.detail.reserveBeginTime && $scope.detail.reserveEndTime) {
+            if (getDate($scope.detail.reserveBeginTime).getMonth() !== getDate($scope.detail.reserveEndTime).getMonth()) {
+                alert('不允许提交跨月预约，请分别预约！');
+                return false;
+            }
+        }
+        if (form.phone.$error.required || form.phone.$error.pattern) {
+            if (form.phone.$error.required) {
+                alert('请输入联系电话!');
+            } else {
+                alert('请输入正确的联系电话！');
+            }
+            return false;
+        }
         var goodsList = [];
         $scope._goodsList.forEach(item => {
             var index = $scope.goodsList.findIndex(i => i.id === item);

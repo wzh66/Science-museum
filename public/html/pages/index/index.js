@@ -19,6 +19,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     indexSvc.getImageList(1).then(function success(res) {
         res.result.list.forEach(item => {
             item.proimg = FILE_PREFIX_URL + item.proimg;
+            item.href = item.busId ? '/information/item/' + item.busId : item.prourl;
         });
         $scope.imageList = res.result.list;
     });
@@ -26,6 +27,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     indexSvc.getImageList(2).then(function success(res) {
         res.result.list.forEach(item => {
             item.proimg = FILE_PREFIX_URL + item.proimg;
+            item.href = item.busId ? '/information/item/' + item.busId : item.prourl;
         });
         $scope.newsImageList = res.result.list;
     });
@@ -33,6 +35,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     indexSvc.getImageList(3).then(function success(res) {
         res.result.list.forEach(item => {
             item.proimg = FILE_PREFIX_URL + item.proimg;
+            item.href = item.busId ? '/hall/item/' + item.busId : item.prourl;
         });
         $scope.hallImageList = res.result.list;
     });
@@ -40,6 +43,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     indexSvc.getImageList(4).then(function success(res) {
         res.result.list.forEach(item => {
             item.proimg = FILE_PREFIX_URL + item.proimg;
+            item.href = item.busId ? '/information/item/' + item.busId : item.prourl;
         });
         $scope.reviewImageList = res.result.list;
     });
@@ -57,7 +61,9 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     });
 
 
-}]);
+}
+])
+;
 
 
 

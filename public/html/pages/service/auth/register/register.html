@@ -72,10 +72,10 @@
                                 </div>
 
                                 <div class="hall-form-group register" ng-if="params.accountType === '0'">
-                                    <label>身份证号：</label>
+                                    <label><em>*</em>身份证号：</label>
                                     <input name="idCard"
                                            ng-pattern="/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/"
-                                           ng-model="params.idCard"/>
+                                           ng-model="params.idCard" required/>
                                 </div>
 
                                 <div class="hall-form-group register">

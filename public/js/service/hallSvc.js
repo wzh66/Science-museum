@@ -73,9 +73,9 @@ appServices.factory('hallSvc', ['$q', '$http', '$location', '$cookieStore', func
         return d.promise;
     };
 
-    service.getReserveTime = function (reserveBeginTime, reserveEndTime) {//获取用户信息 promise对象
+    service.getReserveTime = function (id, reserveBeginTime, reserveEndTime) {//获取用户信息 promise对象
         var d = $q.defer();
-        $http.get(PREFIX_URL + 'getReserveTime&reserveBeginTime=' + reserveBeginTime + '&reserveEndTime=' + reserveEndTime).success(function (data) {
+        $http.get(PREFIX_URL + 'getReserveTime&venueId=' + id + '&reserveBeginTime=' + reserveBeginTime + '&reserveEndTime=' + reserveEndTime).success(function (data) {
             return d.resolve(data);
         }).error(function (error) {
             d.reject(error);

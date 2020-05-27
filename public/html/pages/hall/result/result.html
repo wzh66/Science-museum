@@ -19,9 +19,10 @@
 
                 <div class="card-content" style="margin: 40px 10px" ng-repeat="item in result">
                     <div class="hall-margin" style="margin: 0 110px">
-                        <div class="trailer_content" >
-                            <div class="trailer_logo" style="width: 152px;height: 100px">
-                                <img ng-src="{{FILE_PREFIX_URL+item.logo}}" ng-if="item.logo"/>
+                        <div class="trailer_content" index="{{$index}}" lightbox="images">
+                            <div ng-repeat="image in images track by $index" ng-if="image === FILE_PREFIX_URL+item.logo" class="trailer_logo" style="width: 152px;height: 100px">
+                                <a href="image" class="lightbox-trigger"><img ng-src="{{FILE_PREFIX_URL+item.logo}}"/></a>
+                                <h4 style="text-align: center;font-weight: normal;color: #818181;">+ 查看大图 +</h4>
                             </div>
                             <div class="trailer_word" style="margin-left: 20px">
                                 <h2>{{item.NAME}}<a href="#/hall/predetermine/{{item.id}}" style="text-decoration: none"><span class="booking">预订</span></a></h2>

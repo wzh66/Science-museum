@@ -20,14 +20,35 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $scope.activityForm = res.result;
     });
 
+    applySvc.getApplyDetail($scope.key, $scope.id).then(function success(res) {
+        /*res.result.form = $scope.getFormName(res.result.form);
+        res.result.activityType = $scope.getActivityType(res.result.activityType);
+        res.result.openCeremony = $scope.getOpenCeremony(res.result.openCeremony);*/
+        $scope.detail = res.result;
+    });
+
     $scope.getFormName = function (value) {
-        var index = $scope.activityForm.findIndex(item => item.dictValue === value);
+        var index = $scope.activityForm.findIndex(item => item.dictValue === value.toString());
         return $scope.activityForm[index].dictName;
     };
 
-    applySvc.getApplyDetail($scope.key, $scope.id).then(function success(res) {
-        res.result.form = $scope.getFormName(res.result.form);
-        $scope.detail = res.result;
+    hallSvc.getDictsByKey('activityType').then(function success(res) {
+        $scope.activityType = res.result;
     });
+
+    $scope.getActivityType = function (value) {
+        var index = $scope.activityType.findIndex(item => item.dictValue === value.toString());
+        return $scope.activityType[index].dictName;
+    };
+
+    hallSvc.getDictsByKey('openCeremony').then(function success(res) {
+        $scope.openCeremony = res.result;
+    });
+
+    $scope.getOpenCeremony = function (value) {
+        var index = $scope.openCeremony.findIndex(item => item.dictValue === value.toString());
+        return $scope.openCeremony[index].dictName;
+    };
+
 
 }]);

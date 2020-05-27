@@ -1,33 +1,5 @@
 <div class="owl-carousel">
-   <!-- <div ng-repeat="image in images"
-         href="javascript:;"
-         ng-if="!url"
-         class="carousel-item item"
-         ng-style="{'background-image': 'url(' + image.proimg + ')'}">
-        <h3 ng-if="items">{{image.title}}</h3>
-    </div>-->
-    <a ng-if="hallurl && image.busId" ng-repeat="image in images" href="#/hall/item/{{image.busId}}">
-        <div href="javascript:;"
-             class="carousel-item item"
-             ng-style="{'background-image': 'url(' + image.proimg + ')'}">
-            <h3 ng-if="items">{{image.title}}</h3>
-        </div>
-    </a>
-    <a ng-if="hallurl && image.prourl" ng-repeat="image in images" href="{{image.prourl}}" target="_blank" style="text-decoration: none">
-        <div href="javascript:;"
-             class="carousel-item item"
-             ng-style="{'background-image': 'url(' + image.proimg + ')'}">
-            <h3 ng-if="items">{{image.title}}</h3>
-        </div>
-    </a>
-    <a ng-if="newsurl && image.busId" ng-repeat="image in images" href="#/information/item/{{image.busId}}">
-        <div href="javascript:;"
-             class="carousel-item item"
-             ng-style="{'background-image': 'url(' + image.proimg + ')'}">
-            <h3 ng-if="items">{{image.title}}</h3>
-        </div>
-    </a>
-    <a ng-if="newsurl && image.prourl" ng-repeat="image in images" href="{{image.prourl}}" target="_blank">
+    <a ng-repeat="image in images" repeat-finish="renderFinish()" href="{{image.href}}" style="text-decoration: none">
         <div href="javascript:;"
              class="carousel-item item"
              ng-style="{'background-image': 'url(' + image.proimg + ')'}">

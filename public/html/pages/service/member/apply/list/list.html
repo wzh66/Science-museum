@@ -1,4 +1,3 @@
-
 <div class="index-content">
     <div class="owl-carousel">
         <div href="javascript:;"
@@ -17,47 +16,55 @@
                         <form name="form" novalidate>
                             <div class="hall-form">
                                 <div class="hall-form-group apply">
-                                    <label>活动主题</label>
+                                    <label><em>*</em>活动主题</label>
                                     <input name="title"
-                                           ng-model="params.title"/>
+                                           ng-model="params.title"
+                                           required/>
                                 </div>
 
                                 <div class="hall-form-group apply">
-                                    <label>活动时间</label>
+                                    <label><em>*</em>活动时间</label>
                                     <input id="start"
                                            placeholder="请选择日期"
                                            name="beginTime"
                                            class="date laydate-icon"
-                                           ng-click="beginTime()"/>
+                                           ng-click="beginTime()"
+                                           autocomplete="off"
+                                           required/>
                                     <span>至</span>
                                     <input id="end"
                                            placeholder="请选择日期"
                                            name="endTime"
                                            class="date laydate-icon"
-                                           ng-click="endTime()"/>
+                                           autocomplete="off"
+                                           ng-click="endTime()"
+                                           required/>
                                 </div>
 
                                 <div class="hall-form-group apply">
-                                    <label>活动地点</label>
+                                    <label><em>*</em>活动地点</label>
                                     <input name="address"
-                                           ng-model="params.address"/>
+                                           ng-model="params.address"
+                                           required/>
                                 </div>
 
                                 <div class="hall-form-group apply">
-                                    <label>联系人电话</label>
+                                    <label><em>*</em>联系人电话</label>
                                     <input name="phone"
-                                           ng-model="params.phone"/>
+                                           ng-model="params.phone"
+                                           ng-pattern="/^1(3|4|5|6|7|8|9)\d{9}$/"
+                                           required/>
                                 </div>
 
                                 <div class="hall-form-group apply">
-                                    <label style="position: relative;top: -65px;">申请活动内容</label>
+                                    <label style="position: relative;top: -65px;"><em>*</em>申请活动内容</label>
                                     <textarea name="content"
                                               ng-model="params.content"></textarea>
                                 </div>
 
                                 <div class="hall-form-group apply">
-                                    <label>活动形式</label>
-                                    <select name="activityForm" ng-model="params.activityForm">
+                                    <label><em>*</em>活动形式</label>
+                                    <select name="activityForm" ng-model="params.activityForm" required>
                                         <option value='' disabled selected>请选择活动形式</option>
                                         <option ng-repeat="item in activityForm" value="{{item.dictValue}}">
                                             {{item.dictName}}
@@ -67,8 +74,8 @@
                                 </div>
 
                                 <div class="hall-form-group apply">
-                                    <label>活动类型</label>
-                                    <select name="activityType" ng-model="params.activityType">
+                                    <label><em>*</em>活动类型</label>
+                                    <select name="activityType" ng-model="params.activityType" required>
                                         <option value='' disabled selected>请选择活动类型</option>
                                         <option ng-repeat="item in activityType" value="{{item.dictValue}}">
                                             {{item.dictName}}
@@ -77,8 +84,8 @@
                                 </div>
 
                                 <div class="hall-form-group apply">
-                                    <label>开幕仪式</label>
-                                    <select name="openCeremony" ng-model="params.openCeremony">
+                                    <label><em>*</em>开幕仪式</label>
+                                    <select name="openCeremony" ng-model="params.openCeremony" required>
                                         <option value='' disabled selected>请选择开幕仪式</option>
                                         <option ng-repeat="item in openCeremony" value="{{item.dictValue}}">
                                             {{item.dictName}}
@@ -88,9 +95,10 @@
 
 
                                 <div class="hall-form-group apply">
-                                    <label style="position: relative;top: -65px;">活动方案</label>
+                                    <label style="position: relative;top: -65px;"><em>*</em>活动方案</label>
                                     <textarea name="plan"
-                                              ng-model="params.plan"></textarea>
+                                              ng-model="params.plan"
+                                              required></textarea>
                                 </div>
 
                                 <div class="form-controls" style="margin-right: 170px">
