@@ -41,6 +41,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                 return false;
             }
         }
+
         var body = {
             name: $scope.params.name,
             title: $scope.params.title,
