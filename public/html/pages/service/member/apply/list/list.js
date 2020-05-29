@@ -10,6 +10,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         });
 }]).controller('serviceMemberApplyListController', ['$scope', '$location', 'indexSvc', 'authSvc', 'applySvc', 'hallSvc', function ($scope, $location, indexSvc, authSvc, applySvc, hallSvc) {
     $scope.key = authSvc.key();
+    $scope.type = authSvc.type();
     $scope.params = {
         title: '',
         beginTime: '',
@@ -22,6 +23,13 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         plan: '',
         openCeremony: ''
     };
+
+    if ($scope.type !== 2){
+        $scope.$root.dialog.open(true, '系统提示', '您没有权限申请活动，详情请咨询后台工作人员!', ['我知道了'], function () {
+            window.history.back();
+        });
+    }
+
     indexSvc.getImage(6).then(function success(res) {
         res.result.proimg = FILE_PREFIX_URL + res.result.proimg;
         $scope.img = res.result;

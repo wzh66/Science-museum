@@ -16,6 +16,10 @@ app.directive('ngHeader', ['$location', '$rootScope', 'appSvc', 'authSvc', funct
                 e.currentTarget.className = '';
             };
 
+            scope.logout = function () {
+                authSvc.logout();
+            };
+
             scope.login = function () {
                 if (!scope.mobile) {
                     $location.path('/auth/login');
@@ -26,6 +30,7 @@ app.directive('ngHeader', ['$location', '$rootScope', 'appSvc', 'authSvc', funct
                 authSvc.logout();
             };
             $rootScope.$on('$locationChangeStart', function () {//初始化全局控件的状态
+                scope.account = authSvc.account();
                 scope.path = $location.path();
             });
         }

@@ -4,6 +4,7 @@
     <div class="owl-carousel">
         <div href="javascript:;"
              class="carousel-item item"
+             style="height: 560px"
              ng-style="{'background-image': 'url(' + img.proimg + ')'}">
         </div>
     </div>
@@ -14,8 +15,8 @@
             <div class="card-margin">
                 <h2 class="item-title">{{detail.name}}</h2>
                 <div class="item-origin">
-                    <span>来源：{{detail.createBy}} </span>
-                    <span>作者：{{detail.createBy}} </span>
+                    <span>来源：{{detail.createByName}} </span>
+                    <span>作者：{{detail.createByName}} </span>
                     <span>发布时间：{{detail.createTime | date : 'yyyy-MM-dd HH:mm:ss'}}</span>
                 </div>
                 <div class="line"></div>
