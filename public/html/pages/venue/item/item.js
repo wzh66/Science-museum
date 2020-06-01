@@ -18,7 +18,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     });
 
     newsSvc.getNewsDetail($scope.id).then(function success(res) {
-        res.result.detail = res.result.detail.replace(/mus_web/gi, 'api');
+        res.result.detail = res.result.detail.replace(/musWeb/gi, 'api');
         $scope.detail = res.result;
     });
 
