@@ -1,9 +1,9 @@
 <div class="owl-carousel">
-    <a ng-repeat="image in images" repeat-finish="renderFinish()" href="{{image.href}}" style="text-decoration: none">
+    <a ng-if="items" ng-repeat="image in images" repeat-finish="renderFinish()" href="{{image.href}}" style="text-decoration: none">
         <div href="javascript:;"
              class="carousel-item item"
              ng-style="{'background-image': 'url(' + image.proimg + ')'}">
-            <h3 ng-if="items">{{image.title}}</h3>
+            <h3>{{image.title}}</h3>
         </div>
     </a>
 </div>

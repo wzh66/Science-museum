@@ -10,6 +10,7 @@ app.directive('ngOwl', ['$location', 'appSvc', function ($location, appSvc) {
         },
         templateUrl: 'modules/owl/owl.html',
         link: function (scope, element, attrs) {
+            console.log(scope.images);
             scope.renderFinish = function(){
                 $(element).find('.owl-carousel').owlCarousel({
                     navigation: true, // Show next and prev buttons
