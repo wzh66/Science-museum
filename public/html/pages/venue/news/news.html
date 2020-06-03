@@ -3,6 +3,7 @@
     <div class="owl-carousel">
         <div href="javascript:;"
              class="carousel-item item"
+             style="height: 560px"
              ng-style="{'background-image': 'url(' + img.proimg + ')'}">
         </div>
     </div>
@@ -18,7 +19,7 @@
 
                 <div class="trailer_content" ng-repeat="news in newsList">
                     <div class="trailer_logo">
-                        <img src="/images/index/activity_1.png" ng-if="news.proimg"/>
+                        <img src="{{FILE_PREFIX_URL+news.logo}}" ng-if="news.logo"/>
                     </div>
                     <div class="trailer_word">
                         <h2>{{news.title}}</h2>

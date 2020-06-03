@@ -63,9 +63,9 @@ appServices.factory('hallSvc', ['$q', '$http', '$location', '$cookieStore', func
         return d.promise;
     };
 
-    service.getOrderGoodsList = function (key) {//获取用户信息 promise对象
+    service.getOrderGoodsList = function (key, id) {//获取用户信息 promise对象
         var d = $q.defer();
-        $http.get(PREFIX_URL + 'getOrderGoodsList&key=' + key).success(function (data) {
+        $http.get(PREFIX_URL + 'getOrderGoodsList&key=' + key + '&venueId=' + id).success(function (data) {
             return d.resolve(data);
         }).error(function (error) {
             d.reject(error);

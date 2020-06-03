@@ -1,4 +1,22 @@
-<a ng-click="onClick()" href="javascript:;" class="fix-to-top {{show ? 'show' : ''}}">
+<!--<a ng-click="onClick()" href="javascript:;" class="fix-to-top {{show ? 'show' : ''}}">
   <img src="/images/backtotop.png">
   <span>返回顶部</span>
-</a>
+</a>-->
+<div class="quick-menu">
+  <a href="#/service/auth/register" ng-if="!account">
+    <i class="icon-reg"></i>
+    <p>注册</p>
+  </a>
+  <a href="#/service/auth/login" ng-if="!account">
+    <i class="icon-reg"></i>
+    <p>登录</p>
+  </a>
+  <a href="#/hall/reserve">
+    <i class="icon-reg"></i>
+    <p>场馆查询</p>
+  </a>
+  <a href="#/service/member/apply/list">
+    <i class="icon-reg"></i>
+    <p>活动申请</p>
+  </a>
+</div>

@@ -43,6 +43,9 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         );
         $scope.detail = res.result;
         $scope.detail.venueId = res.result.venueId;
+        hallSvc.getOrderGoodsList($scope.key, $scope.detail.venueId).then(function success(res) {
+            $scope.goodsList = res.result;
+        });
         $scope.detail.dailyRentPrice = res.result.dailyRentPrice;
         $scope.detail.reserveBeginTime = timestampToTime(res.result.reserveBeginTime);
         $scope.detail.reserveEndTime = timestampToTime(res.result.reserveEndTime);
@@ -58,10 +61,6 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $scope.reserveTimeType = res.result.slice(0, 3);
     });
 
-
-    hallSvc.getOrderGoodsList($scope.key).then(function success(res) {
-        $scope.goodsList = res.result;
-    });
 
     $scope.getReserveTime = function (beginTime, endTime) {
         var dateList = get(beginTime, endTime);
