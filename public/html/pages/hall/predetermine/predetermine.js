@@ -56,7 +56,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $scope.reserveTimeType = res.result.slice(0, 3);
     });
 
-    hallSvc.getOrderGoodsList($scope.key).then(function success(res) {
+    hallSvc.getOrderGoodsList($scope.key, $scope.id).then(function success(res) {
         $scope.goodsList = res.result;
     });
 
@@ -64,7 +64,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         var dateList = get(beginTime, endTime);
         var _dateList = [];
         var source = [];
-        hallSvc.getReserveTime($scope.id,beginTime, endTime).then(function success(res) {
+        hallSvc.getReserveTime($scope.id, beginTime, endTime).then(function success(res) {
             if (res.code === '0000') {
                 res.result.forEach(item => {
                     item.reserveDate = timestampToTime(item.reserveDate);
