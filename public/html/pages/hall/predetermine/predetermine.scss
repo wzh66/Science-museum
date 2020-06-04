@@ -32,6 +32,7 @@
             }
             .hall-form{
               width: 100%;
+              .hall-form-group:after{content: "";display: block;height: 0;clear: both;visibility: hidden;}
               .hall-form-group{
                 width: 50%;
                 display: inline-block;
@@ -41,13 +42,16 @@
                 label{
                   color: #666!important;
                   width: 84px;
-                  height: auto;
-                  display: inline-block;
+                  line-height:40px;
+                  float: left;
                   text-align: right;
+                  vertical-align: top;
                   em{
                     color: #fd5451;
                   }
                 }
+
+                .control{margin:0 20px 0 130px; vertical-align: top}
 
 
                 .scheduled-time{
@@ -59,8 +63,11 @@
                     display: block;
                   }
                   p{
-                    padding: 10px 0;
+                    padding: 10px;
                     border-bottom: 1px solid #e7e7e7;
+                  }
+                  p:last-child{
+                    border-bottom: none;
                   }
                 }
 
@@ -106,7 +113,12 @@
                   }
                 }
                 span{
-                  margin: 0 12px;
+                  margin: 0 20px 0 0;
+                  line-height:40px;
+                  display: inline-block;
+                   span{
+                     margin: 0 12px;
+                   }
                   &.service{
                     font-size: 16px;
                   }

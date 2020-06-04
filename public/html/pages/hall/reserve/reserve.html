@@ -54,30 +54,32 @@
 
                                     <div class="hall-form-group service">
                                         <label class="name">参会人数</label>
-                                        <input style="height: 50px;margin-left: -4px;"
+                                        <input style="height: 40px;margin-left: -4px;"
                                                name="attendance"
                                                ng-model="params.attendance"/>
                                     </div>
 
                                     <div class="hall-form-group service">
                                         <label class="name">费用预算</label>
-                                        <input style="height: 50px;margin-left: -4px;"
+                                        <input style="height: 40px;margin-left: -4px;"
                                                name="budget"
                                                ng-model="params.budget"/>
                                     </div>
 
                                     <div class="hall-form-group service">
-                                        <label class="name">其他需求</label>
-                                        <span ng-repeat="item in goodList"
-                                              style="margin: 0"
-                                              ng-style="{'margin-left': $index === 0 ? '-12px' : ''}">
-                                        <input type="checkbox"
-                                               class="checkbox"
-                                               name="{{item.name}}"
-                                               id="{{item.id}}"
-                                               ng-click="addGoods($event)"/>
-                                        <span class="other">{{item.name}}</span>
-                                    </span>
+                                        <label class="name" style="vertical-align: top;display: inline-block">其他需求</label>
+                                        <div class="control">
+                                            <span ng-repeat="item in goodList"
+                                                  style="white-space:nowrap;line-height:40px;margin-left: -15px;"
+                                                  >
+                                                <input type="checkbox"
+                                                       class="checkbox"
+                                                       name="{{item.name}}"
+                                                       id="{{item.id}}"
+                                                       ng-click="addGoods($event)"/>
+                                                <span class="other">{{item.name}}</span>
+                                            </span>
+                                        </div>
                                     </div>
 
                                     <div class="form-controls" style="margin-top: 80px">

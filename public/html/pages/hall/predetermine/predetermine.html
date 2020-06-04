@@ -97,27 +97,28 @@
 
                                 <p class="form-title">请选择服务项目：</p>
                                 <div class="hall-form-group service">
-                                    <label style="margin-right: 20px">其他需求：</label>
-                                    <span ng-repeat="item in goodsList"
-                                          style="margin: 0"
-                                          ng-style="{'margin-left': $index === 0 ? '-19px' : ''}">
-                                        <input type="checkbox"
-                                               class="checkbox"
-                                               name="{{item.name}}"
-                                               id="{{item.id}}"
-                                               ng-click="addGoods($event)"/>
-                                        <span class="other">{{item.name}}</span>
-                                        <span ng-if="_goodsList.indexOf(item.id) !== -1" style="margin-left: -2px">
-                                            <input name="{{'' + $index}}"
-                                                   ng-model="count['' + $index]"
-                                                   style="width: 70px!important;"/>
-                                            <span>{{item.unit}}</span>
+                                    <label>其他需求：</label>
+                                    <div class="control" style="margin: 0 20px 0 85px;">
+                                        <span ng-repeat="item in goodsList"
+                                              style="white-space:nowrap;line-height:40px;">
+                                            <input type="checkbox"
+                                                   class="checkbox"
+                                                   name="{{item.name}}"
+                                                   id="{{item.id}}"
+                                                   ng-click="addGoods($event)"/>
+                                            <span class="other">{{item.name}}</span>
+                                            <span ng-if="_goodsList.indexOf(item.id) !== -1" style="margin-left: -2px">
+                                                <input name="{{'' + $index}}"
+                                                       ng-model="count['' + $index]"
+                                                       style="width: 50px!important;"/>
+                                                <span>{{item.unit}}</span>
+                                            </span>
                                         </span>
-                                    </span>
+                                    </div>
                                 </div>
 
                                 <div class="hall-form-group service">
-                                    <label style="position: relative;top: -134px;">备注：</label>
+                                    <label>备注：</label>
                                     <textarea name="remark" ng-model="params.remark"
                                               style="margin-left: 10px"></textarea>
                                 </div>
