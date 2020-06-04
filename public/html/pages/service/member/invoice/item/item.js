@@ -19,6 +19,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     });
 
     orderSvc.getOrderInvoiceDetail($scope.key, $scope.id).then(function success(res) {
+        res.result.invoiceFileId = res.result.invoiceFileId.split(',');
         $scope.detail = res.result;
     });
 

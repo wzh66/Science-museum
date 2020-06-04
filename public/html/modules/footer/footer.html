@@ -9,7 +9,7 @@
       <div class="content_left">
         <h3>友情链接：<a ng-repeat="item in urls" href="{{item.url}}" style="text-decoration: none;color: inherit" target="_blank"><span>{{item.name}}</span><em ng-if="$index !== urls.length - 1">|</em></a></h3>
         <h3>主办单位：广东科学馆<span style="margin-left: 70px">承办单位：×××××××</span></h3>
-        <h3>Copyright © 广东科学馆. All Rights Received<span style="margin-left: 40px">网站备案：粤ICP备12021236号-1</span></h3>
+        <h3>Copyright © 广东科学馆. All Rights Received<a href="http://www.beian.miit.gov.cn" target="_blank" style="text-decoration: none;color: inherit"><span style="margin-left: 40px">网站备案：粤ICP备12021236号-1</span></a></h3>
         <h3>访问数量：<span class="num">
           <em ng-repeat="item in counts track by $index"  ng-if="counts">{{item}}</em>
         </span>

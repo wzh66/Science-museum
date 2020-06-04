@@ -62,10 +62,11 @@
                                 </div>
 
                                 <p class="form-title" style="font-size: 16px">发票附件：</p>
-                                <a href="{{FILE_PREFIX_URL + detail.invoiceFileId}}"
+                                <a ng-repeat="item in detail.invoiceFileId track by $index"
+                                   href="{{FILE_PREFIX_URL + item}}"
                                    class="link"
                                    ng-if="detail.invoiceFileId"
-                                   target="_blank">附件</a>
+                                   target="_blank">附件{{$index+1}}</a>
                                 <label style="margin-left: 100px;"
                                        ng-if="!detail.invoiceFileId">发票正在开具中...</label>
                             </div>

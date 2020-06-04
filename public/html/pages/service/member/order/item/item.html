@@ -63,7 +63,7 @@
                                         <p ng-repeat="item in detail.timeList">{{item.reserveDate | date :
                                             'yyyy-MM-dd'}}
                                             <span ng-repeat="type in item.reserveTypes"
-                                                  style="margin: 0 20px!important;">{{type === '0' ? '上午' : type === '1' ? '下午' : '晚上'}}</span>
+                                                  style="margin: 0 20px!important;display: inline!important;">{{type === '0' ? '上午' : type === '1' ? '下午' : '晚上'}}</span>
                                         </p>
                                     </div>
 

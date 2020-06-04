@@ -18,16 +18,6 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $scope.img = res.result;
     });
 
-    orderSvc.getOrderDetail($scope.key, $scope.id).then(function success(res) {
-        res.result.timeList.forEach(item => {
-                item.reserveTypes = item.reserveTypes.replace(/[^0-9]/ig, '');
-                item.reserveTypes = item.reserveTypes.split('');
-            }
-        );
-        res.result.meetingType = $scope.getMeetingTypeName(res.result.meetingType);
-        $scope.detail = res.result;
-    });
-
     hallSvc.getDictsByKey('meetingType').then(function success(res) {
         $scope.meetingType = res.result;
     });
@@ -39,6 +29,17 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         }
 
     };
+
+    orderSvc.getOrderDetail($scope.key, $scope.id).then(function success(res) {
+        res.result.timeList.forEach(item => {
+                item.reserveTypes = item.reserveTypes.replace(/[^0-9]/ig, '');
+                item.reserveTypes = item.reserveTypes.split('');
+            }
+        );
+        res.result.meetingType = $scope.getMeetingTypeName(res.result.meetingType);
+        $scope.detail = res.result;
+    });
+
 
     $scope.return = function () {
         window.history.back();
