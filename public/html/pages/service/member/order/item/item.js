@@ -18,6 +18,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $scope.img = res.result;
     });
 
+
     hallSvc.getDictsByKey('meetingType').then(function success(res) {
         $scope.meetingType = res.result;
     });
