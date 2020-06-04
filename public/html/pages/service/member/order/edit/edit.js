@@ -222,7 +222,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                 } else {
                     $scope.count[key] = 0;
                 }
-                $scope.result[key] = $scope.count[key] * $scope.goodsList[key].costPrice;
+                $scope.result[key] = $scope.count[key] * $scope.goodsList[key].price;
             }
         }
     }, true);
