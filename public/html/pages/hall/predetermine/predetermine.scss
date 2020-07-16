@@ -41,7 +41,7 @@
                 margin: 8px 0;
                 label{
                   color: #666!important;
-                  width: 84px;
+                  width: 120px;
                   line-height:40px;
                   float: left;
                   text-align: right;
@@ -79,14 +79,14 @@
                 label{
                   font-size: 14px;
                   color: #333;
-                  width: 84px;
+                  width: 120px;
                   text-align: right;
                 }
                 input{
                   width: 300px;
                   height: 40px;
                   padding-left:10px;
-                  border: 1px solid #e7e7e7;
+                  border: 1px solid #000;
                   border-radius: 4px;
                   &.date{
                     width: 200px;
@@ -131,12 +131,12 @@
                 textarea{
                   width: 600px;
                   height: 150px;
-                  border: 1px solid #e7e7e7;
+                  border: 1px solid #000;
                 }
 
                 select{
                   padding: 9px 185px 9px 10px;
-                  border: 1px solid #e7e7e7;
+                  border: 1px solid #000;
                   border-radius: 4px;
                   appearance:none;
                   -moz-appearance:none;

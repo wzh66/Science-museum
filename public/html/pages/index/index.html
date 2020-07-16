@@ -3,17 +3,21 @@
      autoplay="true"
      images="imageList"
      items="1"></div>
+<div class="bannerbox" style="height: 560px" ng-if="!imageList"></div>
 <!--publicbox end-->
 
 <div class="publicbox margintop">
     <div class="announcement">
         <img src="/images/index/notice.png" height="20" width="19"/>
-        <span>公告栏：</span>
+        <span style="line-height: 30px;">公告栏：</span>
         <div class="announcement_content">
             <marquee onMouseOut="this.start()" onMouseOver="this.stop()">
-                <span ng-repeat="notice in noticeList"><a href="#/notice/item/{{notice.id}}" style="color: inherit">{{notice.name}}</a></span>
+                <em ng-repeat="notice in noticeList"><a href="#/notice/item/{{notice.id}}" style="color: inherit">{{notice.name}}</a></em>
             </marquee>
         </div>
+        <a href="#/notice/list"
+           style="float:right;font-size:14px;color: #fff;text-decoration: none;position: absolute;top: 19px;right: 10px">更多
+            ></a>
     </div>
 </div>
 <!--publicbox end-->
@@ -30,34 +34,62 @@
     <!--roll-pic-news end-->
 
     <div class="right-area">
-        <div class="title-public"><h2>新闻资讯</h2></div>
-        <div class="news-hot" ng-repeat="news in newList.slice(0,1)">
-            <a href="#/information/item/{{news.id}}">{{news.title.slice(0,29)}}{{news.title.length > 29 ? '...' : '
-                '}}</a>
-        </div>
-        <div class="information_content">
-            <p ng-repeat="news in newList.slice(1,7)">
-                <em>*</em>
-                <a href="#/information/item/{{news.id}}">{{news.title.slice(0,29)}}{{news.title.length > 29 ?
-                    '...' : ' '}}</a>
-                <span>{{news.createTime | date : 'yyyy-MM-dd HH:mm:ss'}}</span></p>
+        <div class="title-public"><h2>新闻资讯<a href="#/information/list"
+                                             style="float: right;color: #000;text-decoration: none;font-weight: normal;margin-right: 10px">更多
+            ></a></h2></div>
+        <div style="width: 100%;height: 270px;border: 1px solid #8dddeb">
+            <div class="news-hot" ng-repeat="news in newList.slice(0,1)">
+                <img ng-src="{{FILE_PREFIX_URL + news.logo}}" style="max-height: 110px;" ng-if="news.logo"/>
+                <img src="/images/index/news_empty.png" ng-if="!news.logo">
+                <div>
+                    <a href="#/information/item/{{news.id}}">{{news.title.slice(0,29)}}{{news.title.length > 29 ? '...'
+                        : '
+                        '}}</a>
+                    <p style="color: #666;font-size: 12px">{{news.synopsis.slice(0,44)}}{{news.synopsis.length > 44 ?
+                        '...' : ''}}</p>
+                </div>
+
+
+            </div>
+            <div class="information_content" style="margin: 0 20px">
+                <p ng-repeat="news in newList.slice(1,7)" style="border-bottom: 1px dashed #ccc">
+                    <em>*</em>
+                    <a href="#/information/item/{{news.id}}">{{news.title.slice(0,29)}}{{news.title.length > 29 ?
+                        '...' : ' '}}</a>
+                    <span>{{news.createTime | date : 'yyyy-MM-dd HH:mm:ss'}}</span></p>
+            </div>
         </div>
     </div>
     <!--right-area end-->
-    <div style="width:100%;height:1px;font-size:0;background:#eee;margin-top:20px;float: left"></div>
+    <!--<div style="width:100%;height:1px;font-size:0;background:#eee;margin-top:20px;float: left"></div>-->
 </div>
 <!--publicbox end-->
 
 
 <div class="publicbox margintop" style="margin-bottom: 20px;">
     <div class="news-notice">
-        <div class="title-public"><h2>场馆公告</h2></div>
+        <div class="title-public"><h2>科普资源</h2></div>
         <div class="information_content notice">
-            <p ng-repeat="notice in noticeList.slice(0,6)">
-                <em style="position: relative;top: -8px;">*</em>
-                <a href="#/notice/item/{{notice.id}}">{{notice.name.slice(0,29)}}{{notice.name.length > 29 ?
-                    '...' : ' '}}</a>
-                <span>{{notice.createTime | date : 'yyyy-MM-dd HH:mm:ss'}}</span></p>
+            <div class="imgcontent {{videoList.length > 3 ? 'show' : ''}}" style="border: none;">
+                <div class="smallimg">
+                    <span class="move-left" style="top: 45px"><img src="/images/index/left.png" height="20" width="20"
+                                                              style="position: relative;top: 5px;left: -1px;"/></span>
+                    <span class="move-right" style="top: 45px"><img src="/images/index/right.png" height="20" width="20"
+                                                               style="position: relative;top: 5px;left: 1px;"/></span>
+                    <ul ng-class="videoList.length < 4 ? 'width480' : 'width5000'">
+                        <li ng-repeat="item in videoList"
+                            style="width: 155.38px;height: 130px;display: flex;justify-content: center;align-items: center;">
+                                <a href="#/swf/lingnan/{{item.id}}">
+                                    <img class="move-img" src="{{item.videoImg}}"
+                                         style="border: none;border-radius: 0;width: 155.38px;height: 130px;max-height: 130px"/>
+                                </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <a ng-if="videoList.length < 4" ng-repeat="item in videoList" href="#/swf/lingnan/{{item.id}}" style="width: 31.2%;margin: 5px;">
+                <img src="{{item.videoImg}}" style="display: block;width: 100%;height: 130px;"/>
+            </a>
         </div>
     </div>
     <!--news-notice end-->
@@ -67,25 +99,31 @@
         <div class="review_images">
             <div class="img-content" style="border: none">
                 <div class="small-img" style="padding-bottom: 40px;">
-                    <span class="left" style="top: 45px"><img src="/images/index/left.png" height="20" width="20" style="position: relative;top: 5px;left: -1px;"/></span>
-                    <span class="right" style="top: 45px"><img src="/images/index/right.png" height="20" width="20" style="position: relative;top: 5px;left: 1px;"/></span>
-                    <ul class="width5000">
-                        <li ng-repeat="item in reviewImageList" style="width: 190px;height: 130px">
-                            <a href="{{item.href}}"><img class="moveimg" src="{{item.proimg}}" style="border: none;border-radius: 0"/></a>
-                            <p class="img-name" style="text-align: center">{{item.title}}</p>
+                    <span class="left" style="top: 45px"><img src="/images/index/left.png" height="20" width="20"
+                                                              style="position: relative;top: 5px;left: -1px;"/></span>
+                    <span class="right" style="top: 45px"><img src="/images/index/right.png" height="20" width="20"
+                                                               style="position: relative;top: 5px;left: 1px;"/></span>
+                    <ul ng-class="reviewImageList.length < 4 ? 'width660' : ''">
+                        <li ng-repeat="item in reviewImageList"
+                            style="width: 190px;height: 130px;display: flex;justify-content: center;align-items: center;">
+                            <div lightbox="item.activityImgs">
+                                <a href="javascript:;"
+                                   class="lightbox-trigger">
+                                    <img class="moveimg" src="{{FILE_PREFIX_URL+item.logo}}"
+                                         style="border: none;border-radius: 0;width: 190px;height: 130px;max-height: 130px"/>
+                                </a>
+                            </div>
+                            <!--<p class="img-name" style="text-align: center">{{item.title}}</p>-->
                         </li>
                     </ul>
                 </div>
             </div>
-            <!--<div class="ng-owl" items="3" images="reviewImageList" ng-if="reviewImageList"></div>-->
         </div>
     </div>
     <!--right-area end-->
 
 </div>
 <!--publicbox end-->
-
-
 
 <!--quick-menu end-->
 

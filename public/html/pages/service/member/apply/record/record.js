@@ -10,7 +10,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         });
 }]).controller('serviceMemberApplyRecordController', ['$scope', 'indexSvc', 'authSvc', 'applySvc', 'hallSvc', function ($scope, indexSvc, authSvc, applySvc, hallSvc) {
     $scope.key = authSvc.key();
-    indexSvc.getImage(6).then(function success(res) {
+    indexSvc.getImage(8).then(function success(res) {
         res.result.proimg = FILE_PREFIX_URL + res.result.proimg;
         $scope.img = res.result;
     });

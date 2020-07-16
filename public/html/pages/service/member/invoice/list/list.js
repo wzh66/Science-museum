@@ -26,16 +26,19 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     $scope.getData();
 
     $scope.remove = function (id) {
-        orderSvc.removeInvoice($scope.key, id).then(function success(res) {
-            if (res.code === '0000') {
-                $scope.$root.dialog.open(true, '系统提示', '删除成功', ['我知道了'], function () {
-                    $scope.getData();
-                });
-            } else {
-                $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了']);
-            }
+        $scope.$root.dialog.open(true, '系统提示', '你确定要删除？', ['确定'], function () {
+            orderSvc.removeInvoice($scope.key, id).then(function success(res) {
+                if (res.code === '0000') {
+                    $scope.$root.dialog.open(true, '系统提示', '删除成功', ['我知道了'], function () {
+                        $scope.getData();
+                    });
+                } else {
+                    $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了']);
+                }
 
-        })
+            })
+        });
+
     }
 
 

@@ -10,8 +10,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         });
 }]).controller('serviceMemberApplyListController', ['$scope', '$location', 'indexSvc', 'authSvc', 'applySvc', 'hallSvc', function ($scope, $location, indexSvc, authSvc, applySvc, hallSvc) {
     $scope.key = authSvc.key();
-    $scope.type = authSvc.type();
+    //$scope.type = authSvc.type();
+    $scope.user = authSvc.user();
     $scope.params = {
+        company: $scope.user.companyName ? $scope.user.companyName : '',
         title: '',
         beginTime: '',
         endTime: '',
@@ -24,13 +26,32 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         openCeremony: ''
     };
 
-    if ($scope.type !== 2){
+    $scope.plan = {
+        option: {
+            url: PREFIX_URL + 'uploadFile',
+            paramName: 'file',
+            maxFilesize: 5,
+            acceptedFiles: 'image/jpeg, images/jpg, image/png,application/*,.doc,.docx,.ppt,.pptx,.txt,.xls,.xlsx',
+            addRemoveLinks: true,
+            dictDefaultMessage: '上传活动方案附件',
+            dictRemoveFile: '更换',
+            dictCancelUpload: '取消',
+            params: {type: 'cust_cert', dir: 'cust_cert'}
+        },
+        callback: {
+            'success': function (file, res) {
+                $scope.planFileId = res.result;
+            }
+        }
+    };
+
+    /*if ($scope.type !== 2){
         $scope.$root.dialog.open(true, '系统提示', '您没有权限申请活动，详情请咨询后台工作人员!', ['我知道了'], function () {
             window.history.back();
         });
-    }
+    }*/
 
-    indexSvc.getImage(6).then(function success(res) {
+    indexSvc.getImage(8).then(function success(res) {
         res.result.proimg = FILE_PREFIX_URL + res.result.proimg;
         $scope.img = res.result;
     });
@@ -77,8 +98,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             return false;
         }
 
+
         var body = {
             key: $scope.key,
+            company: $scope.params.company,
             title: $scope.params.title,
             activityBeginTime: $scope.params.beginTime,
             activityEndTime: $scope.params.endTime,
@@ -87,6 +110,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             content: $scope.params.content,
             form: $scope.params.activityForm,
             plan: $scope.params.plan,
+            planFileId: $scope.planFileId,
             openCeremony: $scope.params.openCeremony,
             activityType: $scope.params.activityType
         };

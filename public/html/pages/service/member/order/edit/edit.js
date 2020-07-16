@@ -22,7 +22,8 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         phone: '',
         remark: '',
         dailyRentPrice: '',
-        venueId: ''
+        venueId: '',
+        orderInvoiceId: ''
     };
     $scope.dateList = [];
     $scope.count = {};
@@ -35,16 +36,34 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $scope.img = res.result;
     });
 
+    orderSvc.getInvoiceList($scope.key).then(function success(res) {
+        $scope.invoiceList = res.result.list;
+    });
+
     orderSvc.getOrderDetail($scope.key, $scope.id).then(function success(res) {
         res.result.timeList.forEach(item => {
+                item.reserveDate = timestampToTime(item.reserveDate);
                 item.reserveTypes = item.reserveTypes.replace(/[^0-9]/ig, '');
                 item.reserveTypes = item.reserveTypes.split('');
             }
         );
+        res.result.itemList.splice(0, 1);
         $scope.detail = res.result;
+        $scope.detail.itemList = res.result.itemList;
+        $scope.detail.timelist = res.result.timeList;
         $scope.detail.venueId = res.result.venueId;
         hallSvc.getOrderGoodsList($scope.key, $scope.detail.venueId).then(function success(res) {
             $scope.goodsList = res.result;
+            $scope.goodsList.forEach(item => {
+                $scope.detail.itemList.forEach(i => {
+                    if (item.baseGoodsId === i.baseGoodsId) {
+                        item.checked = true;
+                        const index = getIndex($scope.goodsList, 'baseGoodsId', item.baseGoodsId);
+                        $scope.count['' + index] = i.count;
+                        $scope._goodsList.push(item.baseGoodsId);
+                    }
+                })
+            });
         });
         $scope.detail.dailyRentPrice = res.result.dailyRentPrice;
         $scope.detail.reserveBeginTime = timestampToTime(res.result.reserveBeginTime);
@@ -101,6 +120,20 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 
                 });
                 $scope.dateList = source;
+                $scope.dateList.forEach(item => {
+                    const index = getIndex($scope.detail.timelist, 'reserveDate', item.reserveDate);
+                    let resultItem;
+                    resultItem = $scope.detail.timelist[index];
+                    resultItem.reserveTypes.forEach(reserveType => {
+                        item.reserveTypes[reserveType].checked = true;
+                        if (item.reserveTypes[reserveType]) {
+                            $scope.reserveList.push({
+                                reserveDate: item.reserveDate,
+                                reservType: item.reserveTypes[reserveType].dictValue
+                            })
+                        }
+                    });
+                });
             }
         });
     };
@@ -147,7 +180,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 
     $scope.addGoods = function ($event) {
         var checked = $event.target;
-        var index = $scope.goodsList.findIndex(item => item.id === checked.id);
+        var index = $scope.goodsList.findIndex(item => item.baseGoodsId === checked.id);
         if (checked.checked) {
             $scope._goodsList.push(checked.id);
         } else {
@@ -176,7 +209,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         }
         var goodsList = [];
         $scope._goodsList.forEach(item => {
-            var index = $scope.goodsList.findIndex(i => i.id === item);
+            var index = $scope.goodsList.findIndex(i => i.baseGoodsId === item);
             goodsList.push({
                 id: item,
                 count: $scope.count['' + index]
@@ -201,7 +234,8 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             title: $scope.detail.title,
             remark: $scope.detail.remark,
             reserveBeginTime: $scope.detail.reserveBeginTime,
-            reserveEndTime: $scope.detail.reserveEndTime
+            reserveEndTime: $scope.detail.reserveEndTime,
+            invoiceId: $scope.detail.orderInvoiceId
         };
         orderSvc.updateOrder(body).then(function success(res) {
             if (res.code === '0000') {

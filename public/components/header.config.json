@@ -97,14 +97,6 @@
       "children": []
     },
     {
-      "text": "新闻资讯",
-      "link": "#/information/list",
-      "hover": false,
-      "disable": false,
-      "selected": false,
-      "children": []
-    },
-    {
       "text": "场馆列表",
       "link": "#/hall/list",
       "hover": false,
@@ -114,15 +106,15 @@
     },
     {
       "text": "场馆预定",
-      "link": "#/hall/reserve",
+      "link": "#/hall/result",
       "hover": false,
       "disable": false,
       "selected": false,
       "children": []
     },
     {
-      "text": "线上服务",
-      "link": "#/service/auth/login",
+      "text": "科技普及",
+      "link": "#/universal/news",
       "hover": false,
       "disable": false,
       "selected": false,

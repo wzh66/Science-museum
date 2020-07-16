@@ -1,0 +1,57 @@
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             style="height: 560px"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left">
+            <div class="card-margin">
+                <h2 class="card-title">
+                    科普资讯<span>首页 >  科技普及 > 科普资讯</span>
+                </h2>
+                <div class="hr"></div>
+
+                <div class="trailer_content" ng-repeat="item in newsList">
+                    <a href="#/information/item/{{item.id}}" style="text-decoration: none;color: inherit">
+                        <div class="trailer_logo">
+                            <img ng-src="{{FILE_PREFIX_URL + item.logo}}" style="max-height: 110px;" ng-if="item.logo"/>
+                            <img src="/images/news_empty.png" ng-if="!item.logo">
+                        </div>
+                        <div class="trailer_word">
+                            <h2>{{item.title}}</h2>
+                            <span>{{item.synopsis}}</span>
+                            <a class="look" href="#/information/item/{{item.id}}">查看内容></a>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="ng-page" page="page.page" total="page.totalPages" ng-if="newsList"></div>
+
+            </div>
+        </div>
+        <div class="card-right" style="height: 260px!important;">
+            <div class="card-margin">
+                <div class="card-subtitle">
+                    <img src="/images/index/synopsis.png" height="36" width="36"/>
+                    <span>科技普及</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/universal/news">科普资讯</a></li>
+                    <li ng-repeat="item in brandList">
+                        <div class="square"></div>
+                        <a href="#/universal/brand/{{item.id}}">{{item.name}}</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/apply/record">活动申请</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

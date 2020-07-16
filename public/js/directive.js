@@ -22,18 +22,22 @@ appDirectives.directive('lightbox', ['$timeout', function ($timeout) {
         link: function (scope, element, attrs) {
             // Ensure input is array
             const index = parseInt(attrs.index);
-            const arr = [];
-            for (let i = 0; i < scope.lightbox.length; i++) {
-                const j = i + index >= scope.lightbox.length ? i + index - scope.lightbox.length : i + index;
-                console.log(j);
-                arr.push(scope.lightbox[j])
+            if (index){
+                const arr = [];
+                for (let i = 0; i < scope.lightbox.length; i++) {
+                    const j = i + index >= scope.lightbox.length ? i + index - scope.lightbox.length : i + index;
+                    arr.push(scope.lightbox[j])
+                }
+                scope.images = arr;
             }
-            scope.images = arr;
-            // if (angular.isArray(scope.lightbox)) {
-            //     scope.images = scope.lightbox;
-            // } else {
-            //     scope.images = [scope.lightbox];
-            // }
+            else {
+                if (angular.isArray(scope.lightbox)) {
+                    scope.images = scope.lightbox;
+                } else {
+                    scope.images = [scope.lightbox];
+                }
+            }
+
 
             // Wait for child elements before performing querySelectorAll
             $timeout(function () {
@@ -59,10 +63,10 @@ appDirectives.directive('lightbox', ['$timeout', function ($timeout) {
                 var dom = angular.element(
                     '<div class="angular-lightbox-overlay" style="display: none">' +
                     '<span class="angular-lightbox-inner">' +
-                    '<a href class="previous" title="Previous">&#8249;</a>' +
+                    '<a href class="previous" title="上一张">&#8249;</a>' +
                     '<img src="">' +
-                    '<a href class="next" title="Next">&#8250;</a>' +
-                    '<a href class="close" title="Close">&times;</a>' +
+                    '<a href class="next" title="下一张">&#8250;</a>' +
+                    '<a href class="close" title="关闭">&times;</a>' +
                     '</span>' +
                     '</div>'
                 )[0];

@@ -9,7 +9,6 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             controller: "serviceAuthRegisterController"
         });
 }]).controller('serviceAuthRegisterController', ['$scope', '$location', '$cookieStore', 'indexSvc', 'authSvc', function ($scope, $location, $cookieStore, indexSvc, authSvc) {
-    $scope.callbackUrl = $location.search().callbackUrl;
     $scope.params = {
         account: '',
         accountType: '',
@@ -20,7 +19,8 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         name: '',
         phone: '',
         idCard: '',
-        wechat: ''
+        wechat: '',
+        legalPerson: ''
     };
     $scope.licenseFileId = '';
 
@@ -74,6 +74,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                 alert('请输入企业名称!');
                 return false;
             }
+            if (form.legalPerson.$error.required) {
+                alert('请输入法人代表!');
+                return false;
+            }
         }
         if (form.name.$error.required) {
             alert('请输入联系人姓名!');
@@ -103,7 +107,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             type: $scope.params.type,
             name: $scope.params.name,
             phone: $scope.params.phone,
-            wechat: $scope.params.wechat
+            wechat: $scope.params.wechat,
         };
 
         if ($scope.params.accountType === '0') {
@@ -113,6 +117,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         if ($scope.params.accountType === '1') {
             body.companyName = $scope.params.company;
             body.licenseImg = $scope.licenseFileId;
+            body.legalPerson = $scope.params.legalPerson;
         }
 
         body.pwd = $scope.params.pwd;
@@ -123,13 +128,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         }
 
         authSvc.register(body).then(function success(res) {
-            //window.history.back();
             if (res.code === '0000') {
-                if ($scope.callbackUrl) {
-                    $location.url($scope.callbackUrl);
-                } else {
+                $scope.$root.dialog.open(true, '系统提示', '注册成功！', ['去登录'], function () {
                     $location.path('/service/auth/login');
-                }
+                });
             } else {
                 $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了']);
             }

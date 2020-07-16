@@ -112,11 +112,7 @@ appServices.factory('authSvc', ['$q', '$http', '$location', '$cookieStore', func
     };
 
     service.type = function () {
-        if ($cookieStore.get('auth')) {
-            return $cookieStore.get('auth').type;
-        } else {
-            $location.url('/service/auth/login?callbackUrl=' + $location.url());
-        }
+        return $cookieStore.get('auth') ? $cookieStore.get('auth').type : '';
     };
 
     service.accountType = function () {

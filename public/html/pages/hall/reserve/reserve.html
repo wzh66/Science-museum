@@ -68,10 +68,22 @@
 
                                     <div class="hall-form-group service">
                                         <label class="name" style="vertical-align: top;display: inline-block">其他需求</label>
-                                        <div class="control">
-                                            <span ng-repeat="item in goodList"
+                                        <div class="control" style="margin: 0 20px 0 160px">
+                                            <span ng-repeat="item in goodList.slice(0,5)"
                                                   style="white-space:nowrap;line-height:40px;margin-left: -15px;"
                                                   >
+                                                <input type="checkbox"
+                                                       class="checkbox"
+                                                       name="{{item.name}}"
+                                                       id="{{item.id}}"
+                                                       ng-click="addGoods($event)"/>
+                                                <span class="other">{{item.name}}</span>
+                                            </span>
+                                            <span ng-if="show" ng-click="show()" style="cursor: pointer;color: #0d6aad;float:right;right: 130px;position: relative;">显示更多</span>
+                                            <span ng-if="!show"
+                                                  ng-repeat="item in goodList.slice(5)"
+                                                  style="white-space:nowrap;line-height:40px;margin-left: -15px;"
+                                            >
                                                 <input type="checkbox"
                                                        class="checkbox"
                                                        name="{{item.name}}"

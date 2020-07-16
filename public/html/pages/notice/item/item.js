@@ -8,7 +8,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'pages/notice/item/item.html',
             controller: "noticeItemController"
         });
-}]).controller('noticeItemController', ['$scope', '$routeParams', 'indexSvc',  function ($scope, $routeParams, indexSvc) {
+}]).controller('noticeItemController', ['$scope', '$routeParams', 'indexSvc', function ($scope, $routeParams, indexSvc) {
     $scope.id = $routeParams.id;
     $scope.FILE_PREFIX_URL = FILE_PREFIX_URL;
     $scope.img;

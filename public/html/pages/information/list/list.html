@@ -1,5 +1,3 @@
-
-
 <div class="index-content">
     <div class="owl-carousel">
         <div href="javascript:;"
@@ -19,14 +17,17 @@
                 <div class="hr"></div>
 
                 <div class="trailer_content" ng-repeat="item in newsList">
-                    <div class="trailer_logo">
-                        <img ng-src="{{FILE_PREFIX_URL + item.logo}}" ng-if="item.logo"/>
-                    </div>
-                    <div class="trailer_word">
-                        <h2>{{item.title}}</h2>
-                        <span>{{item.synopsis}}</span>
-                        <a class="look" href="#/information/item/{{item.id}}">查看内容></a>
-                    </div>
+                    <a href="#/information/item/{{item.id}}" style="text-decoration: none;color: inherit">
+                        <div class="trailer_logo">
+                            <img style="max-height: 110px;" ng-src="{{FILE_PREFIX_URL + item.logo}}" ng-if="item.logo"/>
+                            <img src="/images/news_empty.png" ng-if="!item.logo">
+                        </div>
+                        <div class="trailer_word">
+                            <h2>{{item.title}}</h2>
+                            <span>{{item.synopsis}}</span>
+                            <a class="look" href="#/information/item/{{item.id}}">查看内容></a>
+                        </div>
+                    </a>
                 </div>
 
                 <div class="ng-page" page="page.page" total="page.totalPages" ng-if="newsList"></div>
@@ -43,8 +44,7 @@
                     <li ng-repeat="item in topicList">
                         <div class="square"></div>
                         <a ng-click="getData(item.id,item.name)"
-                           style="cursor: pointer"
-                           class="{{selectId === item.id ? 'active' : ''}}">{{item.name}}</a>
+                           style="cursor: pointer">{{item.name}}</a>
                     </li>
                 </ul>
             </div>

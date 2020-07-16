@@ -17,6 +17,13 @@
                         <form name="form" novalidate>
                             <div class="hall-form">
                                 <div class="hall-form-group apply">
+                                    <label><em>*</em>申请单位</label>
+                                    <input name="company"
+                                           ng-model="params.company"
+                                           required/>
+                                </div>
+
+                                <div class="hall-form-group apply">
                                     <label><em>*</em>活动主题</label>
                                     <input name="title"
                                            ng-model="params.title"
@@ -102,6 +109,23 @@
                                               required></textarea>
                                 </div>
 
+                                <div class="plan">
+                                    <div class="pure-g" style="display: flex;justify-content: center">
+                                        <div class="pure-u-1-3" style="margin-left: -20%;">
+                                            <input id="planFileId"
+                                                   name="planFileId"
+                                                   class="block"
+                                                   ng-model="planFileId"
+                                                   type="hidden">
+                                            <div style="background-image: url('{{planFileId | thumb}}')"
+                                                 class="dropzone"
+                                                 options="plan.option"
+                                                 callbacks="plan.callback"
+                                                 ng-dropzone></div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-controls" style="margin-right: 170px">
                                     <button type="submit" ng-click="submit(form)">提交申请</button>
                                 </div>
@@ -112,16 +136,22 @@
 
             </div>
         </div>
-        <div class="card-right" style="height: 140px">
+        <div class="card-right">
             <div class="card-margin">
                 <div class="card-subtitle">
                     <img src="/images/service/unit.png" height="36" width="36"/>
-                    <span>会员中心</span>
+                    <span>科技普及</span>
                 </div>
                 <ul>
                     <li>
                         <div class="square"></div>
-                        <a href="#/service/member/apply/record" class="active">活动申请记录</a></li>
+                        <a href="#/universal/news">科普资讯</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/universal/manage">活动管理办法</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/apply/record">活动申请</a></li>
                 </ul>
             </div>
         </div>

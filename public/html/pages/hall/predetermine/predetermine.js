@@ -8,9 +8,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'pages/hall/predetermine/predetermine.html',
             controller: "hallPredetermineController"
         });
-}]).controller('hallPredetermineController', ['$scope', '$routeParams', '$location', 'indexSvc', 'hallSvc', 'authSvc', function ($scope, $routeParams, $location, indexSvc, hallSvc, authSvc) {
+}]).controller('hallPredetermineController', ['$scope', '$routeParams', '$location', 'indexSvc', 'hallSvc', 'authSvc', 'orderSvc', function ($scope, $routeParams, $location, indexSvc, hallSvc, authSvc, orderSvc) {
     $scope.id = $routeParams.id;
     $scope.key = authSvc.key();
+    $scope.isShow = true;
     $scope.type = authSvc.type();
     $scope.FILE_PREFIX_URL = FILE_PREFIX_URL;
     $scope.params = {
@@ -21,7 +22,15 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         attendance: '',
         contact: '',
         phone: '',
-        remark: ''
+        remark: '',
+        companyName: '',
+        address: '',
+        bankAccount: '',
+        number: '',
+        bank: '',
+        invoiceType: '',
+        type: '',
+        invoiceId: ''
     };
     $scope.count = {};
     $scope.result = {};
@@ -59,6 +68,15 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     hallSvc.getOrderGoodsList($scope.key, $scope.id).then(function success(res) {
         $scope.goodsList = res.result;
     });
+
+    orderSvc.getInvoiceList($scope.key).then(function success(res) {
+        $scope.invoiceList = res.result.list;
+    });
+
+    $scope.showing = function () {
+        $scope.isShow = !$scope.isShow;
+    };
+
 
     $scope.getReserveTime = function (beginTime, endTime) {
         var dateList = get(beginTime, endTime);
@@ -132,6 +150,28 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         });
     };
 
+    $scope.getInvoiceId = function () {
+        var params = {
+            key: $scope.key,
+            companyName: $scope.params.companyName,
+            address: $scope.params.address,
+            bankAccount: $scope.params.bankAccount,
+            phone: $scope.params.phone,
+            number: $scope.params.number,
+            bank: $scope.params.bank,
+            invoiceType: $scope.params.invoiceType,
+            type: $scope.params.type
+        };
+        orderSvc.addInvoice(params).then(function success(res) {
+            if (res.code === '0000') {
+                $scope.params.invoiceId = res.result.id;
+                $scope.$root.dialog.open(true, '系统提示', '发票信息已成功生成！', ['我知道了']);
+            } else {
+                $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了']);
+            }
+        });
+    };
+
 
     $scope.submit = function (form) {
         if ($scope.params.beginTime && $scope.params.endTime) {
@@ -156,14 +196,31 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             }
             return false;
         }
+        if ($scope.invoiceList.length > 0) {
+            if (form.invoiceId.$error.required) {
+                alert('请选择发票服务！');
+                return false;
+            }
+        }
+
         var goodsList = [];
+        var result = [];
         $scope._goodsList.forEach(item => {
-            var index = $scope.goodsList.findIndex(i => i.id === item);
+            var index = $scope.goodsList.findIndex(i => i.baseGoodsId === item);
+            if (!$scope.count['' + index]) {
+                result.push($scope.goodsList[index].name);
+            }
             goodsList.push({
                 id: item,
                 count: $scope.count['' + index]
             });
         });
+        if (result.length > 0) {
+            for (var i = 0; i < result.length; i++) {
+                alert('请填写' + result[i] + '的数量');
+            }
+            return false;
+        }
         $scope._goodsList = goodsList;
         if ($scope.params.beginTime > $scope.params.endTime) {
             var temp = $scope.params.beginTime;
@@ -182,7 +239,8 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             title: $scope.params.meetingName,
             remark: $scope.params.remark,
             reserveBeginTime: $scope.params.beginTime,
-            reserveEndTime: $scope.params.endTime
+            reserveEndTime: $scope.params.endTime,
+            invoiceId: $scope.params.invoiceId
         };
         hallSvc.submitOrder(body).then(function success(res) {
             if (res.code === '0000') {
@@ -192,6 +250,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             }
         });
     };
+
 
     $scope.addReserve = function ($event, date) {
         var checked = $event.target;
@@ -208,7 +267,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 
     $scope.addGoods = function ($event) {
         var checked = $event.target;
-        var index = $scope.goodsList.findIndex(item => item.id === checked.id);
+        var index = $scope.goodsList.findIndex(item => item.baseGoodsId === checked.id);
         if (checked.checked) {
             $scope._goodsList.push(checked.id);
         } else {

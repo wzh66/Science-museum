@@ -40,6 +40,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $scope.meetingType = res.result;
     });
 
+    $scope.show = function () {
+        $scope.show = false;
+    };
+
     $scope.begin = function () {
         laydate({
             elem: '#startdatepicker',

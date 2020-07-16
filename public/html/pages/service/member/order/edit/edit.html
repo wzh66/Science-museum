@@ -40,6 +40,7 @@
                                 <div class="hall-form-group edit">
                                     <label>会议类型：</label>
                                     <select name="meetingType" ng-model="detail.meetingType" style="margin-left: 4px">
+                                        <option value='' disabled selected>请选择会议类型</option>
                                         <option ng-repeat="item in meetingType" value="{{item.dictValue}}">
                                             {{item.dictName}}
                                         </option>
@@ -68,6 +69,7 @@
                                                 <input type="checkbox"
                                                        class="checkbox"
                                                        ng-disabled="type.disabled"
+                                                       ng-checked="type.checked"
                                                        name="{{type.dictName}}"
                                                        id="{{type.dictValue}}"
                                                        ng-click="addReserve($event,item.reserveDate)"/>
@@ -100,6 +102,17 @@
                                            required/>
                                 </div>
 
+                                <p class="form-title" style="font-size: 16px">发票资料：</p>
+                                <div class="hall-form-group edit">
+                                    <label>发票服务：</label>
+                                    <select name="orderInvoiceId" ng-model="detail.orderInvoiceId" style="margin-left: 4px">
+                                        <option value='' disabled selected>请选择发票服务</option>
+                                        <option ng-repeat="item in invoiceList" value="{{item.id}}">
+                                            <p>{{item.type === 0 ? '发票抬头'  : '单位名称'}}：<span>{{item.companyName}}</span></p>
+                                        </option>
+                                    </select>
+                                </div>
+
                                 <p class="form-title" style="font-size: 16px">服务项目：</p>
                                 <div class="hall-form-group edit">
                                     <label>其他需求：</label>
@@ -109,10 +122,11 @@
                                             <input type="checkbox"
                                                    class="checkbox"
                                                    name="{{item.name}}"
-                                                   id="{{item.id}}"
+                                                   ng-checked="item.checked"
+                                                   id="{{item.baseGoodsId}}"
                                                    ng-click="addGoods($event)"/>
                                             <span class="other">{{item.name}}</span>
-                                            <span ng-if="_goodsList.indexOf(item.id) !== -1" style="margin-left: -2px">
+                                            <span ng-if="_goodsList.indexOf(item.baseGoodsId) !== -1" style="margin-left: -2px">
                                                 <input name="{{'' + $index}}"
                                                        ng-model="count['' + $index]"
                                                        style="width: 50px!important;"/>
@@ -132,7 +146,7 @@
                                 <div class="service-cost">
                                     <div class="cost">
                                         <p><span>服务项目价格：</span><em>￥{{serviceCost}}元</em></p>
-                                        <p><span>会场价格：</span><em>￥{{detail.dailyRentPrice*reserveList.length}}元</em></p>
+                                        <p><span>场馆价格：</span><em>￥{{detail.dailyRentPrice*reserveList.length}}元</em></p>
                                         <p><span>合计：</span><em>￥{{serviceCost +
                                             detail.dailyRentPrice*reserveList.length}}元</em></p>
                                     </div>
@@ -159,14 +173,14 @@
                 <ul>
                     <li>
                         <div class="square"></div>
-                        <a href="#/service/member/unit">{{type === 0 ? '个人信息' : '单位信息'}}</a></li>
-                    <li>
-                        <div class="square"></div>
-                        <a href="#/service/member/order/list" class="active">{{type === 0 ? '场馆登记记录' : '财务结算记录'}}</a>
+                        <a href="#/service/member/order/list">{{type === 0 ? '场馆登记记录' : '财务结算记录'}}</a>
                     </li>
                     <li>
                         <div class="square"></div>
                         <a href="#/service/member/invoice/list">发票管理</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/unit">{{type === 0 ? '个人信息' : '单位信息'}}</a></li>
                 </ul>
             </div>
         </div>

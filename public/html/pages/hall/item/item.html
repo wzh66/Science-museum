@@ -16,6 +16,29 @@
                 </h2>
                 <div class="hr"></div>
                 <div class="card-content">
+                    <div class="img-content" style="border: none">
+                        <div class="small-img" style="padding-bottom: 40px;">
+                            <span class="left" style="top: 45px"><img src="/images/index/left.png" height="20" width="20"
+                                                              style="position: relative;top: 5px;left: -1px;"/></span>
+                            <span class="right" style="top: 45px"><img src="/images/index/right.png" height="20"
+                                                                       width="20"
+                                                                       style="position: relative;top: 5px;left: 1px;"/></span>
+                            <ul ng-class="detail.rotationImgs.length < 5 ? 'width880' : ''">
+                                <li ng-repeat="item in detail.rotationImgs track by $index"
+                                    style="width: 190px;height: 130px;display: flex;justify-content: center;align-items: center;">
+                                    <div index="{{$index}}" lightbox="detail.rotationImgs">
+                                        <a href="javascript:;"
+                                           class="lightbox-trigger">
+                                            <img class="moveimg" src="{{item}}"
+                                                 style="border: none;border-radius: 0;width: 190px;height: 130px;max-height: 130px"/>
+                                        </a>
+                                    </div>
+                                    <!--<p class="img-name" style="text-align: center">{{item.title}}</p>-->
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <div class="hall_synopsis">
                         <div class="box_left"></div>
                         <span>{{detail.synopsis}}</span>

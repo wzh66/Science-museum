@@ -43,5 +43,35 @@ appServices.factory('newsSvc', ['$q', '$http', '$location', '$cookieStore', func
         return d.promise;
     };
 
+    service.getBrandList = function () {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.get(PREFIX_URL + 'getBrandList').success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
+    service.getExhibitsList = function (id) {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.get(PREFIX_URL + 'getExhibitsList&brandId=' + id).success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
+    service.getExhibitsDetail = function (id) {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.get(PREFIX_URL + 'getExhibitsDetail&id=' + id).success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
     return service;
 }]);

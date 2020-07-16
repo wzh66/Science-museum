@@ -1,0 +1,51 @@
+<div class="index-content">
+    <div class="owl-carousel">
+        <div href="javascript:;"
+             class="carousel-item item"
+             style="height: 560px"
+             ng-style="{'background-image': 'url(' + img.proimg + ')'}">
+        </div>
+    </div>
+</div>
+<div class="synopsis-content">
+    <div class="card">
+        <div class="card-left">
+            <div class="card-margin">
+                <h2 class="card-title">
+                    场馆公告<span>首页 > 场馆公告</span>
+                </h2>
+                <div class="hr"></div>
+
+                <div class="trailer_content" ng-repeat="item in noticeList">
+                    <a href="#/notice/item/{{item.id}}" style="text-decoration: none;color: inherit">
+                        <div class="trailer_logo">
+                            <img style="max-height: 110px;" ng-src="{{FILE_PREFIX_URL + item.logo}}" ng-if="item.logo"/>
+                            <img src="/images/news_empty.png" ng-if="!item.logo">
+                        </div>
+                        <div class="trailer_word">
+                            <h2>{{item.name}}</h2>
+                            <!--<span>{{item.synopsis}}</span>-->
+                            <a class="look" href="#/notice/item/{{item.id}}">查看内容></a>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-right" style="height: 140px !important;">
+            <div class="card-margin">
+                <div class="card-subtitle">
+                    <img src="/images/index/news.png" height="36" width="36"/>
+                    <span>场馆公告</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/universal/news">场馆公告</a></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

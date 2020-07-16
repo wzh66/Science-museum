@@ -93,6 +93,17 @@
                                           ng-if="user.auditStatus === 0">修改<img src="/images/service/edit.png"/></span>
                                 </div>
 
+                                <div class="hall-form-group unit" ng-if="accountType === 1">
+                                    <label>法人代表：</label>
+                                    <input id="legalPerson"
+                                           readonly="readonly"
+                                           class="readonly"
+                                           ng-model="params.legalPerson"/>
+                                    <span class="change {{hideLegalPerson ? 'hideLegalPerson' : ''}}"
+                                          ng-click="modifyLegalPerson()"
+                                          ng-if="user.auditStatus === 0">修改<img src="/images/service/edit.png"/></span>
+                                </div>
+
                                 <div style="display: flex;align-items: center;justify-content: center"
                                      ng-if="accountType === 1 && user.auditStatus === 1">
                                     <div class="license">
@@ -139,13 +150,13 @@
                 <ul>
                     <li>
                         <div class="square"></div>
-                        <a href="#/service/unit" class="active">{{accountType === 0 ? '个人信息' : '单位信息'}}</a></li>
-                    <li>
-                        <div class="square"></div>
                         <a href="#/service/member/order/list">{{accountType === 0 ? '场馆登记记录' : '财务结算记录'}}</a></li>
                     <li>
                         <div class="square"></div>
                         <a href="#/service/member/invoice/list">发票管理</a></li>
+                    <li>
+                        <div class="square"></div>
+                        <a href="#/service/member/unit">{{accountType === 0 ? '个人信息' : '单位信息'}}</a></li>
                 </ul>
             </div>
         </div>

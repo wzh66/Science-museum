@@ -11,7 +11,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 }]).controller('serviceMemberApplyItemController', ['$scope', '$routeParams', 'indexSvc', 'authSvc', 'applySvc', 'hallSvc', function ($scope, $routeParams, indexSvc, authSvc, applySvc, hallSvc) {
     $scope.id = $routeParams.id;
     $scope.key = authSvc.key();
-    indexSvc.getImage(6).then(function success(res) {
+    indexSvc.getImage(8).then(function success(res) {
         res.result.proimg = FILE_PREFIX_URL + res.result.proimg;
         $scope.img = res.result;
     });

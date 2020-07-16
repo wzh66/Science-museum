@@ -83,6 +83,46 @@ appServices.factory('indexSvc', ['$q', '$http', '$location', '$cookieStore', fun
         return d.promise;
     };
 
+    service.getExhibitionImg = function () {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.get(PREFIX_URL + 'getExhibitionImg').success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
+    service.getVideoList = function () {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.get(PREFIX_URL + 'getVideoList').success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
+    service.getVideoDetail = function (id) {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.get(PREFIX_URL + 'getVideoDetail&id=' + id).success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
+    service.previewFile = function (id) {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.get(PREFIX_URL + 'previewFile&id=' + id).success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
 
     return service;
 }]);

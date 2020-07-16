@@ -19,7 +19,8 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         phone: $scope.user.phone,
         wechat: $scope.user.wechat ? $scope.user.wechat : '-',
         licenseImg: $scope.user.licenseImg ? $scope.user.licenseImg : '',
-        idCard: $scope.user.idCard ? $scope.user.idCard : ''
+        idCard: $scope.user.idCard ? $scope.user.idCard : '',
+        legalPerson: $scope.user.legalPerson ? $scope.user.legalPerson : ''
     };
     $scope.license = {
         option: {
@@ -46,7 +47,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $scope.img = res.result;
     });
 
-    if ($scope.user.auditStatus === 0){
+    if ($scope.user.auditStatus === 0) {
         $scope.$root.dialog.open(true, '系统提示', '您的账号正在审核中，审核通过之前暂时无法预定场馆，如您急需预定，可拨打020-28328300联系客服快速审核。', ['我知道了']);
     }
 
@@ -115,6 +116,19 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $scope.hideIdCard = false;
     };
 
+    $scope.modifyLegalPerson = function () {
+        $('#legalPerson').removeClass('readonly');
+        $('#legalPerson').removeAttr('readonly');
+        $scope.hideLegalPerson = true;
+        $scope.show = true;
+    };
+
+    $scope.saveLegalPerson = function () {
+        $('#legalPerson').addClass('readonly');
+        $('#legalPerson').attr('readonly', 'readonly');
+        $scope.hideLegalPerson = false;
+    };
+
     $scope.submit = function (form) {
         var body = {
             key: $scope.user.key,
@@ -152,6 +166,9 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                 }
                 if ($scope.hideIdCard) {
                     $scope.saveIdCard();
+                }
+                if ($scope.hideLegalPerson) {
+                    $scope.saveLegalPerson();
                 }
             } else {
                 $scope.$root.dialog.open(true, '系统提示', res.msg, ['我知道了']);

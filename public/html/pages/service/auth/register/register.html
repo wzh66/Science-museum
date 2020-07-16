@@ -85,6 +85,13 @@
                                            ng-model="params.wechat"/>
                                 </div>
 
+                                <div class="hall-form-group register" ng-if="params.accountType === '1'">
+                                    <label><em>*</em>法人代表：</label>
+                                    <input name="legalPerson"
+                                           ng-model="params.legalPerson" required/>
+                                </div>
+
+
                                 <div class="pure-g" ng-if="params.accountType === '1'" style="display: flex;justify-content: center">
                                     <div class="pure-u-1-3" style="margin-left: 10.5%;">
                                         <input id="licenseFileId"

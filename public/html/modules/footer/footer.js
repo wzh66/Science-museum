@@ -16,7 +16,6 @@ app.directive('ngFooter', ['$location', 'indexSvc', function ($location, indexSv
             });
             indexSvc.getAccessCount().then(function success(res) {
                 res.result = res.result.toString().split('');
-                console.log(res.result);
                 scope.counts = res.result;
             });
         }

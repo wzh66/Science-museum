@@ -8,8 +8,9 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'pages/research/news/news.html',
             controller: "researchNewsController"
         });
-}]).controller('researchNewsController', ['$scope', 'indexSvc', 'newsSvc', function ($scope, indexSvc, newsSvc) {
+}]).controller('researchNewsController', ['$scope', 'indexSvc', 'newsSvc', 'researchSvc', function ($scope, indexSvc, newsSvc, researchSvc) {
     $scope.FILE_PREFIX_URL = FILE_PREFIX_URL;
+    $scope._FILE_PREFIX_URL = _FILE_PREFIX_URL;
     $scope.page = {
         total: 0,
         totalPages: 1,
@@ -21,14 +22,13 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     });
 
     $scope.getNewsList = function (page) {
-        newsSvc.getNewsList(2, '', page).then(function success(res) {
+        researchSvc.getNewsList(page).then(function success(res) {
             $scope.newsList = res.result.list;
             $scope.page.totalPages = res.result.totalPages;
             $scope.page.total = res.result.total;
         });
     };
 
-    $scope.getNewsList($scope.page.page);
 
     $scope.$watch('page.page', function (n, o) {
         if (n !== o || o !== undefined) {

@@ -6,6 +6,8 @@ app.directive('ngHeader', ['$location', '$rootScope', 'appSvc', 'authSvc', funct
         scope: {},
         templateUrl: 'modules/header/header.html',
         link: function (scope, element, attrs) {
+            tick();
+
             appSvc.get().then(function success(res) {
                 scope.appData = res;
             });

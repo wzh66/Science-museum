@@ -33,6 +33,16 @@ appServices.factory('hallSvc', ['$q', '$http', '$location', '$cookieStore', func
         return d.promise;
     };
 
+    service.getVenueTypeList = function () {//获取用户信息 promise对象
+        var d = $q.defer();
+        $http.get(PREFIX_URL + 'getVenueTypeList').success(function (data) {
+            return d.resolve(data);
+        }).error(function (error) {
+            d.reject(error);
+        });
+        return d.promise;
+    };
+
     service.getGoodsList = function () {//获取用户信息 promise对象
         var d = $q.defer();
         $http.get(PREFIX_URL + 'getGoodsList').success(function (data) {

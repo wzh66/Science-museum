@@ -164,7 +164,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                         $location.url($scope.callbackUrl);
                     } else {
                         if (res.result.type === 0 || res.result.type === 1) {
-                            $location.path('/service/member/unit');
+                            $location.path('/service/member/order/list');
                         } else {
                             $location.path('/service/member/apply/record');
                         }

@@ -1,17 +1,25 @@
-.hall-form-group{
-  .select{
+.hall-form-group {
+  .select {
     padding: 14px 190px 14px 10px !important;
   }
-  .name{
+
+  .name {
     margin-right: 40px;
     font-size: 16px !important;
   }
-  .other{
+
+  .other {
     font-size: 16px;
   }
-  .activity{
+
+  .activity {
     cursor: pointer;
     width: 280px !important;
     height: 50px !important;
   }
+  span.show {
+    display: block;
+  }
+
 }
+

@@ -8,7 +8,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'pages/hall/item/item.html',
             controller: "hallItemController"
         });
-}]).controller('hallItemController', ['$scope', '$routeParams', 'indexSvc','hallSvc', function ($scope, $routeParams, indexSvc,hallSvc) {
+}]).controller('hallItemController', ['$scope', '$routeParams', 'indexSvc', 'hallSvc', function ($scope, $routeParams, indexSvc, hallSvc) {
     $scope.id = $routeParams.id;
     $scope.FILE_PREFIX_URL = FILE_PREFIX_URL;
     indexSvc.getImage(4).then(function success(res) {
@@ -17,8 +17,17 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     });
 
     hallSvc.getVenueDetail($scope.id).then(function success(res) {
+        if (res.result.rotationImgs) {
+            res.result.rotationImgs = res.result.rotationImgs.split(',').map(s => {
+                return FILE_PREFIX_URL + s;
+            });
+        } else {
+            res.result.rotationImgs = [];
+        }
+
         res.result.detail = res.result.detail.replace(/musWeb/gi, 'api');
         $scope.detail = res.result;
+        scroll();
     });
 
 

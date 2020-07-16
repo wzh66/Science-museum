@@ -8,7 +8,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'pages/research/news/item/item.html',
             controller: "researchNewsItemController"
         });
-}]).controller('researchNewsItemController', ['$scope', '$routeParams', 'indexSvc', 'newsSvc', function ($scope, $routeParams, indexSvc, newsSvc) {
+}]).controller('researchNewsItemController', ['$scope', '$routeParams', 'indexSvc', 'newsSvc', 'researchSvc', function ($scope, $routeParams, indexSvc, newsSvc, researchSvc) {
     $scope.id = $routeParams.id;
     $scope.FILE_PREFIX_URL = FILE_PREFIX_URL;
     indexSvc.getImage(2).then(function success(res) {
@@ -16,8 +16,8 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         $scope.img = res.result;
     });
 
-    newsSvc.getNewsDetail($scope.id).then(function success(res) {
-        res.result.detail = res.result.detail.replace(/musWeb/gi, 'api');
+    researchSvc.getNewsDetail($scope.id).then(function success(res) {
+        res.result.detail = res.result.detail.replace('/declareSys', 'http://admin.ai-fox.net/declareSys');
         $scope.detail = res.result;
     });
 }]);

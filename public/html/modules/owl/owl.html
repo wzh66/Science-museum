@@ -1,9 +1,19 @@
 <div class="owl-carousel">
-    <a ng-if="items" ng-repeat="image in images" repeat-finish="renderFinish()" href="{{image.href}}" style="text-decoration: none">
+    <a ng-if="items && image.href" ng-repeat="image in images" repeat-finish="renderFinish()" href="{{image.href}}"
+       style="text-decoration: none">
         <div href="javascript:;"
              class="carousel-item item"
              ng-style="{'background-image': 'url(' + image.proimg + ')'}">
-            <h3>{{image.title}}</h3>
+            <h3>{{image.title.slice(0,24)}}{{image.title.length > 23 ? '...' : ''}}</h3>
         </div>
     </a>
+    <div ng-repeat="image in images"
+         ng-if="items && !image.href"
+         repeat-finish="renderFinish()"
+         href="javascript:;"
+         class="carousel-item item"
+         ng-style="{'background-image': 'url(' + image.proimg + ')'}">
+        <h3>{{image.title.slice(0,24)}}{{image.title.length > 23 ? '...' : ''}}</h3>
+    </div>
+
 </div>

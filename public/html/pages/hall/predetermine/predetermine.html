@@ -95,25 +95,121 @@
                                     </div>
                                 </div>
 
+                                <p class="form-title">请选择开票信息：</p>
+                                <div class="hall-form-group service" ng-if="invoiceList.length > 0">
+                                    <label><em>*</em>发票服务：</label>
+                                    <select name="invoiceId" ng-model="params.invoiceId" required>
+                                        <option value='' disabled selected>请选择发票服务</option>
+                                        <option ng-repeat="item in invoiceList" value="{{item.id}}">
+                                            <p>{{item.type === 0 ? '发票抬头' : '单位名称'}}：<span>{{item.companyName}}</span>&nbsp;&nbsp;
+                                            </p>
+                                            <!--<p>{{item.invoiceType === 1 ? '税号：' : ''}}<span>{{item.number}}</span>&nbsp;&nbsp;</p>
+                                            <p>发票抬头类型：<span>{{item.invoiceType === 0 ? '个人' : '单位'}}</span>&nbsp;&nbsp;</p>
+                                            <p>发票类型：<span>{{item.type === 0 ? '普通发票' : '专用发票'}}</span></p>-->
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="hall-form" ng-if="invoiceList.length < 1">
+                                    <div class="hall-form-group service">
+                                        <label><em>*</em>发票类型：</label>
+                                        <select name="type" ng-model="params.type">
+                                            <option value='' disabled selected>请选择发票类型</option>
+                                            <option value="0">普通发票</option>
+                                            <option value="1" ng-if="params.invoiceType !== '0'">专用发票</option>
+                                        </select>
+
+                                    </div>
+
+                                    <div class="hall-form-group service">
+                                        <label><em>*</em>发票抬头类型：</label>
+                                        <select name="invoiceType" ng-model="params.invoiceType"
+                                                style="padding: 9px 156px 9px 10px!important">
+                                            <option value='' disabled selected>请选择发票抬头类型</option>
+                                            <option value="0" ng-if="params.type !== '1'">个人</option>
+                                            <option value="1">单位</option>
+                                        </select>
+
+                                    </div>
+
+                                    <div class="hall-form-group service">
+                                        <label><em>*</em>{{params.invoiceType === '1' ? '单位名称' : '发票抬头'}}：</label>
+                                        <input name="title"
+                                               ng-model="params.companyName"/>
+                                    </div>
+
+                                    <div class="hall-form-group service" ng-if="params.invoiceType === '1'">
+                                        <label><em>*</em>税号：</label>
+                                        <input name="number"
+                                               ng-model="params.number"/>
+                                    </div>
+
+                                    <div class="hall-form-group service" ng-if="params.invoiceType === '1'">
+                                        <label><em>*</em>单位地址：</label>
+                                        <input name="address"
+                                               ng-model="params.address"/>
+                                    </div>
+
+                                    <div class="hall-form-group service" ng-if="params.invoiceType === '1'">
+                                        <label><em>*</em>开户银行：</label>
+                                        <input name="bank"
+                                               ng-model="params.bank"/>
+                                    </div>
+
+                                    <div class="hall-form-group service" ng-if="params.invoiceType === '1'">
+                                        <label><em>*</em>银行账号：</label>
+                                        <input name="bankAccount"
+                                               ng-model="params.bankAccount"/>
+                                    </div>
+
+                                    <div class="form-controls"
+                                         style="justify-content: flex-start;margin-left: 160px;margin-top: 0">
+                                        <button ng-click="getInvoiceId()"
+                                                style="width: 120px;height: 40px;font-size: 16px">生成发票信息
+                                        </button>
+                                    </div>
+                                </div>
+
                                 <p class="form-title">请选择服务项目：</p>
                                 <div class="hall-form-group service">
                                     <label>其他需求：</label>
-                                    <div class="control" style="margin: 0 20px 0 85px;">
-                                        <span ng-repeat="item in goodsList"
+                                    <div class="control" style="margin: 0 20px 0 130px;">
+                                        <span ng-repeat="item in goodsList.slice(0,5)"
                                               style="white-space:nowrap;line-height:40px;">
                                             <input type="checkbox"
                                                    class="checkbox"
                                                    name="{{item.name}}"
-                                                   id="{{item.id}}"
+                                                   id="{{item.baseGoodsId}}"
                                                    ng-click="addGoods($event)"/>
                                             <span class="other">{{item.name}}</span>
-                                            <span ng-if="_goodsList.indexOf(item.id) !== -1" style="margin-left: -2px">
+                                            <span ng-if="_goodsList.indexOf(item.baseGoodsId) !== -1"
+                                                  style="margin-left: -2px">
                                                 <input name="{{'' + $index}}"
                                                        ng-model="count['' + $index]"
                                                        style="width: 50px!important;"/>
                                                 <span>{{item.unit}}</span>
                                             </span>
                                         </span>
+                                        <span ng-if="isShow" ng-click="showing()"
+                                              style="cursor: pointer;color: #0d6aad;float:right;right: 100px;top:0;position: relative;">显示更多</span>
+                                        <span ng-if="!isShow"
+                                              ng-repeat="item in goodsList.slice(5)"
+                                              style="white-space:nowrap;line-height:40px;">
+                                            <input type="checkbox"
+                                                   class="checkbox"
+                                                   name="{{item.name}}"
+                                                   id="{{item.baseGoodsId}}"
+                                                   ng-click="addGoods($event)"/>
+                                            <span class="other">{{item.name}}</span>
+                                            <span ng-if="_goodsList.indexOf(item.baseGoodsId) !== -1"
+                                                  style="margin-left: -2px">
+                                                <input name="{{'' + $index}}"
+                                                       ng-model="count['' + $index]"
+                                                       style="width: 50px!important;"/>
+                                                <span>{{item.unit}}</span>
+                                            </span>
+                                        </span>
+                                        <span ng-if="!isShow" ng-click="showing()" style="cursor: pointer;color: #0d6aad;float:right;right: 100px;top:0;position: relative;">收起</span>
                                     </div>
                                 </div>
 
@@ -127,7 +223,7 @@
                                 <div class="service-cost">
                                     <div class="cost">
                                         <p><span>服务项目价格：</span><em>￥{{serviceCost}}元</em></p>
-                                        <p><span>会场价格：</span><em>￥{{detail.dailyRentPrice*reserveList.length}}元</em></p>
+                                        <p><span>场馆价格：</span><em>￥{{detail.dailyRentPrice*reserveList.length}}元</em></p>
                                         <p><span>合计：</span><em>￥{{serviceCost +
                                             detail.dailyRentPrice*reserveList.length}}元</em></p>
                                     </div>

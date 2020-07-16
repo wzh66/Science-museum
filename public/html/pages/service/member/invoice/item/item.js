@@ -13,13 +13,21 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     $scope.type = authSvc.type();
     $scope.key = authSvc.key();
     $scope.FILE_PREFIX_URL = FILE_PREFIX_URL;
+    $scope.invoiceFileId = [];
     indexSvc.getImage(6).then(function success(res) {
         res.result.proimg = FILE_PREFIX_URL + res.result.proimg;
         $scope.img = res.result;
     });
 
     orderSvc.getOrderInvoiceDetail($scope.key, $scope.id).then(function success(res) {
-        res.result.invoiceFileId = res.result.invoiceFileId.split(',');
+        if (res.result.invoiceFileId){
+            if (res.result.invoiceFileId.indexOf(",") !== -1) {
+                res.result.invoiceFileId = res.result.invoiceFileId.split(',');
+                $scope.invoiceFileId = res.result.invoiceFileId;
+            } else {
+                $scope.invoiceFileId.push(res.result.invoiceFileId);
+            }
+        }
         $scope.detail = res.result;
     });
 
