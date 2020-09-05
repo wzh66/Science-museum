@@ -19,7 +19,7 @@
     "gulp-rename": "",
     "gulp-sass": "",
     "gulp-uglify": "",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "resize-img": "",
     "run-sequence": "",
     "http-server": ""
